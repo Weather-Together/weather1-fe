@@ -35,7 +35,7 @@ const DailyGame: React.FC = () => {
     if (location) {
       console.log("Submitting location:", location);
       // Assuming score is a number; replace with the correct type if needed
-      setScore(1082.19); // Mock score for demonstration
+      setScore(1082); // Mock score for demonstration
     } else {
       window.alert("Please select a location on the map.");
     }
