@@ -8,7 +8,7 @@ function Header() {
       <h1>WeatherTogether</h1>
       <nav>
         <Link to="/new-user">New User</Link>
-        <Link to="/login">Login</Link>
+        <Link to="/weather1-fe/login">Login</Link>
       </nav>
     </header>
   );
