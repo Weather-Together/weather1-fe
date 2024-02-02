@@ -1,0 +1,40 @@
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem; /* Consistent with header padding */
+    background-color: #011f1d; /* Matching the header's background color */
+    color: white; /* Matching the header's text color */
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1); /* Shadow on the top edge for depth */
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding does not affect the total width */
+}
+
+footer h1 {
+    margin: 0;
+    font-size: 1.5rem; /* Consistent with header */
+    font-weight: normal; /* Keeping the modern look */
+    order: 2; /* Puts the logo on the right */
+}
+
+footer nav {
+    display: flex;
+    order: 1; /* Ensures navigation links are on the left */
+}
+
+footer nav a {
+    margin-left: 20px; /* Spacing for links, adjusted for left-side placement */
+    text-decoration: none;
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+footer nav a:hover, footer nav a:focus {
+    background-color: rgba(255,255,255,0.2);
+}
+
+footer nav a:first-child {
+    margin-left: 0;
+}
