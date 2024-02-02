@@ -3,7 +3,7 @@ import './App.css';
 import Map from '../Map/Map';
 import LandingPage from '../LandingPage/LandingPage'
 import DailyGame from '../DailyGame/DailyGame';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 
 // Create UserContext
