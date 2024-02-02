@@ -7,15 +7,6 @@ interface MapProps {
   onLocationSelect: (location: { lat: number; lng: number }) => void;
 }
 
-const MapClickHandler: React.FC<MapProps> = ({ onLocationSelect }) => {
-  useMapEvent('click', (e) => {
-    const { lat, lng } = e.latlng;
-    alert(`Selected Location - Latitude: ${lat.toFixed(2)}, Longitude: ${lng.toFixed(2)}`);
-    onLocationSelect({ lat, lng });
-  });
-
-  return null;
-};
 
 const Map: React.FC<MapProps> = ({ onLocationSelect }) => {
   const initialCenter: L.LatLngExpression = [0, 0];
@@ -26,6 +17,19 @@ const Map: React.FC<MapProps> = ({ onLocationSelect }) => {
     L.latLng(-89.98155760646617, -180),
     L.latLng(89.99346179538875, 180)
   );
+
+
+const MapClickHandler: React.FC<MapProps> = ({ onLocationSelect }) => {
+  useMapEvent('click', (e) => {
+    const { lat, lng } = e.latlng;
+    alert(`Selected Location - Latitude: ${lat.toFixed(2)}, Longitude: ${lng.toFixed(2)}`);
+    onLocationSelect({ lat, lng });
+  });
+
+  return null;
+};
+
+
 
   return (
     <div className="map-container">
