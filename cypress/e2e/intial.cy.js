@@ -1,6 +1,6 @@
 describe('App Component Tests', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000') // Make sure this is the correct URL where your app is running
+    cy.visit('http://localhost:3000/weather1-fe') // Make sure this is the correct URL where your app is running
   });
 
   it('passes', () => {
@@ -8,6 +8,6 @@ describe('App Component Tests', () => {
   });
 
   it('should get the header', () => {
-    cy.get('h1').should('contain', 'Header');
+    cy.get('h1').should('contain', 'WeatherTogether');
   });
 });
