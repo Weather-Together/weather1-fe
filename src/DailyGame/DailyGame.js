@@ -3,7 +3,7 @@
 // import Map from '../Map/Map';
 // import './DailyGame.css';
 
-// function DailyGame() {
+function DailyGame() {
 //   const [location, setLocation] = useState({ lat: null, lng: null });
 //   // const [weatherData, setWeatherData] = useState(null);
 //   const [roundData, setRoundData] = useState(null);
@@ -61,7 +61,8 @@
 //     }
 //   };
 
-//   return (
+return (
+  <div></div>
 //     <div className="daily-game">
 //       <Header />
 //       <Map onLocationSelect={setLocation} />
@@ -85,8 +86,8 @@
 //       )}
 //       <button onClick={handleSubmit} className="submit-button">Submit</button>
 //     </div>
-//   );
-// }
+);
+}
 
-// export default DailyGame;
+export default DailyGame;
 

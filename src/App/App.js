@@ -5,7 +5,7 @@ import Header from '../Header/Header';
 import LandingPage from '../LandingPage/LandingPage'
 import DailyGame from '../DailyGame/DailyGame';
 import NewUser from '../NewUser/NewUser';
-import { BrowserRouter as Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 
 // Create UserContext
@@ -17,12 +17,12 @@ function App() {
 
   return (
     <UserContext.Provider value={userValue}>
-      <Header />
+        <Header />
         <Routes>
           <Route path="/weather1-fe" element={<LandingPage />} />
           <Route path="/weather1-fe/daily-game" element={<DailyGame />} />
-          <Route path='/weather1-fe/login' element={<Login />}></Route>
-          <Route path='/weather1-fe/new-user' element={<NewUser />}></Route>
+          <Route path='/weather1-fe/login' element={<Login />} />
+          <Route path='/weather1-fe/new-user' element={<NewUser />} />
           {/* <Route path='/weather1-fe/comp-game' element={<CompGame />}></Route>
           <Route path='/weather1-fe/profile' element={<UserProfile />}></Route>
           Add more routes as needed */}
