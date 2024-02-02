@@ -4,8 +4,7 @@ import Footer from '../Footer/Footer';
 import Map from '../Map/Map';
 import './DailyGame.css';
 
-// First, define the shape of your state and any other objects with interfaces
-interface IWeatherData {
+interface RoundData {
   maxtemp: number;
   avghumidity: number;
   // other fields as necessary
@@ -16,25 +15,19 @@ interface ILocation {
   lng: number;
 }
 
-const mockDailyRoundData = {
-  weather_data: {
-    maxtemp: 19.4,
-    avghumidity: 95,
-    // other necessary weather data fields
-  },
+const mockDailyRoundData: RoundData = {
+  maxtemp: 19.4,
+  avghumidity: 95,
+  // other necessary weather data fields
 };
 
 const DailyGame: React.FC = () => {
   const [location, setLocation] = useState<ILocation | null>(null);
-  const [roundData, setRoundData] = useState<IWeatherData | null>(null)
   const [score, setScore] = useState<number | null>(null);
-
-setRoundData(mockDailyRoundData.weather_data);
 
   const handleSubmit = () => {
     if (location) {
       console.log("Submitting location:", location);
-      // Assuming score is a number; replace with the correct type if needed
       setScore(1082); // Mock score for demonstration
     } else {
       window.alert("Please select a location on the map.");
@@ -51,9 +44,8 @@ setRoundData(mockDailyRoundData.weather_data);
         <div className="details-container">
           <div className="weather-data-container">
             <h2>Today's Weather Challenge</h2>
-            <p>Max Temp: {roundData.maxtemp} °C</p>
-            <p>Humidity: {roundData.avghumidity}%</p>
-            {/* Display additional weather data as needed */}
+            <p>Max Temp: {mockDailyRoundData.maxtemp} °C</p>
+            <p>Humidity: {mockDailyRoundData.avghumidity}%</p>
           </div>
           {location && (
             <div className="location-display">

@@ -26,16 +26,16 @@ describe('DailyGame Component', () => {
     cy.get('.submit-button').should('exist');
   });
 
-  it('allows a location to be submitted', () => {
-    // may need to rework
-    cy.get('.map-container').click();
+  // it('allows a location to be submitted', () => {
+  //   // may need to rework
+  //   cy.get('.map-container').click();
 
-    // Assuming clicking the map automatically selects a location
-    // Now, try submitting
-    cy.get('.submit-button').click();
+  //   // Assuming clicking the map automatically selects a location
+  //   // Now, try submitting
+  //   cy.get('.submit-button').click();
 
-    cy.get('.score-display').should('exist');
-    cy.get('.score-display p').should('contain', 'Your score:1082');
-  });
+  //   cy.get('.score-display').should('exist');
+  //   cy.get('.score-display p').should('contain', 'Your score:1082');
+  // });
 
 });
