@@ -5,7 +5,7 @@ import Header from '../Header/Header';
 import LandingPage from '../LandingPage/LandingPage'
 import DailyGame from '../DailyGame/DailyGame';
 import NewUser from '../NewUser/NewUser';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Routes, Route } from 'react-router-dom';
 
 
 // Create UserContext
