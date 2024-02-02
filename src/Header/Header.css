@@ -1,23 +1,38 @@
-
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    background-color: #f5f5f5;
-  }
-  
-  header h1 {
+    padding: 1rem 2rem; /* Increase padding for more space on the sides */
+    background-color: #011f1d; /* A nice shade of blue, change as per your design */
+    color: white; /* Ensures text inside the header is white */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Adds a subtle shadow for depth */
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding does not affect the total width */
+}
+
+header h1 {
     margin: 0;
-  }
-  
-  nav a {
+    font-size: 1.5rem; /* Adjust the size as needed */
+    font-weight: normal; /* For a more modern look, avoid bold headers */
+}
+
+nav {
+    display: flex; /* Aligns nav links horizontally */
+}
+
+nav a {
     margin-right: 20px;
     text-decoration: none;
-    color: #333;
-  }
-  
-  nav a:last-child {
+    color: white; /* Ensures links are visible against the background */
+    padding: 0.5rem 0.75rem; /* Adds some padding around the links for a button-like appearance */
+    border-radius: 5px; /* Softens the corners of the link 'buttons' */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+nav a:hover, nav a:focus {
+    background-color: rgba(255,255,255,0.2); /* Subtle hover effect */
+}
+
+nav a:last-child {
     margin-right: 0;
-  }
-  
+}
