@@ -3,43 +3,46 @@ import { MapContainer, TileLayer, useMapEvent } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
-const MapClickHandler = () => {
-  useMapEvent('click', (e) => {
-    const { lat, lng } = e.latlng;
-    alert(`Latitude: ${lat}, Longitude: ${lng}`);  //message to user
-  });
+const MapClickHandler = ({ onLocationSelect }) => {
+    useMapEvent('click', (e) => {
+        const { lat, lng } = e.latlng;
+        alert(`Selected Location - Latitude: ${lat.toFixed(2)}, Longitude: ${lng.toFixed(2)}`);
+        onLocationSelect({ lat, lng });
+    });
 
-  return null; // Component does not render anything
+    return null;
 };
 
-
-function Map({}) {
+function Map({ onLocationSelect }) {
+    
     const initialCenter = [0, 0];
-    const initialZoom = 2; // You might increase this slightly
-    const minZoom = 2.4; // Set minimum zoom level to prevent too much zooming out
-    const maxZoom = 18; // Set maximum zoom level
-  
-    const southWest = L.latLng(-89.98155760646617, -180);
-    const northEast = L.latLng(89.99346179538875, 180);
-    const bounds = L.latLngBounds(southWest, northEast);
-  
-    return (
-      <MapContainer 
-        center={initialCenter} 
-        zoom={initialZoom} 
-        minZoom={minZoom}
-        maxZoom={maxZoom}
-        style={{ height: '100vh', width: '100%' }} 
-        maxBounds={bounds}
-        worldCopyJump={true}
-      >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-        />
-        <MapClickHandler />
-      </MapContainer>
+    const initialZoom = 2;
+    const minZoom = 2.4;
+    const maxZoom = 18;
+    const bounds = L.latLngBounds(
+        L.latLng(-89.98155760646617, -180),
+        L.latLng(89.99346179538875, 180)
     );
-  };
 
-  export default Map;
+    return (
+        <div className="map-container">
+            <MapContainer
+                center={initialCenter}
+                zoom={initialZoom}
+                minZoom={minZoom}
+                maxZoom={maxZoom}
+                style={{ height: '100%', width: '100%' }}
+                maxBounds={bounds}
+                worldCopyJump={true}>
+                <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+                />
+                <MapClickHandler onLocationSelect={onLocationSelect} />
+            </MapContainer>
+        </div>
+    );
+}
+
+export default Map;
+
