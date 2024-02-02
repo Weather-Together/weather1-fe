@@ -1,6 +1,5 @@
 import React, { useState, createContext, useMemo } from 'react';
 import './App.css';
-import Map from '../Map/Map';
 import LandingPage from '../LandingPage/LandingPage'
 import DailyGame from '../DailyGame/DailyGame';
 import { Routes, Route } from 'react-router-dom';

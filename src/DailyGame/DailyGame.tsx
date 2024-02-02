@@ -26,10 +26,10 @@ const mockDailyRoundData = {
 
 const DailyGame: React.FC = () => {
   const [location, setLocation] = useState<ILocation | null>(null);
-  const [roundData, setRoundData] = useState<IWeatherData>(mockDailyRoundData.weather_data);
+  const [roundData, setRoundData] = useState<IWeatherData | null>(null)
   const [score, setScore] = useState<number | null>(null);
 
-
+setRoundData(mockDailyRoundData.weather_data);
 
   const handleSubmit = () => {
     if (location) {
