@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 import './Header.css'
 
-function Header() {
+const Header: React.FC = () => {
   return (
     <header>
-      <h1>WeatherTogether</h1>
+      <Link to="/weather1-fe" style={{ textDecoration: "none", color: "black"}}><h1>WeatherTogether</h1></Link>
       <nav>
-        <Link to="/new-user">New User</Link>
+        <Link to="/weather1-fe/new-user">New User</Link>
         <Link to="/weather1-fe/login">Login</Link>
       </nav>
     </header>
