@@ -1,9 +1,11 @@
 import React from "react";
 import './Login.css';
 
- const Login: React.FC = () => {
+const Login: React.FC = () => {
     return (
-        <div>Login</div>
+        <div className="login-container">
+            <div className="login-content">Login</div>
+        </div>    
     );
 };
 

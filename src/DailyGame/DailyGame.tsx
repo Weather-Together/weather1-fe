@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Map from '../Map/Map';
 import './DailyGame.css';
@@ -36,7 +35,7 @@ const DailyGame: React.FC = () => {
 
   return (
     <div>
-      <Header />
+      
       <div className="daily-game">
         <div className="map-container">
           <Map onLocationSelect={setLocation} />
