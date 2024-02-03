@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Footer from '../Footer/Footer';
 import Map from '../Map/Map';
 import './DailyGame.css';
 
@@ -60,7 +59,6 @@ const DailyGame: React.FC = () => {
           )}
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
