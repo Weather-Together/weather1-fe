@@ -1,18 +1,29 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
+import user from '../MockData/MockData';
 import './Login.css';
 
-
+interface userTemplate {
+    user : {
+    userName: string,
+    password: string,
+    loggedIn: boolean
+    }
+};
 
 const Login: React.FC = () => {
     const [userName, setUsername] = useState<string | null> ('');
     const [password, setPassword] = useState<string | null>('');
+    const [userInfo, setUserInfo] = useState<userTemplate | null>(user)
     const [loginFail, setLoginFail] = useState<boolean>(false);
     const [showPassword, setShowPassword] = useState<boolean>(false);
-
-
+    const navigate = useNavigate();
 //function to handle submit
     const handleLogin = (event) => {
         event.preventDefault()
+        if(userInfo.user.loggedIn){
+            navigate('../weather1-fe/daily-game');
+        }
         setPassword('')
         setLoginFail(!loginFail)
         //Cases to cover:
