@@ -36,7 +36,7 @@ const DailyGame: React.FC = () => {
 
   return (
     <div>
-      <Header />
+      
       <div className="daily-game">
         <div className="map-container">
           <Map onLocationSelect={setLocation} />
