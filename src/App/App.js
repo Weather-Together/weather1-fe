@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import LandingPage from '../LandingPage/LandingPage'
 import DailyGame from '../DailyGame/DailyGame';
 import NewUser from '../NewUser/NewUser';
+import Dashboard from '../Dashboard/Dashboard'
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/weather1-fe/daily-game" element={<DailyGame />} />
           <Route path='/weather1-fe/login' element={<Login />} />
           <Route path='/weather1-fe/new-user' element={<NewUser />} />
+          <Route path='/weather1-fe/dashboard' element={<Dashboard />} />
           {/* <Route path='/weather1-fe/comp-game' element={<CompGame />}></Route>
           <Route path='/weather1-fe/profile' element={<UserProfile />}></Route>
           Add more routes as needed */}
