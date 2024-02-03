@@ -18,6 +18,7 @@ const Login: React.FC = () => {
     const [loginFail, setLoginFail] = useState<boolean>(false);
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const navigate = useNavigate();
+
 //function to handle submit
     const handleLogin = (event) => {
         event.preventDefault()
@@ -25,7 +26,9 @@ const Login: React.FC = () => {
             navigate('../weather1-fe/daily-game');
         }
         setPassword('')
+        if(!loginFail){
         setLoginFail(!loginFail)
+        }
         //Cases to cover:
             //Successful Post and returned profile - route to Daily round
             //Successful Post and returned failure - Clear password and indicate incorrect form
