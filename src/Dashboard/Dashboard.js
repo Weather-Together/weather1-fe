@@ -1,7 +1,7 @@
 import './Dashboard.css'
 
 
-function Dashboard({}){
+function Dashboard(){
 
     return (
         <div className="dashboard-container">
