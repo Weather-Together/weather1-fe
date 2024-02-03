@@ -9,6 +9,7 @@ const Header: React.FC = () => {
       <nav>
         <Link to="/weather1-fe/new-user">New User</Link>
         <Link to="/weather1-fe/login">Login</Link>
+        <Link to="weather1-fe/dashboard">Dashboard</Link>
       </nav>
     </header>
   );

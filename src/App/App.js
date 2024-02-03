@@ -6,6 +6,7 @@ import LandingPage from '../LandingPage/LandingPage'
 import DailyGame from '../DailyGame/DailyGame';
 import NewUser from '../NewUser/NewUser';
 import Dashboard from '../Dashboard/Dashboard'
+import Footer from '../Footer/Footer';
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -29,6 +30,7 @@ function App() {
           <Route path='/weather1-fe/profile' element={<UserProfile />}></Route>
           Add more routes as needed */}
         </Routes>
+        <Footer/>
     </UserContext.Provider>
   );
 }
