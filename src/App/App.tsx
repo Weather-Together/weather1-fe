@@ -10,12 +10,39 @@ import Footer from '../Footer/Footer';
 import { Routes, Route } from 'react-router-dom';
 
 
+const mockUser = {
+  "id": "372",
+  "type": "user",
+  "attributes": {
+  "email": "user1@gmail.com",
+  "username": "username1"
+  }
+}
+
+
 // Create UserContext
-const UserContext = createContext();
+interface User {
+  id: string;
+  type: string;
+  attributes: {
+    email: string;
+    username: string;
+  };
+}
+
+interface UserContextType {
+  user: User;
+  setUser: React.Dispatch<React.SetStateAction<User>>;
+}
+
+// When creating the context
+export const UserContext = createContext<UserContextType | undefined>(undefined);
 
 function App() {
-  const [user, setUser] = useState(null);
-  const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
+ // Correcting the useState with the mockUser
+const [user, setUser] = useState<User>(mockUser as User);
+
+const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   return (
     <UserContext.Provider value={userValue}>
