@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import user from '../MockData/MockData';
+import logo from '../Images/logo_480.png';
 import './Login.css';
 
 interface userTemplate {
@@ -45,6 +46,7 @@ const Login: React.FC = () => {
         <div className="login-container">
             <div className="login-content">
                 <form className="login-form">
+                    <img src={logo} alt="Logo" width="80" height="80" style={{ "paddingBottom" : "5px"}}></img>
                     <label>Username:</label>
                     <input className="username" type="text" value={userName}
                     onChange={(e) => setUsername(e.target.value)}></input>
@@ -52,11 +54,12 @@ const Login: React.FC = () => {
                     <input className="password" type={!showPassword ? "password" : "text"} id="passwordInput" 
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}></input>
-                    <div style={ {"fontSize" : "10px"}}>
-                    <input type="checkbox" onClick={handleTogglePassword}/>Show Password
-                    </div>
                     <label style={{ "color" : "red", "fontSize" : "10px"}}>
                     {loginFail ? "Invalid Username or Password" : ''}</label>
+                    <div style={ {"fontSize" : "10px", "paddingBottom" : "8px", "display" : "flex", "alignItems" : "center"}}>
+                    <input type="checkbox" onClick={handleTogglePassword}/>Show Password
+                    </div>
+                    
                     <button onClick={handleLogin}>Login</button>
                 </form>
             </div>
