@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import user from '../MockData/MockData';
 import logo from '../Images/logo_480.png';
+import userLogin from '../APICalls/APICalls';
 import './Login.css';
 
 interface userTemplate {
@@ -24,13 +25,33 @@ const Login: React.FC = () => {
 //function to handle submit
     const handleLogin = (event) => {
         event.preventDefault()
-        if(userInfo.user.loggedIn){
-            navigate('../weather1-fe/daily-game');
+        const loginData = {
+            user: {
+            username: userName,
+            password: password
         }
-        setPassword('')
-        if(!loginFail){
-        setLoginFail(!loginFail)
         }
+        fetch("https://weather-together-be.onrender.com/api/v0/users", {
+            method:'POST',
+            headers: { 'Content-Type': 'application.json'},
+            body: JSON.stringify(loginData)
+        })
+        .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((responseData) => {
+            console.log('Response Data:', responseData)
+        })
+        // if(userInfo.user.loggedIn){
+        //     navigate('../weather1-fe/daily-game');
+        // }
+        // setPassword('')
+        // if(!loginFail){
+        // setLoginFail(!loginFail)
+        // }
         //Cases to cover:
             //Successful Post and returned profile - route to Daily round
             //Successful Post and returned failure - Clear password and indicate incorrect form
