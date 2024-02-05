@@ -1,5 +1,5 @@
 
-.dashboard-container {
+.private-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,22 +9,12 @@
     box-sizing: border-box;
 }
 
-.dashboard-content {
+.private-content {
     padding: 20px;
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     color: black;
-    font-weight: bold; /* Makes text bold */
+    font-weight: bold; 
     text-align: center; /* Centers the text inside the .login-content */
 }
-
-.dashboard-content nav a {
-    margin-right: 20px;
-    text-decoration: none;
-    color: black;
-    padding: 0.5rem 0.75rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
