@@ -24,7 +24,9 @@ const DailyGame: React.FC = () => {
   const { user } = useContext(UserContext)
   const [location, setLocation] = useState<ILocation | null>(null);
   const [roundData, setRoundData] = useState<RoundData | null>(null); // Store round data from API
+  const [roundLocation, setRoundLocation] = useState<{location_name: string, country: string} | null>(null)
   const [score, setScore] = useState<number | null>(null);
+  const [guessLocation, setGuessLocation] = useState<{location_name: string, country: string} | null>(null)
 
 
   useEffect(() => {
@@ -44,6 +46,10 @@ const DailyGame: React.FC = () => {
           avghumidity: data.data.attributes.avghumidity,
           totalprecip: data.data.attributes.totalprecip_in
         });
+        setRoundLocation({
+          location_name: data.data.attributes.location_name,
+          country: data.data.attributes.country
+        })
 
         console.log("fetched data", data)
 
@@ -75,7 +81,10 @@ const DailyGame: React.FC = () => {
           throw new Error('Failed to submit guess');
         }
         const result = await response.json();
-        setScore(result.data.attributes.score); // Assuming the score is in this path
+        setScore(result.data.attributes.score); 
+        setGuessLocation({
+          location_name: result.data.attributes.location_name,
+          country:result.data.attributes.country})// Assuming the score is in this path
       } catch (error) {
         console.error("Error submitting guess:", error);
       }
@@ -115,6 +124,20 @@ const DailyGame: React.FC = () => {
           {score !== null && (
             <div className="score-display">
               <p>Your score: {score.toFixed(2)}</p>
+              {guessLocation && ( 
+            <>
+            <h3>Your Guess</h3>
+            <p>City: {guessLocation.location_name}</p>
+            <p>Country: {guessLocation.country}</p>
+            </>
+            )}
+            {roundLocation && ( 
+            <>
+            <h3>Actual Location</h3>
+            <p>City: {roundLocation.location_name}</p>
+            <p>Country: {roundLocation.country}</p>
+            </>
+            )}
             </div>
           )}
         </div>
