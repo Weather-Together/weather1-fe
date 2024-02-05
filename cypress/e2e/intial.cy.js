@@ -14,7 +14,14 @@ describe('App Component Tests', () => {
   });
 });
 
+ //ERROR MESSAGE
 
+//  it('should show error messaging to a user', () => {
+//   cy.intercept('GET', 'http://localhost:3000/weather1-fe', { forceNetworkError: true }).as('error');
+//   cy.visit('http://localhost:3000/weather1-fe');//visit the actual site
+//   cy.wait('@error');
+//   cy.get('h2').should('contain.text', 'Something happened with loading the page.');
+// });
 
 
 //DAILY GAME GET ON MOUNT
