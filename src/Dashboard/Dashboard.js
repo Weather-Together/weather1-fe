@@ -11,7 +11,7 @@ function Dashboard() {
                 <div className="hello-wrapper"> 
                     Hello
                     <nav>
-                        <Link to="/weather1-fe/competative">Competitive Game</Link>
+                        <Link to="/weather1-fe/competitive">Competitive Game</Link>
                         <Link to="/weather1-fe/private">Private Game</Link>
                     </nav>
                 </div>

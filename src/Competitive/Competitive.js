@@ -1,5 +1,5 @@
 import React from 'react';
-import './Competative.css'
+import './Competitive.css'
 import Header2 from '../Header2/Header2';
 
 function Competative (){
