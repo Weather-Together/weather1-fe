@@ -18,6 +18,7 @@ const Login: React.FC = () => {
     const [userInfo, setUserInfo] = useState<userTemplate | null>(user)
     const [loginFail, setLoginFail] = useState<boolean>(false);
     const [showPassword, setShowPassword] = useState<boolean>(false);
+    
     const navigate = useNavigate();
 
 //function to handle submit

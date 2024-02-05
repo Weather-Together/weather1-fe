@@ -1,7 +1,7 @@
 const user = {
     userName: "Brendan",
     password: "Turner",
-    loggedIn: false
+    loggedIn: true
 };
 
 export default { user };
