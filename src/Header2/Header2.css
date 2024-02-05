@@ -40,48 +40,6 @@ nav a:hover, nav a:focus {
     background-color: rgba(255,255,255,0.2);
 }
 
-
-/* Header */
-header {
-    font-size: larger;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: darkgray;
-    color: black;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    width: 100%;
-    box-sizing: border-box;
-    position: fixed;
-    top: 0;
-    z-index: 1000; /* Ensure the header is above other content */
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2rem;
-    font-weight: bold;
-    font-family: monospace;
-}
-
-nav {
-    display: flex;
-}
-
-nav a {
-    margin-right: 20px;
-    text-decoration: none;
-    color: white;
-    padding: 0.5rem 0.75rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-nav a:hover, nav a:focus {
-    background-color: rgba(255,255,255,0.2);
-}
-
 /* Footer */
 footer {
     font-size: larger;

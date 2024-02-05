@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Map from '../Map/Map';
 import './DailyGame.css';
+import Header2 from '../Header2/Header2';
 import { UserContext } from '../App/App'; 
 
 interface RoundData {
@@ -16,8 +17,6 @@ interface ILocation {
   lat: number;
   lng: number;
 }
-
-
 
 
 const DailyGame: React.FC = () => {
@@ -37,15 +36,17 @@ const DailyGame: React.FC = () => {
           throw new Error('Failed to fetch daily round data');
         }
         const data = await response.json();
+
         setRoundData({
           maxtemp: data.data.attributes.maxtemp_f, 
           mintemp: data.data.attributes.mintemp_f,
           maxwind: data.data.attributes.maxwind_mph,
           avghumidity: data.data.attributes.avghumidity,
           totalprecip: data.data.attributes.totalprecip_in
-
-        
         });
+
+        console.log("fetched data", data)
+
       } catch (error) {
         console.error("Error fetching round data:", error);
       }
@@ -53,10 +54,6 @@ const DailyGame: React.FC = () => {
 
     fetchRoundData();
   }, [user.id]); // Depend on user ID so it refetches if the user changes
-
-
-
-
 
 
 
@@ -90,7 +87,7 @@ const DailyGame: React.FC = () => {
 
   return (
     <div>
-      
+      <Header2 />
       <div className="daily-game">
         <div className="map-container">
           <Map onLocationSelect={setLocation} />
@@ -117,7 +114,7 @@ const DailyGame: React.FC = () => {
           <button onClick={handleSubmit} className="submit-button">Submit Guess</button>
           {score !== null && (
             <div className="score-display">
-              <p>Your score: {score}</p>
+              <p>Your score: {score.toFixed(2)}</p>
             </div>
           )}
         </div>
