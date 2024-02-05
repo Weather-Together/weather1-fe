@@ -1,0 +1,26 @@
+{
+    "data": {
+        "id": "901",
+        "type": "vote",
+        "attributes": {
+                "lat": "-15.74",
+                "lon": "-54.34",
+                "score": 23176.78,
+                "status": "processed",
+                "round_id": 1,
+                "user_id": 1,
+                "username": "username1",
+                "location_name": "Alto Coite",
+                "region": "Mato Grosso",
+                "country": "Brazil",
+                "maxtemp_f": 92.5,
+                "mintemp_f": 68.8,
+                "avgtemp_f": null,
+                "maxwind_mph": 13.6,
+                "totalprecip_in": 0.5,
+                "avghumidity": 78,
+                "daily_chance_of_rain": 100,
+                "daily_chance_of_snow": 0
+                         }
+             }
+    }
