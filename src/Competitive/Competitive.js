@@ -2,13 +2,13 @@ import React from 'react';
 import './Competitive.css'
 import Header2 from '../Header2/Header2';
 
-function Competative (){
+function Competitive (){
     return (
-        <div className="competative-container">
+        <div className="competitive-container">
             <Header2 />
-            <div className="competative-content">Competative</div>
+            <div className="competitive-content">Competitive</div>
         </div>    
     );
 };
 
-export default Competative;
+export default Competitive;
