@@ -4,9 +4,6 @@ import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../App/App'; 
 import './Dashboard.css';
 
-
-
-
 interface dailyStats {
   gameCount: number;
   avgScore: number;
@@ -17,15 +14,23 @@ interface dailyStats {
   level3: number;
   level4: number;
   level5: number;
+}
 
+interface competitiveStats {
+  top5username: string;
+  top5score: string;
+  userRank: number;
+  gameCount: number;
+  avgCompScore: number;
 }
 
 const Dashboard: React.FC = () => {
   const { user } = useContext(UserContext);
-  const [dailyStatsData, setDailyStatsData] = useState<dailyStats | null>(null); // Renamed to dailyStatsData
+  const [dailyStatsData, setDailyStatsData] = useState<dailyStats | null>(null);
+  const [competitiveData, setCompetitiveData] = useState<competitiveStats | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Function to fetch the current daily round data
     const fetchRoundData = async () => {
       try {
         const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/daily_stats`);
@@ -46,24 +51,58 @@ const Dashboard: React.FC = () => {
           level5: data.daily_stats.grade_book_daily_round["5000.01+"],
         });
 
-
         console.log("fetched data", data);
 
+      } catch(error) {
+        setError(error.message);
+      }
+    };
+
+    const fetchCompetitiveData = async () => {
+      try {
+        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/competitive_stats`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch competitive stats data');
+        }
+        const data = await response.json();
+
+
+        //format the scores in an array
+        const top5scores = data.competitive_stats.top_5_competitive_users
+          .map(user => user.score.toFixed(2))
+          .join(", ");
+
+          //an array of usernames
+        const top5usernames = data.competitive_stats.top_5_competitive_users
+          .map(user => user.username)
+          .join(", ");
+
+        setCompetitiveData({
+          top5username: top5usernames,
+          top5score: top5scores,
+          userRank: data.competitive_stats.user_competitive_rank,
+          gameCount: data.competitive_stats.competitive_game_count,
+          avgCompScore: data.competitive_stats.average_score_in_competitive_games.toFixed(2),
+        });
+
+        console.log("fetched competitive stats data", data);
+
       } catch (error) {
-        console.error("Error fetching round data:", error);
+        setError(error.message)
       }
     };
 
     fetchRoundData();
-  }, [user.id]); // Depend on user ID so it refetches if the user changes
+    fetchCompetitiveData();
+  }, [user.id]);
 
   return (
     <div className="dashboard-container">
       <Header2 />
       <div className="dashboard-content">
         <div className="user-stats">
-            <h3>User Stats</h3>
-            {dailyStatsData && (
+          <h3>User Stats</h3>
+          {dailyStatsData && (
             <>
               <p>Total Games: {dailyStatsData.gameCount}</p>
               <p>Avg. Score: {dailyStatsData.avgScore || 'N/A'}</p>
@@ -78,10 +117,24 @@ const Dashboard: React.FC = () => {
           )}
         </div>
         <div className="competitive-stats">
-        <h3>Competitive Stats</h3>
+          <h3>Competitive Stats</h3>
+          {competitiveData && (
+            <>
+              <ul style={{ listStyle: 'none', padding: 0 }}>
+                {competitiveData.top5username.split(", ").reverse().map((username, index) => (
+                  <li key={index} style={{ marginBottom: '5px' }}>
+                    {username} - {competitiveData.top5score.split(", ").reverse()[index]}
+                  </li>
+                ))}
+              </ul>
+              <p>User Competitive Rank: {competitiveData.userRank}</p>
+              <p>Competitive Game Count: {competitiveData.gameCount}</p>
+              <p>Average Score in Competitive Games: {competitiveData.avgCompScore}</p>
+            </>
+          )}
         </div>
         <div className="custom-games">
-        <h3>Custom Games</h3>
+          <h3>Custom Games</h3>
         </div>
       </div>
       <div className="links">
@@ -92,11 +145,10 @@ const Dashboard: React.FC = () => {
           <Link to="/weather1-fe/private">Private Game</Link>
         </div>
       </div>
+      {error && <h2>Something happened with getting all of the data.</h2> }
     </div>
   );
 }
 
 export default Dashboard;
-
-
 
