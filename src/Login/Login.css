@@ -18,3 +18,9 @@
     font-weight: bold; 
     text-align: center; /* Centers the text inside the .login-content */
 }
+
+.login-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
