@@ -1,15 +1,15 @@
 import Header from '../Header/Header';
 import React from 'react';
+import './LandingPage.css'
 
 function LandingPage() {
   return (
-    <div>
-      <Header />
-      <div className="instructions-container">
-        <p>Here will be some instructions or information about the game.</p>
+      <div className="landing-container">
+        <Header />
+        <div className="landing-content">Instructions for the game!!!!!!</div>
         {/* Eventually, you can add more content or components here */}
       </div>
-    </div>
+
   );
 }
 

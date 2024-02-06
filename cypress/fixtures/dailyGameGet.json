@@ -1,0 +1,23 @@
+{
+    "data": {
+    "id": "244",
+    "type": "bulkround",
+    "attributes": {
+    "close_date": "2024-02-06",
+    "number_of_votes": 25,
+    "status": "open",
+    "game_id": 41,
+    "location_name": "Ialibu",
+    "region": "Southern Highlands",
+    "country": "Papua New Guinea",
+    "maxtemp_f": 100,
+    "mintemp_f": 53.4,
+    "avgtemp_f": null,
+    "maxwind_mph": 6,
+    "totalprecip_in": 0.24,
+    "avghumidity": 88,
+    "daily_chance_of_rain": 100,
+    "daily_chance_of_snow": 0
+    }
+    }
+    }
