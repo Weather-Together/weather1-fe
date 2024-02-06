@@ -12,6 +12,12 @@ interface dailyStats {
   avgScore: number;
   date: string;
   bestScore: number;
+  level1: number;
+  level2: number;
+  level3: number;
+  level4: number;
+  level5: number;
+
 }
 
 const Dashboard: React.FC = () => {
@@ -32,8 +38,14 @@ const Dashboard: React.FC = () => {
           gameCount: data.daily_stats.daily_game_count, 
           avgScore: data.daily_stats.average_score_in_daily_games,
           date: data.daily_stats.date_and_score_of_best_daily_score.date,
-          bestScore: data.daily_stats.date_and_score_of_best_daily_score.date,
+          bestScore: data.daily_stats.date_and_score_of_best_daily_score.score,
+          level1: data.daily_stats.grade_book_daily_round["0.00-500.00"],
+          level2: data.daily_stats.grade_book_daily_round["500.01-1000.00"],
+          level3: data.daily_stats.grade_book_daily_round["1000.01-2000.00"],
+          level4: data.daily_stats.grade_book_daily_round["2000.01-5000.00"],
+          level5: data.daily_stats.grade_book_daily_round["5000.01+"],
         });
+
 
         console.log("fetched data", data);
 
@@ -50,13 +62,26 @@ const Dashboard: React.FC = () => {
       <Header2 />
       <div className="dashboard-content">
         <div className="user-stats">
-          <p>User Stats</p>
+            <h3>User Stats</h3>
+            {dailyStatsData && (
+            <>
+              <p>Total Games: {dailyStatsData.gameCount}</p>
+              <p>Avg. Score: {dailyStatsData.avgScore || 'N/A'}</p>
+              <p>Best Score: {dailyStatsData.bestScore || 'N/A'}</p> 
+              <p>Date: {dailyStatsData.date}</p>
+              <p>Level 5: {dailyStatsData.level5}</p>
+              <p>Level 4: {dailyStatsData.level4}</p>
+              <p>Level 3: {dailyStatsData.level3}</p>
+              <p>Level 2: {dailyStatsData.level2}</p>
+              <p>Level 1: {dailyStatsData.level1}</p>
+            </>
+          )}
         </div>
         <div className="competitive-stats">
-        <p>Competitive Stats</p>
+        <h3>Competitive Stats</h3>
         </div>
         <div className="custom-games">
-        <p>Custom Games</p>
+        <h3>Custom Games</h3>
         </div>
       </div>
       <div className="links">
