@@ -71,6 +71,7 @@ const NewUser: React.FC = () => {
                 }
                 const result = await response.json();
                 navigate('../weather1-fe/login');
+                console.log("Result: ", result);
 
             } 
             catch (error) {
