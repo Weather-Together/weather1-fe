@@ -23,3 +23,28 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+// cypress/support/commands.js
+// import './cypress-setup';
+
+  
+
+
+// cypress/commands/customCommands.js
+
+
+
+  Cypress.Commands.add("setCypressEnv", (envVariables) => {
+    Cypress.env(envVariables);
+  });
+  
+  Cypress.Commands.add("declareCypressEnv", () => {
+    // Add your Cypress environment variables here
+    // For example:
+    Cypress.setCypressEnv({
+      showFormDuringTesting: true,
+      anotherVariable: "someValue",
+    });
+  });
+  
