@@ -26,7 +26,10 @@ html, body {
     flex-direction: column;
     overflow-y: auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #f9f9f91e;
+    border-radius: 5px; /* Matches with .landing-content for consistency */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Adds shadow */
+   
 }
 
 .weather-data-container, .location-display, .score-display {
