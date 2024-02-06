@@ -9,7 +9,7 @@ function LandingPage() {
         <div className="landing-content">Instructions for the game!!!!!!</div>
         {/* Eventually, you can add more content or components here */}
       </div>
-
+    //setup email verification
   );
 }
 

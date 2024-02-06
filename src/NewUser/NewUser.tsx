@@ -1,6 +1,7 @@
 import React, { useState }from "react";
 import logo from '../Images/logo_480.png'
 import Header from '../Header/Header';
+import { useNavigate } from "react-router-dom";
 import './NewUser.css';
 
 
@@ -13,6 +14,7 @@ const NewUser: React.FC = () => {
     const [isValidEmail, setIsValidEmail] = useState<boolean>(true);
     const [isValidUserName, setIsValidUserName] = useState<boolean>(false);
     const [error, setError] = useState<any | null>(null);
+    const navigate = useNavigate();
 
     const evaluatePassword = (pass1, pass2) => {
         setMatchPassword(false);
@@ -68,6 +70,8 @@ const NewUser: React.FC = () => {
                     return setError(error.errors[0].detail);
                 }
                 const result = await response.json();
+                navigate('../weather1-fe/login');
+
             } 
             catch (error) {
                 console.log("Error", error);

@@ -48,7 +48,8 @@ const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
   return (
     <UserContext.Provider value={userValue}>
         <Routes>
-          <Route path="/weather1-fe" element={<LandingPage />} />
+          <Route path="/weather1-fe/" element={<LandingPage />} />
+          <Route path="/weather1-fe/:id/:token" element={<LandingPage />} />
           <Route path="/weather1-fe/daily-game" element={<DailyGame />} />
           <Route path='/weather1-fe/login' element={<Login />} />
           <Route path='/weather1-fe/new-user' element={<NewUser />} />

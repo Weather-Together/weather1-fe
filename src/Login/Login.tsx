@@ -1,8 +1,6 @@
-import React, {useState, createContext } from "react";
+import React, { useState, createContext } from "react";
 import { useNavigate } from "react-router-dom";
-// import user from '../MockData/MockData';
 import logo from '../Images/logo_480.png';
-// import userLogin from '../APICalls/APICalls';
 import './Login.css';
 import Header from '../Header/Header';
 
@@ -12,14 +10,14 @@ const Login: React.FC = () => {
     const [password, setPassword] = useState<string | null>('');
     const [loginFail, setLoginFail] = useState<boolean>(false);
     const [showPassword, setShowPassword] = useState<boolean>(false);
-    
+    const [error, setError] = useState<string | null>(null)
     const navigate = useNavigate();
 
 //function to handle submit
     const handleLogin = async (event) => {
         event.preventDefault();
         const loginData = {
-            username: userName,
+            email: userName,
             password: password
         };
         try{
@@ -30,9 +28,10 @@ const Login: React.FC = () => {
                 body: JSON.stringify(loginData)
             })
             if (!response.ok) {
+                const error = await response.json();
                 setLoginFail(true);
                 setPassword('');
-                return
+                return setError(error.errors[0].detail);
             }
             const result = await response.json();
             createContext(result);
@@ -67,7 +66,7 @@ const Login: React.FC = () => {
                     <button onClick={handleLogin}>Login</button>
                 </form>
             </div>
-
+        <p>{error ? `${error}`: ''}</p>
         </div>    
     );
 };
