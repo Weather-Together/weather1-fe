@@ -53,19 +53,65 @@ describe('DailyGame Component', () => {
 });
 
 
+// DAILY GAME POST
+describe('DailyGame Component - POST Submission', () => {
+  beforeEach(() => {
+    // Mock GET request for initial game data
+    cy.intercept('GET', `https://weather-together-be.onrender.com/api/v0/users/*/rounds/current_daily_round`, {
+      fixture: 'dailyGameGet.json'
+    }).as('dailyGet');
 
+    // Visit the DailyGame page
+    cy.visit('http://localhost:3000/weather1-fe/daily-game');
 
-  // Additional tests...
+    // Wait for the GET request to ensure the page is loaded
+    cy.wait('@dailyGet');
+  });
 
-  // it('allows a location to be submitted', () => {
-  //   // may need to rework
-  //   cy.get('.map-container').click();
+  it('submits user-selected coordinates and validates the mock response', () => {
+    // Intercept the POST request for submitting a guess
+    cy.intercept('POST', `https://weather-together-be.onrender.com/api/v0/users/*/rounds/current_daily_round/vote`, {
+      fixture: 'dailyGamePost.json'
+    }).as('postGuess');
 
-  //   // Assuming clicking the map automatically selects a location
-  //   // Now, try submitting
-  //   cy.get('.submit-button').click();
+    // Simulate a user 
+    cy.get('.leaflet-container').click(300, 200); 
 
-  //   cy.get('.score-display').should('exist');
-  //   cy.get('.score-display p').should('contain', 'Your score:1082');
-  // });
+    // trigger the actual game guess submission
+    cy.get('button.submit-button').click();
+
+    // Wait for the POST request to be intercepted and validate the mock response
+    cy.wait('@postGuess').then((interception) => {
+      expect(interception.response.statusCode).to.eq(200);
+      expect(interception.response.body.data.attributes).to.deep.equal({
+        lat: "-15.74",
+        lon: "-54.34",
+        score: 2222.78,
+        status: "processed",
+        round_id: 1,
+        user_id: 1,
+        username: "username1",
+        location_name: "My House",
+        region: "Mato Grosso",
+        country: "Brazil",
+        maxtemp_f: 92.5,
+        mintemp_f: 68.8,
+        avgtemp_f: null,
+        maxwind_mph: 13.6,
+        totalprecip_in: 0.5,
+        avghumidity: 78,
+        daily_chance_of_rain: 100,
+        daily_chance_of_snow: 0,
+      });
+
+      // Verify UI changes based on the response
+      cy.get('.score-display').should('contain', '2222.78');
+      cy.get('.score-display').should('contain', 'Ialibu');
+      cy.get('.score-display').should('contain', 'Brazil');
+      cy.get('.score-display').should('contain', 'Papua New Guinea');
+      cy.get('.score-display').should('contain', 'My House');
+      
+    });
+  });
+});
 

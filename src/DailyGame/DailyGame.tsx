@@ -29,6 +29,16 @@ const DailyGame: React.FC = () => {
   const [guessLocation, setGuessLocation] = useState<{location_name: string, country: string} | null>(null)
 
 
+
+// Define the function to handle location selection
+const handleLocationSelect = (selectedLocation: ILocation) => {
+  setLocation(selectedLocation);
+};
+
+
+
+
+
   useEffect(() => {
     // Function to fetch the current daily round data
     const fetchRoundData = async () => {
@@ -82,6 +92,7 @@ const DailyGame: React.FC = () => {
         }
         const result = await response.json();
         setScore(result.data.attributes.score); 
+        console.log("score", result.data.attributes)
         setGuessLocation({
           location_name: result.data.attributes.location_name,
           country:result.data.attributes.country})// Assuming the score is in this path
@@ -99,7 +110,7 @@ const DailyGame: React.FC = () => {
       <Header2 />
       <div className="daily-game">
         <div className="map-container">
-          <Map onLocationSelect={setLocation} />
+          <Map onLocationSelect={handleLocationSelect} />
         </div>
         <div className="details-container">
         {roundData ? ( 
