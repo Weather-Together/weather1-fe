@@ -1,65 +1,46 @@
-import React, {useState} from "react";
+import React, {useState, createContext } from "react";
 import { useNavigate } from "react-router-dom";
-import user from '../MockData/MockData';
+// import user from '../MockData/MockData';
 import logo from '../Images/logo_480.png';
-import userLogin from '../APICalls/APICalls';
+// import userLogin from '../APICalls/APICalls';
 import './Login.css';
 import Header from '../Header/Header';
 
-interface userTemplate {
-    user : {
-    userName: string,
-    password: string,
-    loggedIn: boolean
-    }
-};
 
 const Login: React.FC = () => {
     const [userName, setUsername] = useState<string | null> ('');
     const [password, setPassword] = useState<string | null>('');
-    const [userInfo, setUserInfo] = useState<userTemplate | null>(user)
     const [loginFail, setLoginFail] = useState<boolean>(false);
     const [showPassword, setShowPassword] = useState<boolean>(false);
     
     const navigate = useNavigate();
 
 //function to handle submit
-    const handleLogin = (event) => {
-        event.preventDefault()
-        // const loginData = {
-        //     user: {
-        //     username: userName,
-        //     password: password
-        // }
-        // }
-        // fetch("https://weather-together-be.onrender.com/api/v0/users", {
-        //     method:'POST',
-        //     headers: { 'Content-Type': 'application.json'},
-        //     body: JSON.stringify(loginData)
-        // })
-        // .then((response) => {
-        //     if (!response.ok) {
-        //       throw new Error(`HTTP error! Status: ${response.status}`);
-        //     }
-        //     return response.json();
-        // })
-        // .then((responseData) => {
-        //     console.log('Response Data:', responseData)
-        // })
-        if(userInfo.user.loggedIn){
+    const handleLogin = async (event) => {
+        event.preventDefault();
+        const loginData = {
+            username: userName,
+            password: password
+        };
+        try{
+           const response = await fetch("https://weather-together-be.onrender.com/api/v0/users/login", 
+            {
+                method:'POST',
+                headers: { 'Content-Type': 'application/json', 'ACCEPT' : 'application/json'},
+                body: JSON.stringify(loginData)
+            })
+            if (!response.ok) {
+                setLoginFail(true);
+                setPassword('');
+                return
+            }
+            const result = await response.json();
+            createContext(result);
             navigate('../weather1-fe/daily-game');
         }
-        setPassword('')
-        if(!loginFail){
-        setLoginFail(!loginFail)
-        }
-        //Cases to cover:
-            //Successful Post and returned profile - route to Daily round
-            //Successful Post and returned failure - Clear password and indicate incorrect form
-            //Invalid Submission - indicate invalid forms clear password
-            //Failed Post - indicate unable to connect to login server
-            return 
-        };
+        catch (error) {
+            console.log('Error', error);
+        }};
   
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
@@ -83,7 +64,6 @@ const Login: React.FC = () => {
                     <div style={ {"fontSize" : "10px", "paddingBottom" : "8px", "display" : "flex", "alignItems" : "center"}}>
                     <input type="checkbox" onClick={handleTogglePassword}/>Show Password
                     </div>
-                    
                     <button onClick={handleLogin}>Login</button>
                 </form>
             </div>

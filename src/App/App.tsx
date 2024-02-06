@@ -11,7 +11,6 @@ import Footer from '../Footer/Footer';
 import Private from '../Private/Private';
 import { Routes, Route } from 'react-router-dom';
 
-
 const mockUser = {
   "id": "392",
   "type": "user",

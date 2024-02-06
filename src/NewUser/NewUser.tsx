@@ -56,21 +56,22 @@ const NewUser: React.FC = () => {
         }
         if(isValidEmail && matchPassword &&isValidUserName){
             try {
-        const response = await fetch("https://weather-together-be.onrender.com/api/v0/users/", {
-            method:'POST',
-            headers: { 'Content-Type': 'application/json', 'ACCEPT' : 'application/json'},
-            body: JSON.stringify(newUserData)
-        });
-        if (!response.ok) {
-            const error = await response.json()
-            console.log(error);
-            return setError(error.errors[0].detail);
-        }
-        const result = await response.json();
-        console.log("result", result)
-        } catch (error) {
-            console.log("Error", error);
-        }
+                const response = await fetch("https://weather-together-be.onrender.com/api/v0/users/", 
+                {
+                method:'POST',
+                headers: { 'Content-Type': 'application/json', 'ACCEPT' : 'application/json'},
+                body: JSON.stringify(newUserData)
+                })
+                if (!response.ok) {
+                    const error = await response.json()
+                    console.log(error);
+                    return setError(error.errors[0].detail);
+                }
+                const result = await response.json();
+            } 
+            catch (error) {
+                console.log("Error", error);
+            }
     }}
 
     return (
