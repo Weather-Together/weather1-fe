@@ -9,6 +9,13 @@
     box-sizing: border-box;
 }
 
+.competitive-game {
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 100px); /* Adjust based on the total height of header and footer */
+    width: 100%;
+    padding-top: 60px; /* Adjust based on the height of the header */
+}
 .competative-content {
     padding: 20px;
     background-color: white;
@@ -17,4 +24,9 @@
     color: black;
     font-weight: bold; 
     text-align: center; /* Centers the text inside the .login-content */
+}
+
+.map-container {
+    flex: 3;
+    height: 100%;
 }

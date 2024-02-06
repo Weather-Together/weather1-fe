@@ -4,22 +4,23 @@ import './Competitive.css';
 import Header2 from '../Header2/Header2';
 import { UserContext } from '../App/App';
 
-const DailyGame = () => {
+const CompetitiveGame = () => {
   const { user } = useContext(UserContext);
   const [location, setLocation] = useState(null);
   const [roundData, setRoundData] = useState(null); // Store round data from API
+  const [round, setRound] = useState(null);
   const [score, setScore] = useState(null);
 
   useEffect(() => {
     // Function to fetch the current competitive round data
     const fetchRoundData = async () => {
       try {
-        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/rounds/current_competitive_round`);
+        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/rounds/current_competitive_round`);
         if (!response.ok) {
           throw new Error('Failed to fetch competitive round data');
         }
         const data = await response.json();
-
+        setRound(data.data.id)
         setRoundData({
           maxtemp: data.data.attributes.maxtemp_f,
           mintemp: data.data.attributes.mintemp_f,
@@ -40,10 +41,11 @@ const DailyGame = () => {
   const handleSubmit = async () => {
     if (location) {
       try {
-        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/rounds/current_competitive_round/vote`, {
+        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/rounds/${round}/vote/new`, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json', 
+            "ACCEPT" : 'application.json'
           },
           body: JSON.stringify({
             lat: location.lat,
