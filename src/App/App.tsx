@@ -9,10 +9,11 @@ import Dashboard from '../Dashboard/Dashboard'
 import CompetitiveGame from '../Competitive/CompetitiveGame';
 import Footer from '../Footer/Footer';
 import Private from '../Private/Private';
+import NotFound from '../NotFound/NotFound';
 import { Routes, Route } from 'react-router-dom';
 
 const mockUser = {
-  "id": "449",
+  "id": "465",
   "type": "user",
   "attributes": {
   "email": "user1@gmail.com",
@@ -48,6 +49,7 @@ const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
   return (
     <UserContext.Provider value={userValue}>
         <Routes>
+
           <Route path="/" element={<LandingPage />} />
           <Route path="/:id/:token" element={<LandingPage />} />
           <Route path="/daily-game" element={<DailyGame />} />
@@ -57,6 +59,7 @@ const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
           <Route path='/profile' element={<Profile />} />
           <Route path='/competitive' element={<CompetitiveGame />} />
           <Route path='/private' element={<Private />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer/>
     </UserContext.Provider>
