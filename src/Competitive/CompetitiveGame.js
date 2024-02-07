@@ -38,6 +38,9 @@ const CompetitiveGame = () => {
     fetchRoundData();
   }, [user.id]); // Depend on user ID so it refetches if the user changes
 
+
+  console.log(`Fetching with user ID: ${user.id} and round: ${round}`)
+
   const handleSubmit = async () => {
     if (location) {
       try {
@@ -51,7 +54,12 @@ const CompetitiveGame = () => {
             lat: location.lat,
             lon: location.lng,
           }),
+
+         
+
+
         });
+        console.log(`Response status: ${response.status}`);
 
         if (!response.ok) {
           throw new Error('Failed to submit guess');

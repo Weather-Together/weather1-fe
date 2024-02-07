@@ -12,7 +12,7 @@ import Private from '../Private/Private';
 import { Routes, Route } from 'react-router-dom';
 
 const mockUser = {
-  "id": "449",
+  "id": "445",
   "type": "user",
   "attributes": {
   "email": "user1@gmail.com",
