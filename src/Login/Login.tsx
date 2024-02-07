@@ -50,7 +50,7 @@ const Login: React.FC = () => {
             <Header />
             <div className="login-content">
                 <form className="login-form">
-                    <img src={logo} alt="Logo" width="80" height="80" style={{ "paddingBottom" : "5px"}}></img>
+                    <img className='weather-logo'src={logo} alt="Logo" width="80" height="80" style={{ "paddingBottom" : "5px"}}></img>
                     <label htmlFor="username">Username:</label>
                     <input className="username" type="text" value={userName} id="username"
                     onChange={(e) => setUsername(e.target.value)}></input>
@@ -58,15 +58,14 @@ const Login: React.FC = () => {
                     <input className="password" type={!showPassword ? "password" : "text"} id="passwordInput" 
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}></input>
-                    <label style={{ "color" : "red", "fontSize" : "10px"}}>
-                    {loginFail ? "Invalid Username or Password" : ''}</label>
+                    <label className='login-fail' style={{ "color" : "red", "fontSize" : "10px"}}>
+                    {loginFail ? `${error}` : ''}</label>
                     <div style={ {"fontSize" : "10px", "paddingBottom" : "8px", "display" : "flex", "alignItems" : "center"}}>
-                    <input type="checkbox" onClick={handleTogglePassword}/>Show Password
+                    <input className='show-pass' type="checkbox" onClick={handleTogglePassword}/>Show Password
                     </div>
-                    <button onClick={handleLogin}>Login</button>
+                    <button className='login-button'onClick={handleLogin}>Login</button>
                 </form>
             </div>
-        <p>{error ? `${error}`: ''}</p>
         </div>    
     );
 };
