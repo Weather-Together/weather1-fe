@@ -139,10 +139,10 @@ const Dashboard: React.FC = () => {
       </div>
       <div className="links">
         <div className="link-box">
-          <Link to="/weather1-fe/competitive">Competitive Game</Link>
+          <Link to="/competitive">Competitive Game</Link>
         </div>
         <div className="link-box">
-          <Link to="/weather1-fe/private">Private Game</Link>
+          <Link to="/private">Private Game</Link>
         </div>
       </div>
       {error && <h2>Something happened with getting all of the data.</h2> }
