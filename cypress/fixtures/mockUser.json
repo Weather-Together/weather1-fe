@@ -3,6 +3,7 @@
   "type": "user",
   "attributes": {
   "email": "user1@gmail.com",
-  "username": "username1"
+  "username": "username1",
+  "password": "password1"
   }
 }
