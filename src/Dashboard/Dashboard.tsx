@@ -105,8 +105,8 @@ const Dashboard: React.FC = () => {
           {dailyStatsData && (
             <>
               <p>Total Games: {dailyStatsData.gameCount}</p>
-              <p>Avg. Score: {dailyStatsData.avgScore || 'N/A'}</p>
-              <p>Best Score: {dailyStatsData.bestScore || 'N/A'}</p> 
+              <p>Avg. Score: {dailyStatsData.avgScore.toFixed(2) || 'N/A'}</p>
+              <p>Best Score: {dailyStatsData.bestScore.toFixed(2) || 'N/A'}</p> 
               <p>Date: {dailyStatsData.date}</p>
               <p>Level 5: {dailyStatsData.level5}</p>
               <p>Level 4: {dailyStatsData.level4}</p>
