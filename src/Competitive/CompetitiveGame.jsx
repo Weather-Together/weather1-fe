@@ -41,11 +41,10 @@ const CompetitiveGame = () => {
   const handleSubmit = async () => {
     if (location) {
       try {
-        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/rounds/${round}/vote/new`, {
+        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/rounds/${round}/votes/new`, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json', 
-            "ACCEPT" : 'application.json'
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify({
             lat: location.lat,
