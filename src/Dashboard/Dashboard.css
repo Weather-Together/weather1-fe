@@ -57,6 +57,7 @@
     margin-right: 20px;
     text-decoration: none;
     color: black;
+    
     padding: 0.5rem 0.75rem;
     border-radius: 5px;
     transition: background-color 0.3s ease;
@@ -95,4 +96,6 @@
   .link-box a:hover {
     background-color: #dddddd; /* Add a hover effect to link boxes */
   }
+  
+
   
