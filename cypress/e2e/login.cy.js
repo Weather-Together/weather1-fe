@@ -1,6 +1,6 @@
 describe('Should display Login page with Nav and input fields', () => {
     beforeEach(() => {
-        cy.visit('http://localhost:3000/#/login')
+        cy.visit('http://localhost:3000/weather1-fe/login')
     })
 
     it('Should display the Header/Navbar on Login page', () => {
@@ -41,7 +41,7 @@ describe('Should display Login page with Nav and input fields', () => {
         cy.get('.username').type('user1@gmail.com')
         cy.get('.password').type('password1')
         cy.get('.login-button').click()
-        cy.url().should('include', 'http://localhost:3000/#/daily-game')
+        cy.url().should('include', 'http://localhost:3000/weather1-fe/daily-game')
     })
     //Need to add checking a user data is stored
 
