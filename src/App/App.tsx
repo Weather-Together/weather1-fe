@@ -48,15 +48,15 @@ const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
   return (
     <UserContext.Provider value={userValue}>
         <Routes>
-          <Route path="/weather1-fe/" element={<LandingPage />} />
-          <Route path="/weather1-fe/:id/:token" element={<LandingPage />} />
-          <Route path="/weather1-fe/daily-game" element={<DailyGame />} />
-          <Route path='/weather1-fe/login' element={<Login />} />
-          <Route path='/weather1-fe/new-user' element={<NewUser />} />
-          <Route path='/weather1-fe/dashboard' element={<Dashboard />} />
-          <Route path='/weather1-fe/profile' element={<Profile />} />
-          <Route path='/weather1-fe/competitive' element={<CompetitiveGame />} />
-          <Route path='/weather1-fe/private' element={<Private />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/:id/:token" element={<LandingPage />} />
+          <Route path="/daily-game" element={<DailyGame />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/new-user' element={<NewUser />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/competitive' element={<CompetitiveGame />} />
+          <Route path='/private' element={<Private />} />
         </Routes>
         <Footer/>
     </UserContext.Provider>

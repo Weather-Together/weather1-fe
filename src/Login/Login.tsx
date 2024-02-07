@@ -35,7 +35,7 @@ const Login: React.FC = () => {
             }
             const result = await response.json();
             createContext(result);
-            navigate('../weather1-fe/daily-game');
+            navigate('../daily-game');
         }
         catch (error) {
             console.log('Error', error);

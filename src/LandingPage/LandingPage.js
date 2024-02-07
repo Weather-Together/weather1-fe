@@ -1,8 +1,11 @@
 import Header from '../Header/Header';
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import './LandingPage.css'
 
 function LandingPage() {
+  const { id, token } = useParams()
+
   return (
       <div className="landing-container">
         <Header />
