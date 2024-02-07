@@ -11,6 +11,7 @@ function LandingPage() {
         <Header />
         <div className="landing-content">Instructions for the game!!!!!!</div>
         {/* Eventually, you can add more content or components here */}
+        <p>ID: {id} Token: {token}</p>
       </div>
     //setup email verification
   );
