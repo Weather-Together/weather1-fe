@@ -9,10 +9,11 @@ import Dashboard from '../Dashboard/Dashboard'
 import CompetitiveGame from '../Competitive/CompetitiveGame';
 import Footer from '../Footer/Footer';
 import Private from '../Private/Private';
+import NotFound from '../NotFound/NotFound';
 import { Routes, Route } from 'react-router-dom';
 
 const mockUser = {
-  "id": "445",
+  "id": "465",
   "type": "user",
   "attributes": {
   "email": "user1@gmail.com",
@@ -57,6 +58,7 @@ const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
           <Route path='/weather1-fe/profile' element={<Profile />} />
           <Route path='/weather1-fe/competitive' element={<CompetitiveGame />} />
           <Route path='/weather1-fe/private' element={<Private />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer/>
     </UserContext.Provider>
