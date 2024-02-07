@@ -134,7 +134,7 @@ const CompetitiveGame = () => {
           {/* Conditional rendering for ongoing competition */}
           {score === null && (
             <div className="ongoing-competition-message">
-              <p>The competition is still ongoing. Check back later for your score!</p>
+              <p>Guess submitted!! However, the competition is still ongoing. Check back later for your score!</p>
             </div>
           )}
         </div>
