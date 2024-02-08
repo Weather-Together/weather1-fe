@@ -41,7 +41,6 @@ const Dashboard: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     if(!localStorage.getItem('User')){
       return navigate('../login')
     }
@@ -110,6 +109,7 @@ const Dashboard: React.FC = () => {
     console.log('final user', user)
     fetchRoundData();
     fetchCompetitiveData();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);
 
   return (
