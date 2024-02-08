@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from '../Images/logo_480.png';
 import './Login.css';
@@ -12,6 +12,12 @@ const Login: React.FC = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null)
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if(localStorage.getItem('User')){
+            return navigate('../daily-game')
+        }
+    },[navigate])
 
 //function to handle submit
     const handleLogin = async (event) => {
@@ -34,7 +40,7 @@ const Login: React.FC = () => {
                 return setError(error.errors[0].detail);
             }
             const result = await response.json();
-            createContext(result);
+            localStorage.setItem('User', JSON.stringify(result.data));
             navigate('../daily-game');
         }
         catch (error) {

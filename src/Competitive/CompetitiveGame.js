@@ -1,11 +1,12 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Map from '../Map/Map';
 import './Competitive.css';
 import Header2 from '../Header2/Header2';
-import { UserContext } from '../App/App';
+
+
 
 const CompetitiveGame = () => {
-  const { user } = useContext(UserContext);
+  const [user, setUser] = useState(null);
   const [location, setLocation] = useState(null); //picked location
   const [roundData, setRoundData] = useState(null); // this is what gets displayed first
   const [round, setRound] = useState(null); // to determine the round
@@ -20,6 +21,8 @@ const CompetitiveGame = () => {
 
   useEffect(() => {
     // Function to fetch the current competitive round data
+    const storedUser = JSON.parse(localStorage.getItem('User'))
+    if(storedUser) {setUser(storedUser)};
     const fetchRoundData = async () => {
       try {
         const response = await fetch(`https://weather-together-be.onrender.com/api/v0/rounds/current_competitive_round`);
@@ -47,9 +50,9 @@ const CompetitiveGame = () => {
     };
 
     fetchRoundData();
-  }, [user.id]); // Depend on user ID so it refetches if the user changes
+  }, []); // Depend on user ID so it refetches if the user changes
 
-  console.log('Fetching with user ID:', user.id, 'and round:', round);
+  // console.log('Fetching with user ID:', user.id, 'and round:', round);
 
   const handleSubmit = async () => {
     if (location) {

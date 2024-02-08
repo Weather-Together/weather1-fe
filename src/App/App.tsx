@@ -11,7 +11,6 @@ import Footer from '../Footer/Footer';
 import PrivateGame from '../PrivateGame/PrivateGame';
 import CreatePrivateGame from '../CreatePrivateGame/CreatePrivateGame';
 import NotFound from '../NotFound/NotFound';
-
 import { Routes, Route } from 'react-router-dom';
 
 const mockUser = {
@@ -50,7 +49,7 @@ const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   return (
     <UserContext.Provider value={userValue}>
-      
+      <body>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/:id/:token" element={<LandingPage />} />
@@ -61,11 +60,11 @@ const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
           <Route path='/profile' element={<Profile />} />
           <Route path='/competitive' element={<CompetitiveGame />} />
           <Route path='/private-game' element={<PrivateGame />} />
-        <Route path='/new-private-game' element={<CreatePrivateGame />} />
-
+          <Route path='/new-private-game' element={<CreatePrivateGame />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer/>
+      </body>
     </UserContext.Provider>
   );
 }

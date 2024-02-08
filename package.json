@@ -37,7 +37,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "globals": {"cy": "readonly",
+                "Cypress": "readonly"}
+
   },
   "browserslist": {
     "production": [

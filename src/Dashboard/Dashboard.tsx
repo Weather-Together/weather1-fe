@@ -1,7 +1,7 @@
 import Header2 from '../Header2/Header2';
-import { Link } from 'react-router-dom';
-import React, { useState, useContext, useEffect } from 'react';
-import { UserContext } from '../App/App'; 
+import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+// import { UserContext } from '../App/App'; 
 import './Dashboard.css';
 
 interface dailyStats {
@@ -24,16 +24,31 @@ interface competitiveStats {
   avgCompScore: number;
 }
 
+// interface User {
+//   id: string;
+//   type: string;
+//   attributes: {
+//     email: string;
+//     username: string;
+//   };
+// }
+
 const Dashboard: React.FC = () => {
-  const { user } = useContext(UserContext);
+  // const [user, setUser] = useState<User | null>(null)
   const [dailyStatsData, setDailyStatsData] = useState<dailyStats | null>(null);
   const [competitiveData, setCompetitiveData] = useState<competitiveStats | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if(!localStorage.getItem('User')){
+      return navigate('../login')
+    }
+    const storedUser = JSON.parse(localStorage.getItem('User'))
+    // if(storedUser) {setUser(storedUser)};
     const fetchRoundData = async () => {
       try {
-        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/daily_stats`);
+        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${storedUser.id}/daily_stats`);
         if (!response.ok) {
           throw new Error('Failed to fetch daily round data');
         }
@@ -57,10 +72,9 @@ const Dashboard: React.FC = () => {
         setError(error.message);
       }
     };
-
     const fetchCompetitiveData = async () => {
       try {
-        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/competitive_stats`);
+        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${storedUser.id}/competitive_stats`);
         if (!response.ok) {
           throw new Error('Failed to fetch competitive stats data');
         }
@@ -91,10 +105,9 @@ const Dashboard: React.FC = () => {
         setError(error.message)
       }
     };
-
     fetchRoundData();
     fetchCompetitiveData();
-  }, [user.id]);
+  }, [navigate]);
 
   return (
     <div className="dashboard-container">
@@ -142,7 +155,7 @@ const Dashboard: React.FC = () => {
           <Link to="/competitive">Competitive Game</Link>
         </div>
         <div className="link-box">
-          <Link to="/private">Private Game</Link>
+          <Link to="/private-game">Private Game</Link>
         </div>
       </div>
       {error && <h2>Something happened with getting all of the data.</h2> }

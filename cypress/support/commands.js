@@ -16,9 +16,9 @@ Cypress.Commands.add('mockLoginSuccess', () => {
   statusCode: 201,
   header: { 'Content-type': 'application/json', 'ACCEPT': 'application/json'},
   body: {
-    email: 'user1@gmail.com',
+    data: {email: 'user1@gmail.com',
     password: 'password1'
-  }
+  }}
   })
 })
 
@@ -34,6 +34,14 @@ Cypress.Commands.add('mockLoginEmailFail', () => {
     statusCode: 401,
     body: {errors:[{detail:'User must verify email'}]}
   })
+})
+
+Cypress.Commands.add('logUserIn', () => {
+  window.localStorage.setItem('User', JSON.stringify({
+    data:{
+       email: 'user1@gmail.com',
+       id: 460}
+    }))
 })
 
 

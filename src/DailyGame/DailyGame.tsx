@@ -1,8 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Map from '../Map/Map';
+import { useNavigate } from 'react-router-dom';
 import './DailyGame.css';
 import Header2 from '../Header2/Header2';
-import { UserContext } from '../App/App'; 
 
 interface RoundData {
   maxtemp: number;
@@ -18,32 +18,39 @@ interface ILocation {
   lng: number;
 }
 
+interface User {
+  id: string;
+  type: string;
+  attributes: {
+    email: string;
+    username: string;
+  };
+}
 
 const DailyGame: React.FC = () => {
-  
-  const { user } = useContext(UserContext)
+  const [user, setUser] = useState<User | null>(null)
   const [location, setLocation] = useState<ILocation | null>(null);
   const [roundData, setRoundData] = useState<RoundData | null>(null); // Store round data from API
   const [roundLocation, setRoundLocation] = useState<{location_name: string, country: string} | null>(null)
   const [score, setScore] = useState<number | null>(null);
   const [guessLocation, setGuessLocation] = useState<{location_name: string, country: string} | null>(null)
-
-
+  const navigate = useNavigate();
 
 // Define the function to handle location selection
-const handleLocationSelect = (selectedLocation: ILocation) => {
-  setLocation(selectedLocation);
-};
-
-
-
-
+  const handleLocationSelect = (selectedLocation: ILocation) => {
+    setLocation(selectedLocation);
+  };
 
   useEffect(() => {
     // Function to fetch the current daily round data
+    if(!localStorage.getItem('User')){
+      return navigate('../login')
+    }
+    const storedUser = JSON.parse(localStorage.getItem('User'))
+    if(storedUser) {setUser(storedUser)};
     const fetchRoundData = async () => {
       try {
-        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/rounds/current_daily_round`);
+        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${storedUser.id}/rounds/current_daily_round`);
         if (!response.ok) {
           throw new Error('Failed to fetch daily round data');
         }
@@ -69,9 +76,7 @@ const handleLocationSelect = (selectedLocation: ILocation) => {
     };
 
     fetchRoundData();
-  }, [user.id]); // Depend on user ID so it refetches if the user changes
-
-
+  }, [navigate]); // Depend on user ID so it refetches if the user changes
 
   const handleSubmit = async () => {
     if (location) {
@@ -103,7 +108,6 @@ const handleLocationSelect = (selectedLocation: ILocation) => {
       window.alert("Please select a location on the map.");
     }
   };
-
 
   return (
     <div>
