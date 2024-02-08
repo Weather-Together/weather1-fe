@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import './CreatePrivateGame.css';
 import Header2 from '../Header2/Header2';
 // import { useNavigate } from 'react-router-dom';
 
 
 const CreatePrivateGame = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!localStorage.getItem('User')){
+      navigate('../login')
+    }
+  }, [])
+
   const [gameDetails, setGameDetails] = useState({
     name: '',
     lengthInDays: 0,
