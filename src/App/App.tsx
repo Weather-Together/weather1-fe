@@ -8,7 +8,7 @@ import Profile from '../Profile/Profile';
 import Dashboard from '../Dashboard/Dashboard'
 import CompetitiveGame from '../Competitive/CompetitiveGame';
 import Footer from '../Footer/Footer';
-import Private from '../Private/Private';
+import PrivateGame from '../PrivateGame/PrivateGame';
 import { Routes, Route } from 'react-router-dom';
 
 const mockUser = {
@@ -56,7 +56,7 @@ const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
           <Route path='/weather1-fe/dashboard' element={<Dashboard />} />
           <Route path='/weather1-fe/profile' element={<Profile />} />
           <Route path='/weather1-fe/competitive' element={<CompetitiveGame />} />
-          <Route path='/weather1-fe/private' element={<Private />} />
+          <Route path='/weather1-fe/private-game' element={<PrivateGame />} />
         </Routes>
         <Footer/>
     </UserContext.Provider>
