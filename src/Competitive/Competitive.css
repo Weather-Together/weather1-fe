@@ -15,7 +15,7 @@
     width: 100%;
     padding-top: 60px; /* Adjust based on the height of the header */
 }
-.competative-content {
+.competitive-content {
     padding: 20px;
     background-color: white;
     border-radius: 5px;
@@ -24,6 +24,8 @@
     font-weight: bold; 
     text-align: center; /* Centers the text inside the .login-content */
 }
+
+
 
 .map-container {
     flex: 3;
