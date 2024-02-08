@@ -24,14 +24,14 @@ interface competitiveStats {
   avgCompScore: number;
 }
 
-interface User {
-  id: string;
-  type: string;
-  attributes: {
-    email: string;
-    username: string;
-  };
-}
+// interface User {
+//   id: string;
+//   type: string;
+//   attributes: {
+//     email: string;
+//     username: string;
+//   };
+// }
 
 const Dashboard: React.FC = () => {
   // const [user, setUser] = useState<User | null>(null)
