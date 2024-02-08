@@ -20,7 +20,7 @@ const PrivateGame = () => {
           throw new Error('Failed to fetch private round data');
         }
         const data = await response.json();
-        setGame(data.data.id)
+        setGame(data.data.attributes.game_id)
         setRoundData({
           maxtemp: data.data.attributes.maxtemp_f,
           mintemp: data.data.attributes.mintemp_f,
