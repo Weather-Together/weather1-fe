@@ -1,8 +1,8 @@
 //LANDING PAGE
 describe('App Component Tests', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/weather1-fe') // Make sure this is the correct URL where your app is running
-  });
+    cy.visit('http://localhost:3000/#/') // Make sure this is the correct URL where your app is running
+  })
 
   it('should get the basic page display', () => {
     cy.get('Header').should('contain', 'WeatherTogether');
@@ -17,8 +17,8 @@ describe('App Component Tests', () => {
  //ERROR MESSAGE
 
 //  it('should show error messaging to a user', () => {
-//   cy.intercept('GET', 'http://localhost:3000/weather1-fe', { forceNetworkError: true }).as('error');
-//   cy.visit('http://localhost:3000/weather1-fe');//visit the actual site
+//   cy.intercept('GET', 'http://localhost:3000', { forceNetworkError: true }).as('error');
+//   cy.visit('http://localhost:3000');//visit the actual site
 //   cy.wait('@error');
 //   cy.get('h2').should('contain.text', 'Something happened with loading the page.');
 // });
@@ -33,8 +33,8 @@ describe('DailyGame Component', () => {
     }).as("getDailyGame");
 
     // After setting up the intercept, visit the page
-    cy.visit('http://localhost:3000/weather1-fe/daily-game');
-
+    cy.logUserIn()
+    cy.visit('http://localhost:3000/#/daily-game');
     // Wait for the intercept to ensure it's applied before proceeding
     cy.wait('@getDailyGame');
   });
@@ -62,7 +62,8 @@ describe('DailyGame Component - POST Submission', () => {
     }).as('dailyGet');
 
     // Visit the DailyGame page
-    cy.visit('http://localhost:3000/weather1-fe/daily-game');
+    cy.logUserIn()
+    cy.visit('http://localhost:3000/#/daily-game');
 
     // Wait for the GET request to ensure the page is loaded
     cy.wait('@dailyGet');

@@ -9,10 +9,12 @@ import Dashboard from '../Dashboard/Dashboard'
 import CompetitiveGame from '../Competitive/CompetitiveGame';
 import Footer from '../Footer/Footer';
 import PrivateGame from '../PrivateGame/PrivateGame';
+import CreatePrivateGame from '../CreatePrivateGame/CreatePrivateGame';
+import NotFound from '../NotFound/NotFound';
 import { Routes, Route } from 'react-router-dom';
 
 const mockUser = {
-  "id": "449",
+  "id": "465",
   "type": "user",
   "attributes": {
   "email": "user1@gmail.com",
@@ -47,18 +49,22 @@ const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   return (
     <UserContext.Provider value={userValue}>
+      <body>
         <Routes>
-          <Route path="/weather1-fe/" element={<LandingPage />} />
-          <Route path="/weather1-fe/:id/:token" element={<LandingPage />} />
-          <Route path="/weather1-fe/daily-game" element={<DailyGame />} />
-          <Route path='/weather1-fe/login' element={<Login />} />
-          <Route path='/weather1-fe/new-user' element={<NewUser />} />
-          <Route path='/weather1-fe/dashboard' element={<Dashboard />} />
-          <Route path='/weather1-fe/profile' element={<Profile />} />
-          <Route path='/weather1-fe/competitive' element={<CompetitiveGame />} />
-          <Route path='/weather1-fe/private-game' element={<PrivateGame />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/:id/:token" element={<LandingPage />} />
+          <Route path="/daily-game" element={<DailyGame />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/new-user' element={<NewUser />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/competitive' element={<CompetitiveGame />} />
+          <Route path='/private-game' element={<PrivateGame />} />
+          <Route path='/new-private-game' element={<CreatePrivateGame />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer/>
+      </body>
     </UserContext.Provider>
   );
 }

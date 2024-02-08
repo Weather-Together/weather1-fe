@@ -1,18 +1,28 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Map from '../Map/Map';
 import './Competitive.css';
 import Header2 from '../Header2/Header2';
-import { UserContext } from '../App/App';
+
+
 
 const CompetitiveGame = () => {
-  const { user } = useContext(UserContext);
-  const [location, setLocation] = useState(null);
-  const [roundData, setRoundData] = useState(null); // Store round data from API
-  const [round, setRound] = useState(null);
-  const [score, setScore] = useState(null);
+  const [user, setUser] = useState(null);
+  const [location, setLocation] = useState(null); //picked location
+  const [roundData, setRoundData] = useState(null); // this is what gets displayed first
+  const [round, setRound] = useState(null); // to determine the round
+  const [score, setScore] = useState(null); // your score after submit
+  const [roundLocation, setRoundLocation] = useState(null); // from the get the location of the round
+  const [guessLocation, setGuessLocation] = useState(null); // the location of your guess
+
+  // Define the function to handle location selection
+  const handleLocationSelect = (selectedLocation) => {
+    setLocation(selectedLocation);
+  };
 
   useEffect(() => {
     // Function to fetch the current competitive round data
+    const storedUser = JSON.parse(localStorage.getItem('User'))
+    if(storedUser) {setUser(storedUser)};
     const fetchRoundData = async () => {
       try {
         const response = await fetch(`https://weather-together-be.onrender.com/api/v0/rounds/current_competitive_round`);
@@ -28,15 +38,21 @@ const CompetitiveGame = () => {
           avghumidity: data.data.attributes.avghumidity,
           totalprecip: data.data.attributes.totalprecip_in,
         });
+        setRoundLocation({
+          location_name: data.data.attributes.location_name,
+          country: data.data.attributes.country
+        });
 
-        console.log('fetched data', data);
+        console.log('Fetched round data:', data);
       } catch (error) {
         console.error('Error fetching round data:', error);
       }
     };
 
     fetchRoundData();
-  }, [user.id]); // Depend on user ID so it refetches if the user changes
+  }, []); // Depend on user ID so it refetches if the user changes
+
+  // console.log('Fetching with user ID:', user.id, 'and round:', round);
 
   const handleSubmit = async () => {
     if (location) {
@@ -44,19 +60,26 @@ const CompetitiveGame = () => {
         const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/rounds/${round}/votes/new`, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             lat: location.lat,
-            lon: location.lng,
+            lon: location.lng
           }),
         });
+
+        console.log('Response status:', response.status);
 
         if (!response.ok) {
           throw new Error('Failed to submit guess');
         }
         const result = await response.json();
         setScore(result.data.attributes.score); // Assuming the score is in this path
+        console.log('My score:', score);
+        setGuessLocation({
+          location_name: result.data.attributes.location_name,
+          country: result.data.attributes.country
+        }); // Assuming the score is in this path
       } catch (error) {
         console.error('Error submitting guess:', error);
       }
@@ -70,7 +93,7 @@ const CompetitiveGame = () => {
       <Header2 />
       <div className="competitive-game">
         <div className="map-container">
-          <Map onLocationSelect={setLocation} />
+          <Map onLocationSelect={handleLocationSelect} />
         </div>
         <div className="details-container">
           {roundData ? (
@@ -91,18 +114,38 @@ const CompetitiveGame = () => {
               <p>Longitude: {location.lng.toFixed(2)}</p>
             </div>
           )}
-          <button onClick={handleSubmit} className="submit-button">
-            Submit Guess
-          </button>
+          <button onClick={handleSubmit} className="submit-button">Submit Guess</button>
           {score !== null && (
             <div className="score-display">
               <p>Your score: {score.toFixed(2)}</p>
+              {guessLocation && (
+                <>
+                  <h3>Your Guess</h3>
+                  <p>City: {guessLocation.location_name}</p>
+                  <p>Country: {guessLocation.country}</p>
+                </>
+              )}
+              {roundLocation && (
+                <>
+                  <h3>Actual Location</h3>
+                  <p>City: {roundLocation.location_name}</p>
+                  <p>Country: {roundLocation.country}</p>
+                </>
+              )}
+            </div>
+          )}
+          {/* Conditional rendering for ongoing competition */}
+          {score === null && (
+            <div className="ongoing-competition-message">
+              <p>Guess submitted!! However, the competition is still ongoing. Check back later for your score!</p>
             </div>
           )}
         </div>
       </div>
     </div>
   );
+  
 };
 
 export default CompetitiveGame;
+

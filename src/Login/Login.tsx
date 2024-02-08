@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from '../Images/logo_480.png';
 import './Login.css';
@@ -12,6 +12,12 @@ const Login: React.FC = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null)
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if(localStorage.getItem('User')){
+            return navigate('../daily-game')
+        }
+    },[navigate])
 
 //function to handle submit
     const handleLogin = async (event) => {
@@ -34,8 +40,8 @@ const Login: React.FC = () => {
                 return setError(error.errors[0].detail);
             }
             const result = await response.json();
-            createContext(result);
-            navigate('../weather1-fe/daily-game');
+            localStorage.setItem('User', JSON.stringify(result.data));
+            navigate('../daily-game');
         }
         catch (error) {
             console.log('Error', error);
@@ -50,7 +56,7 @@ const Login: React.FC = () => {
             <Header />
             <div className="login-content">
                 <form className="login-form">
-                    <img src={logo} alt="Logo" width="80" height="80" style={{ "paddingBottom" : "5px"}}></img>
+                    <img className='weather-logo'src={logo} alt="Logo" width="80" height="80" style={{ "paddingBottom" : "5px"}}></img>
                     <label htmlFor="username">Username:</label>
                     <input className="username" type="text" value={userName} id="username"
                     onChange={(e) => setUsername(e.target.value)}></input>
@@ -58,15 +64,14 @@ const Login: React.FC = () => {
                     <input className="password" type={!showPassword ? "password" : "text"} id="passwordInput" 
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}></input>
-                    <label style={{ "color" : "red", "fontSize" : "10px"}}>
-                    {loginFail ? "Invalid Username or Password" : ''}</label>
+                    <label className='login-fail' style={{ "color" : "red", "fontSize" : "10px"}}>
+                    {loginFail ? `${error}` : ''}</label>
                     <div style={ {"fontSize" : "10px", "paddingBottom" : "8px", "display" : "flex", "alignItems" : "center"}}>
-                    <input type="checkbox" onClick={handleTogglePassword}/>Show Password
+                    <input className='show-pass' type="checkbox" onClick={handleTogglePassword}/>Show Password
                     </div>
-                    <button onClick={handleLogin}>Login</button>
+                    <button className='login-button'onClick={handleLogin}>Login</button>
                 </form>
             </div>
-        <p>{error ? `${error}`: ''}</p>
         </div>    
     );
 };

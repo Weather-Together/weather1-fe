@@ -5,10 +5,10 @@ import './Header.css'
 const Header: React.FC = () => {
   return (
     <header>
-      <Link to="/weather1-fe" style={{ textDecoration: "none", color: "white"}}><h1>WeatherTogether</h1></Link>
+      <Link to="/" style={{ textDecoration: "none", color: "white"}}><h1>WeatherTogether</h1></Link>
       <nav>
-        <Link to="/weather1-fe/new-user">New User</Link>
-        <Link to="/weather1-fe/login">Login</Link>
+        <Link to="/new-user">New User</Link>
+        <Link to="/login">Login</Link>
       </nav>
     </header>
   );

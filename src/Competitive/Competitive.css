@@ -25,6 +25,8 @@
     text-align: center; /* Centers the text inside the .login-content */
 }
 
+
+
 .map-container {
     flex: 3;
     height: 100%;
