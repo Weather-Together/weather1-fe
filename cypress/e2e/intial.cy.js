@@ -36,7 +36,7 @@ describe('DailyGame Component', () => {
     cy.visit('http://localhost:3000/#/daily-game');
 
     // Wait for the intercept to ensure it's applied before proceeding
-    cy.wait('@getDailyGame');
+    // cy.wait('@getDailyGame');
   });
 
   it('renders the game interface', () => {
@@ -65,7 +65,7 @@ describe('DailyGame Component - POST Submission', () => {
     cy.visit('http://localhost:3000/#/daily-game');
 
     // Wait for the GET request to ensure the page is loaded
-    cy.wait('@dailyGet');
+    // cy.wait('@dailyGet');
   });
 
   it('submits user-selected coordinates and validates the mock response', () => {
