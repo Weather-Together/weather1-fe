@@ -36,6 +36,14 @@ Cypress.Commands.add('mockLoginEmailFail', () => {
   })
 })
 
+Cypress.Commands.add('logUserIn', () => {
+  window.localStorage.setItem('User', JSON.stringify({
+    data:{
+       email: 'user1@gmail.com',
+       id: 460}
+    }))
+})
+
 
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })

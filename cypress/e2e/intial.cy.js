@@ -2,7 +2,7 @@
 describe('App Component Tests', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/#/') // Make sure this is the correct URL where your app is running
-  });
+  })
 
   it('should get the basic page display', () => {
     cy.get('Header').should('contain', 'WeatherTogether');
@@ -33,10 +33,10 @@ describe('DailyGame Component', () => {
     }).as("getDailyGame");
 
     // After setting up the intercept, visit the page
+    cy.logUserIn()
     cy.visit('http://localhost:3000/#/daily-game');
-
     // Wait for the intercept to ensure it's applied before proceeding
-    // cy.wait('@getDailyGame');
+    cy.wait('@getDailyGame');
   });
 
   it('renders the game interface', () => {
@@ -62,10 +62,11 @@ describe('DailyGame Component - POST Submission', () => {
     }).as('dailyGet');
 
     // Visit the DailyGame page
+    cy.logUserIn()
     cy.visit('http://localhost:3000/#/daily-game');
 
     // Wait for the GET request to ensure the page is loaded
-    // cy.wait('@dailyGet');
+    cy.wait('@dailyGet');
   });
 
   it('submits user-selected coordinates and validates the mock response', () => {
