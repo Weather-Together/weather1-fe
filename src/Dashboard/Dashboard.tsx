@@ -118,8 +118,8 @@ const Dashboard: React.FC = () => {
           {dailyStatsData && (
             <>
               <p>Total Games: {dailyStatsData.gameCount}</p>
-              <p>Avg. Score: {dailyStatsData.avgScore.toFixed(2) || 'N/A'}</p>
-              <p>Best Score: {dailyStatsData.bestScore.toFixed(2) || 'N/A'}</p> 
+              <p>Avg. Score: {dailyStatsData.avgScore || 'N/A'}</p>
+              <p>Best Score: {dailyStatsData.bestScore || 'N/A'}</p> 
               <p>Date: {dailyStatsData.date}</p>
               <p>Level 5: {dailyStatsData.level5}</p>
               <p>Level 4: {dailyStatsData.level4}</p>
@@ -155,7 +155,7 @@ const Dashboard: React.FC = () => {
           <Link to="/competitive">Competitive Game</Link>
         </div>
         <div className="link-box">
-          <Link to="/private-game">Private Game</Link>
+          <Link to="/new-private-game">New Private Game</Link>
         </div>
       </div>
       {error && <h2>Something happened with getting all of the data.</h2> }
