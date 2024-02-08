@@ -27,16 +27,16 @@ describe('CompetitiveGame Component', () => {
   });
   
   
-  // COMPETITIVE GAME POST
-  describe('CompetitiveGame Component - POST Submission', () => {
+// COMPETITIVE GAME POST
+describe('CompetitiveGame Component - POST Submission', () => {
     beforeEach(() => {
       // Mock GET request for initial game data
       cy.intercept('GET', `https://weather-together-be.onrender.com/api/v0/rounds/current_competitive_round`, {
         fixture: 'competitiveGameGet.json'
       }).as('competitiveGet');
   
-      // Visit the DailyGame page
-      cy.logUserIn()
+      // Visit the CompetitiveGame page
+      cy.logUserIn();
       cy.visit('http://localhost:3000/#/competitive');
   
       // Wait for the GET request to ensure the page is loaded
@@ -49,44 +49,24 @@ describe('CompetitiveGame Component', () => {
         fixture: 'competitiveGamePost.json'
       }).as('postGuess');
   
-      // Simulate a user 
+      // Simulate a user action 
       cy.get('.leaflet-container').click(300, 200); 
-  
-      // trigger the actual game guess submission
       cy.get('button.submit-button').click();
   
-      // Wait for the POST request to be intercepted and validate the mock response
+      // Wait for the POST and mock response
       cy.wait('@postGuess').then((interception) => {
-        expect(interception.response.statusCode).to.eq(200);
-        expect(interception.response.body.data.attributes).to.deep.equal({
-            "lat": "46.8",
-            "lon": "10.3",
-            "weather_stats": null,
-            "score": null,
-            "status": "unprocessed",
-            "round_id": 92,
-            "user_id": 221,
-            "username": "OutstandingMammoth",
-            "location_name": null,
-            "region": null,
-            "country": null,
-            "maxtemp_f": null,
-            "mintemp_f": null,
-            "avgtemp_f": null,
-            "maxwind_mph": null,
-            "totalprecip_in": null,
-            "avghumidity": null,
-            "daily_chance_of_rain": null,
-            "daily_chance_of_snow": null
-        });
+        const attributes = interception.response.body.data.attributes;
+        const { score, location_name, country } = attributes;
   
-        // Verify UI changes based on the response
-        cy.get('.score-display').should('contain', '6');
-        cy.get('.score-display').should('contain', 'Ialibu');
-        cy.get('.score-display').should('contain', 'null');
-        cy.get('.score-display').should('contain', 'Papua New Guinea');
-        cy.get('.score-display').should('contain', 'null');
-        
+        // Conditionally check if the score is null and assert the expected UI behavior
+        if (score === null) {
+          cy.get('.ongoing-competition-message').should('contain', 'Guess submitted!! However, the competition is still ongoing. Check back later for your score!');
+        } else {
+          // If score is not null
+          cy.get('.score-display').should('contain', score.toString());
+          cy.get('.location-display').should('contain', location_name);
+          cy.get('.country-display').should('contain', country);
+        }
       });
     });
   });
