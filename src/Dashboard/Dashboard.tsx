@@ -34,7 +34,7 @@ interface User {
 }
 
 const Dashboard: React.FC = () => {
-  const [user, setUser] = useState<User | null>(null)
+  // const [user, setUser] = useState<User | null>(null)
   const [dailyStatsData, setDailyStatsData] = useState<dailyStats | null>(null);
   const [competitiveData, setCompetitiveData] = useState<competitiveStats | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -45,7 +45,7 @@ const Dashboard: React.FC = () => {
       return navigate('../login')
     }
     const storedUser = JSON.parse(localStorage.getItem('User'))
-    if(storedUser) {setUser(storedUser)};
+    // if(storedUser) {setUser(storedUser)};
     const fetchRoundData = async () => {
       try {
         const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${storedUser.id}/daily_stats`);
@@ -72,7 +72,6 @@ const Dashboard: React.FC = () => {
         setError(error.message);
       }
     };
-    console.log('first user', user)
     const fetchCompetitiveData = async () => {
       try {
         const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${storedUser.id}/competitive_stats`);
@@ -106,10 +105,8 @@ const Dashboard: React.FC = () => {
         setError(error.message)
       }
     };
-    console.log('final user', user)
     fetchRoundData();
     fetchCompetitiveData();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);
 
   return (

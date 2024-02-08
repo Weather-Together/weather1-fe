@@ -16,9 +16,9 @@ Cypress.Commands.add('mockLoginSuccess', () => {
   statusCode: 201,
   header: { 'Content-type': 'application/json', 'ACCEPT': 'application/json'},
   body: {
-    email: 'user1@gmail.com',
+    data: {email: 'user1@gmail.com',
     password: 'password1'
-  }
+  }}
   })
 })
 
