@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import './CreatePrivateGame.css';
 import Header2 from '../Header2/Header2';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 
 const CreatePrivateGame = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [gameDetails, setGameDetails] = useState({
     name: '',
     lengthInDays: 0,
