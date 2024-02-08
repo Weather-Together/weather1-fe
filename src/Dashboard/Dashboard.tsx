@@ -41,6 +41,7 @@ const Dashboard: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     if(!localStorage.getItem('User')){
       return navigate('../login')
     }
