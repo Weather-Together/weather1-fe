@@ -1,6 +1,5 @@
-
 {
-  "homepage": "https://Weather-Together.github.io/weather1-fe",
+  "homepage": "https://Weather-Together.github.io/weather1-fe/#",
   "name": "weather-fe",
   "version": "0.1.0",
   "main": "src/index.js",
@@ -16,7 +15,6 @@
     "@types/node": "^20.11.16",
     "@types/react": "^18.2.51",
     "@types/react-dom": "^18.2.18",
-    "cypress": "^13.6.4",
     "gh-pages": "^6.1.1",
     "leaflet": "^1.9.4",
     "react": "^18.2.0",
@@ -54,7 +52,8 @@
     ]
   },
   "devDependencies": {
-    "typescript": "^4.9.5",
-    "@types/leaflet": "^1.9.8"
+    "@types/leaflet": "^1.9.8",
+    "cypress": "^13.6.4",
+    "typescript": "^4.9.5"
   }
 }
