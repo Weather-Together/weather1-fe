@@ -10,9 +10,9 @@ const CreatePrivateGame = () => {
 
   useEffect(() => {
     if(!localStorage.getItem('User')){
-      navigate('../login')
+      return navigate('../login')
     }
-  }, [])
+  }, [navigate])
 
   const [gameDetails, setGameDetails] = useState({
     name: '',

@@ -15,8 +15,9 @@ const Login: React.FC = () => {
 
     useEffect(() => {
         if(localStorage.getItem('User')){
-            navigate('../daily-game')
-    }},[])
+            return navigate('../daily-game')
+        }
+    },[navigate])
 
 //function to handle submit
     const handleLogin = async (event) => {

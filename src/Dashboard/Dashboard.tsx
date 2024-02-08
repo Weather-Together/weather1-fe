@@ -42,7 +42,7 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     if(!localStorage.getItem('User')){
-      navigate('../login')
+      return navigate('../login')
     }
     const storedUser = JSON.parse(localStorage.getItem('User'))
     if(storedUser) {setUser(storedUser)};
@@ -109,7 +109,7 @@ const Dashboard: React.FC = () => {
     console.log('final user', user)
     fetchRoundData();
     fetchCompetitiveData();
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="dashboard-container">

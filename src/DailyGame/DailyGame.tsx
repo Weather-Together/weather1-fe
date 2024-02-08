@@ -44,7 +44,7 @@ const DailyGame: React.FC = () => {
   useEffect(() => {
     // Function to fetch the current daily round data
     if(!localStorage.getItem('User')){
-      navigate('../login')
+      return navigate('../login')
     }
     const storedUser = JSON.parse(localStorage.getItem('User'))
     if(storedUser) {setUser(storedUser)};
@@ -76,7 +76,7 @@ const DailyGame: React.FC = () => {
     };
 
     fetchRoundData();
-  }, []); // Depend on user ID so it refetches if the user changes
+  }, [navigate]); // Depend on user ID so it refetches if the user changes
 
   const handleSubmit = async () => {
     if (location) {
