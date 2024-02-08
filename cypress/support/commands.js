@@ -80,3 +80,19 @@ Cypress.Commands.add('logUserIn', () => {
     });
   });
   
+
+
+  //FOR THE DASHBOARD LOGIN
+  Cypress.Commands.add('login', (username, password) => {
+    // Implement your login logic here
+    cy.visit('http://localhost:3000/weather1-fe/#/login');
+    cy.get('#username').type(username);
+    cy.get('#passwordInput').type(password);
+    cy.get('form').submit();
+  });
+  
+  Cypress.Commands.add('visitDashboard', () => {
+    // Implement logic to visit the dashboard page
+    cy.visit('http://localhost:3000/weather1-fe/#/dashboard');
+  });
+  
