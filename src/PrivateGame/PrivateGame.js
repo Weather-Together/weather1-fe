@@ -2,25 +2,27 @@ import React, { useState, useContext, useEffect } from 'react';
 import Map from '../Map/Map';
 import './PrivateGame.css';
 import Header2 from '../Header2/Header2';
-import { UserContext } from '../App/App';
+import { useParams, useNavigate } from 'react-router-dom';
 
-const PrivateGame = () => {
-  const { user } = useContext(UserContext);
+function PrivateGame() {
+  const { id, game_id } = useParams();
   const [location, setLocation] = useState(null);
   const [roundData, setRoundData] = useState(null); // Store game data from API
-  const [game, setGame] = useState(null);
   const [score, setScore] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     // Function to fetch the current private game data
+    const storedUser = JSON.parse(localStorage.getItem('User'))
+  setUser(storedUser);
+
     const fetchRoundData = async () => {
       try {
-        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/games/${game}/current_round`);
+        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${storedUser.id}/games/${game_id}/current_round`);
         if (!response.ok) {
           throw new Error('Failed to fetch private round data');
         }
         const data = await response.json();
-        setGame(data.data.attributes.game_id)
         setRoundData({
           maxtemp: data.data.attributes.maxtemp_f,
           mintemp: data.data.attributes.mintemp_f,
@@ -36,20 +38,19 @@ const PrivateGame = () => {
     };
 
     fetchRoundData();
-  }, [user.id]); // Depend on user ID so it refetches if the user changes
+  }, [game_id]); // Depend on user ID so it refetches if the user changes
 
   const handleSubmit = async () => {
     if (location) {
       try {
-        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/games/${game}/vote`, {
+        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${id}/games/${game_id}/vote`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json', 
-            "ACCEPT" : 'application.json'
           },
           body: JSON.stringify({
             lat: location.lat,
-            lon: location.lng,
+            lon: location.lng
           }),
         });
 
