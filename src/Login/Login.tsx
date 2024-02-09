@@ -11,6 +11,7 @@ const Login: React.FC = () => {
     const [loginFail, setLoginFail] = useState<boolean>(false);
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null)
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const { userLogin } = useParams()
     const navigate = useNavigate();
 
@@ -23,6 +24,7 @@ const Login: React.FC = () => {
 //function to handle submit
     const handleLogin = async (event) => {
         event.preventDefault();
+        setIsLoading(true); // Set isLoading
         const loginData = {
             email: userName,
             password: password
@@ -43,11 +45,12 @@ const Login: React.FC = () => {
             const result = await response.json();
             localStorage.setItem('User', JSON.stringify(result.data));
             navigate('../daily-game');
-        }
-        catch (error) {
+
+            setIsLoading(false)
+        } catch (error) {
             console.log('Error', error);
         }};
-  
+        
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
     };
@@ -71,6 +74,7 @@ const Login: React.FC = () => {
                     <input className='show-pass' type="checkbox" onClick={handleTogglePassword}/>Show Password
                     </div>
                     <button className='login-button'onClick={handleLogin}>Login</button>
+                    {isLoading ? 'Logging in...' : ''}
                 </form>
             </div>
         </div>    
