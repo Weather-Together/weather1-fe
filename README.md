@@ -70,6 +70,6 @@ https://github.com/Weather-Together/weather1-fe/assets/140225441/c83546ce-8c76-4
 
 
 ## 🚧 Challenges
-❗ When we were working on sample data with knex.js, the functions were all working but when we implemented a larger data set, we had to completely refactor because a simple dataset with hard coded foreign keys won't run into batching restraints. The larger dataset was loading into multiple terminals and we ended up getting over 630,000 objects. Refactoring and understanding how to rewrite it was a major hurdle. 
-❗ When we were learning knex.js, we were doing it in a separate environment than our express server so we got to a point where we had to merge them and realized we had to combine them together. 
-❗ Time wasted, there were times where we went down the wrong paths because we were following directions that had extra things to do that prevented us from going forward. For example, we wasted some time trying to create a table directly in psql. 
+❗  
+❗ 
+❗ 
