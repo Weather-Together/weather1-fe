@@ -69,7 +69,6 @@ const DailyGame: React.FC = () => {
         })
 
         console.log("fetched data", data)
-
       } catch (error) {
         console.error("Error fetching round data:", error);
       }

@@ -36,6 +36,7 @@ const Dashboard: React.FC = () => {
   const [dailyStatsData, setDailyStatsData] = useState<dailyStats | null>(null);
   const [competitiveData, setCompetitiveData] = useState<competitiveStats | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -126,7 +127,7 @@ const Dashboard: React.FC = () => {
         });
 
         console.log("fetched competitive stats data", data);
-
+        setIsLoading(false)
       } catch (error) {
         setError(error.message)
       }
@@ -139,6 +140,10 @@ const Dashboard: React.FC = () => {
   return (
     <div className="dashboard-container">
       <Header2 />
+      {isLoading ? (
+       <p>Loading...</p>
+      ) : (
+
       <div className="dashboard-content">
         <div className="user-stats">
           <h3>User Stats</h3>
@@ -186,6 +191,7 @@ const Dashboard: React.FC = () => {
       )}
       </div>
       </div>
+      )}
       <div className="links">
         <div className="link-box">
           <Link to="/competitive">Competitive Game</Link>
