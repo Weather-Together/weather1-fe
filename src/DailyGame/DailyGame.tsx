@@ -100,7 +100,7 @@ const DailyGame: React.FC = () => {
         console.log("score", result.data.attributes)
         setGuessLocation({
           location_name: result.data.attributes.location_name,
-          country:result.data.attributes.country})// Assuming the score is in this path
+          country:result.data.attributes.country})
 
           // Update markers state with guess location
       setMarkers(prevMarkers => [...prevMarkers, { lat: result.data.attributes.lat, lng: result.data.attributes.lon }]);
