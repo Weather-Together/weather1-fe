@@ -12,10 +12,15 @@ describe('Dashboard Component', () => {
         fixture: 'competitiveStatsGet.json'
       }).as("getCompetitiveStats");
 
+      cy.intercept("GET", `https://weather-together-be.onrender.com/api/v0/users/*/games`, {
+        statusCode: 200,
+        fixture: 'customGamesGet.json'
+      }).as("getCustomGames");
+
       cy.logUserIn()
       cy.visit('http://localhost:3000/#/dashboard');
       
-      cy.wait(['@getDailyStats', '@getCompetitiveStats']);
+      cy.wait(['@getDailyStats', '@getCompetitiveStats', '@getCustomGames']);
     });
   
     it('renders the dashboard interface with user statistics', () => {
@@ -43,8 +48,6 @@ describe('Dashboard Component', () => {
         cy.get('.competitive-stats').should('contain', 'hello - 2.00');
         cy.get('.competitive-stats').should('contain', 'hello - 1.00');
        
-
-
 });
 
 it('renders the dashboard interface with and contains buttons and links', () => {
@@ -57,6 +60,12 @@ it('renders the dashboard interface with and contains buttons and links', () => 
     cy.get('nav a').should('contain', 'Profile')
     cy.get('button').should('contain', 'Logout')
    
+})
 
+it('renders the dashboard interface with and custom games', () => {
+  
+    cy.get('.custom-games').should('contain', 'Custom Games');
+    cy.get('.game-list').should('contain', 'Tornado');
+  
 })
 })

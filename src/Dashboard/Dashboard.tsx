@@ -72,17 +72,14 @@ const Dashboard: React.FC = () => {
     };
 
     const fetchCustomData = async () => {
+      console.log("Fetching custom data...");
       try {
         const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${storedUser.id}/games`);
         if (!response.ok) {
           throw new Error('Failed to fetch daily round data');
         }
         const responseData = await response.json();
-    
-        // Check if there's any data in the response
-        if (responseData.data.length === 0) {
-          throw new Error('No custom game data found');
-        }
+  
     
         // Extract game names from each game object
         const gameNames = responseData.data.map((game: any) => game.attributes.game_name);
@@ -92,7 +89,7 @@ const Dashboard: React.FC = () => {
         
         });
     
-        console.log("fetched data", responseData.data);
+        console.log("fetched custom data", responseData.data);
     
       } catch(error) {
         setError(error.message);
@@ -177,18 +174,17 @@ const Dashboard: React.FC = () => {
           )}
         </div>
         <div className="custom-games">
-            <h3>Custom Games</h3>
-            {customGames ? (
-             <ul>
-            {customGames.names.map((name, index) => (
-            <li key={index}>{name}</li>
-           ))}
-          </ul>
-          ) : (
-          <p>No Games</p>
-          )}
-        </div>
-
+        <h3>Custom Games</h3>
+        {customGames && customGames.names && customGames.names.length > 0 ? (
+        <ul className="game-list">
+         {customGames.names.map((name, index) => (
+        <li key={index}>{name}</li>
+          ))}
+      </ul>
+      ) : (
+       <p>No Games</p>
+      )}
+      </div>
       </div>
       <div className="links">
         <div className="link-box">
