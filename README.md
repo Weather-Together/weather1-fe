@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# <img src="src/Images/logo_480.png" alt="Screenshot" width="50">  WeatherTogegether   
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
 
-## Available Scripts
+WeatherTogether
+![Tests](https://badgen.net/badge/tests/passing/green?icon=github)
 
-In the project directory, you can run:
+## 💾 Technologies Used
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![React](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+![Cypress](https://img.shields.io/badge/-cypress-%238D6748?style=for-the-badge&logo=cypress&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 👩‍💻 👩‍💻 👨‍💻 👩‍💻 Collaborators  | 
+[Brendan Turner](https://github.com/BrendanTurner1)   | 
+[Chris Butler](https://github.com/butlertree)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+</div>
 
-### `npm test`
+## 💭 Abstract
+WeatherTogether offers an engaging and innovative platform that merges the thrill of gaming with the intriguing world of weather forecasting. At its core, WeatherTogether is an interactive game that draws inspiration from the popular Wordle format, providing users with a unique daily challenge that blends skill, strategy, and a bit of meteorological insight. Upon logging in, players are welcomed into a daily game where they predict weather conditions in various locations around the globe. This initial engagement is just the beginning, as WeatherTogether unfolds its comprehensive suite of features, including competitive matchups and customizable private games, enriching the user experience with diverse gameplay options.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📝  Context
+WeatherTogether emerged as a capstone project from the creative minds at Turing School of Software & Design, conceptualized and developed by a dedicated team of 2 front-end and 4 back-end students. This project was an ambitious endeavor to expand upon a previously developed idea, with the goal of creating a more interactive and user-friendly experience. The team embarked on this project in week 2 of Module 4 of the Front End / Back End development program, working collaboratively to bring their vision to life.
 
-### `npm run build`
+The project's front end was completely overhauled, utilizing React to create a dynamic and engaging user interface that allows players to easily navigate through the various gaming features. The back end also underwent significant modifications to support new gameplay functionalities and enhance the overall user experience. This included the development of a robust API to manage user data, game statistics, and real-time weather information, providing a seamless integration between the front end and the back end.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The development process was characterized by a highly collaborative approach, with team members working remotely via Zoom and coordinating their efforts asynchronously through GitHub's project board. This collaborative environment fostered a culture of continuous learning and adaptation, enabling the team to overcome challenges and implement innovative solutions.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🎥 Preview 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+https://github.com/Weather-Together/weather1-fe/assets/140225441/c83546ce-8c76-4eb4-9548-3992a451d53d
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## Link: 
+[Live Github Link](https://weather-together.github.io/weather1-fe/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🔌 Server Setup
+1. Clone the repository: Open a terminal window. Navigate to the directory where you want to clone the repository: `git clone (copied link)`
+2. Install the dependencies: Run the following command in the cloned repository directory: `npm install`
+3. Run the React app: Run the following command in the cloned repository directory: `npm start`
+4. Open the app in your web browser by navigating to http://localhost:3000
 
-### Making a Progressive Web App
+## 📚 Learning Goals
+- Gain competency with TypeScript
+- Use React fundamentals
+- Test React components & asynchronous JS with cypress
+- Practice refactoring
+- Create a multi-page UX using Router
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🥇 Wins
+⭐ Successfully use React and React Router
+⭐ Working collaboratively as a team to overcome any obstacles and combining our knowledge to create a successful app
+⭐ Successfully implement cypress testing
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🚧 Challenges
+❗ When we were working on sample data with knex.js, the functions were all working but when we implemented a larger data set, we had to completely refactor because a simple dataset with hard coded foreign keys won't run into batching restraints. The larger dataset was loading into multiple terminals and we ended up getting over 630,000 objects. Refactoring and understanding how to rewrite it was a major hurdle. 
+❗ When we were learning knex.js, we were doing it in a separate environment than our express server so we got to a point where we had to merge them and realized we had to combine them together. 
+❗ Time wasted, there were times where we went down the wrong paths because we were following directions that had extra things to do that prevented us from going forward. For example, we wasted some time trying to create a table directly in psql. 
