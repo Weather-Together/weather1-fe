@@ -1,20 +1,18 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Map from '../Map/Map';
 import './PrivateGame.css';
 import Header2 from '../Header2/Header2';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function PrivateGame() {
   const { id, game_id } = useParams();
   const [location, setLocation] = useState(null);
   const [roundData, setRoundData] = useState(null); // Store game data from API
   const [score, setScore] = useState(null);
-  const [user, setUser] = useState(null);
 
   useEffect(() => {
     // Function to fetch the current private game data
     const storedUser = JSON.parse(localStorage.getItem('User'))
-  setUser(storedUser);
 
     const fetchRoundData = async () => {
       try {
