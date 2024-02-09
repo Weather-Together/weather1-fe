@@ -49,12 +49,12 @@ const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   return (
     <UserContext.Provider value={userValue}>
-      <body>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/:id/:token" element={<LandingPage />} />
           <Route path="/daily-game" element={<DailyGame />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/login/:userLogin' element={<Login />} />
           <Route path='/new-user' element={<NewUser />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/profile' element={<Profile />} />
@@ -65,7 +65,6 @@ const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
           <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer/>
-      </body>
     </UserContext.Provider>
   );
 }
