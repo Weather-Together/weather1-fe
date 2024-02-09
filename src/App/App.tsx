@@ -61,6 +61,7 @@ const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
           <Route path='/competitive' element={<CompetitiveGame />} />
           <Route path='/private-game' element={<PrivateGame />} />
           <Route path='/new-private-game' element={<CreatePrivateGame />} />
+          {/* <Route path='/private-game-view/:id/:game_id' element={<PrivateGameView/>} /> */}
           <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer/>
