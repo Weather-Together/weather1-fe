@@ -24,20 +24,19 @@ interface competitiveStats {
   avgCompScore: number;
 }
 
-// interface User {
-//   id: string;
-//   type: string;
-//   attributes: {
-//     email: string;
-//     username: string;
-//   };
-// }
+
+interface custom {
+  names: string[] | null
+}
+
 
 const Dashboard: React.FC = () => {
   // const [user, setUser] = useState<User | null>(null)
+  const [customGames, setCustomGames] = useState<custom | null>(null);
   const [dailyStatsData, setDailyStatsData] = useState<dailyStats | null>(null);
   const [competitiveData, setCompetitiveData] = useState<competitiveStats | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,7 +44,7 @@ const Dashboard: React.FC = () => {
       return navigate('../login')
     }
     const storedUser = JSON.parse(localStorage.getItem('User'))
-    // if(storedUser) {setUser(storedUser)};
+  
     const fetchRoundData = async () => {
       try {
         const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${storedUser.id}/daily_stats`);
@@ -72,6 +71,34 @@ const Dashboard: React.FC = () => {
         setError(error.message);
       }
     };
+
+    const fetchCustomData = async () => {
+      console.log("Fetching custom data...");
+      try {
+        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${storedUser.id}/games`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch daily round data');
+        }
+        const responseData = await response.json();
+  
+    
+        // Extract game names from each game object
+        const gameNames = responseData.data.map((game: any) => game.attributes.game_name);
+        
+        setCustomGames({
+          names: gameNames, // Store game names in an array
+        
+        });
+    
+        console.log("fetched custom data", responseData.data);
+    
+      } catch(error) {
+        setError(error.message);
+      }
+    };
+    
+
+
     const fetchCompetitiveData = async () => {
       try {
         const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${storedUser.id}/competitive_stats`);
@@ -100,18 +127,23 @@ const Dashboard: React.FC = () => {
         });
 
         console.log("fetched competitive stats data", data);
-
+        setIsLoading(false)
       } catch (error) {
         setError(error.message)
       }
     };
     fetchRoundData();
+    fetchCustomData();
     fetchCompetitiveData();
   }, [navigate]);
 
   return (
     <div className="dashboard-container">
       <Header2 />
+      {isLoading ? (
+       <p>Loading...</p>
+      ) : (
+
       <div className="dashboard-content">
         <div className="user-stats">
           <h3>User Stats</h3>
@@ -147,9 +179,19 @@ const Dashboard: React.FC = () => {
           )}
         </div>
         <div className="custom-games">
-          <h3>Custom Games</h3>
-        </div>
+        <h3>Custom Games</h3>
+        {customGames && customGames.names && customGames.names.length > 0 ? (
+        <ul className="game-list">
+         {customGames.names.map((name, index) => (
+        <li key={index}>{name}</li>
+          ))}
+      </ul>
+      ) : (
+       <p>No Games</p>
+      )}
       </div>
+      </div>
+      )}
       <div className="links">
         <div className="link-box">
           <Link to="/competitive">Competitive Game</Link>

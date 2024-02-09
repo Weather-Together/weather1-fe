@@ -1,0 +1,27 @@
+{
+    "data": {
+        "id": "901",
+        "type": "vote",
+        "attributes": {
+            "lat": "46.8",
+            "lon": "10.3",
+            "weather_stats": null,
+            "score": null,
+            "status": "unprocessed",
+            "round_id": 92,
+            "user_id": 221,
+            "username": "OutstandingMammoth",
+            "location_name": null,
+            "region": null,
+            "country": null,
+            "maxtemp_f": null,
+            "mintemp_f": null,
+            "avgtemp_f": null,
+            "maxwind_mph": null,
+            "totalprecip_in": null,
+            "avghumidity": null,
+            "daily_chance_of_rain": null,
+            "daily_chance_of_snow": null
+                         }
+             }
+    }

@@ -1,10 +1,10 @@
 {
     "daily_stats": {
-    "daily_game_count": 6,
-    "average_score_in_daily_games": null,
+    "daily_game_count": 6.00,
+    "average_score_in_daily_games": 3.00,
     "date_and_score_of_best_daily_score": {
     "date": "2024-02-05",
-    "score": null
+    "score": 5
     },
     "grade_book_daily_round": {
     "0.00-500.00": 0,
