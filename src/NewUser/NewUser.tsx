@@ -12,17 +12,19 @@ const NewUser: React.FC = () => {
     const [confirmPassword, setConfirmPassword] = useState<string | null>('');
     const [matchPassword, setMatchPassword] = useState<boolean>(true);
     const [isValidEmail, setIsValidEmail] = useState<boolean>(true);
-    const [isValidUserName, setIsValidUserName] = useState<boolean>(false);
+    const [isValidUserName, setIsValidUserName] = useState<boolean>(true);
     const [error, setError] = useState<any | null>(null);
     const navigate = useNavigate();
 
     const evaluatePassword = (pass1, pass2) => {
-        setMatchPassword(false);
+        // setMatchPassword(false);
         if(pass1){
         if(pass1 !== pass2){
-            return setMatchPassword(false);
+            setMatchPassword(false)
+            return false;
         }    
-        return setMatchPassword(true);
+        setMatchPassword(true)
+        return true;
         }
     }
 
@@ -33,30 +35,31 @@ const NewUser: React.FC = () => {
 
     const evaluateUsername = (userName) => {
         if(userName.length > 5) {
-            return setIsValidUserName(true);
+            setIsValidUserName(true)
+            return true;
         }
-        setIsValidEmail(false);
+        setIsValidUserName(false);
+        return false
     }
 
     const evaluateEmail = (email) => {
         if(checkEmail(email)){
-            return setIsValidEmail(true);
+            setIsValidEmail(true)
+            return true;
         }
-        return setIsValidEmail(false);
+        setIsValidEmail(false)
+        return false;
     }
 
     const handleCreate = async (e)  => {
         e.preventDefault()
-        evaluatePassword(password, confirmPassword);
-        evaluateUsername(userName);
-        evaluateEmail(email);
         const newUserData = {
             email: email,
             username: userName,
             password: password,
             password_confirmation: confirmPassword
         }
-        if(isValidEmail && matchPassword &&isValidUserName){
+        if(evaluateEmail(email) && evaluatePassword(password, confirmPassword) && evaluateUsername(userName)){
             try {
                 const response = await fetch("https://weather-together-be.onrender.com/api/v0/users/", 
                 {

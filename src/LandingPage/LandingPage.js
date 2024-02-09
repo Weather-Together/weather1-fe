@@ -18,7 +18,8 @@ function LandingPage() {
            console.log(error);
        }
        const result = await response.json();
-       navigate(`../login/${result.data.attributes.email}`)
+       localStorage.setItem('User', JSON.stringify(result.data));
+       navigate('../daily-game');      
       }  catch (error) {
        console.log('Error', error);
     }}
