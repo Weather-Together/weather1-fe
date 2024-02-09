@@ -1,0 +1,15 @@
+{
+    "data": [
+    {
+    "id": "621",
+    "type": "user_game",
+    "attributes": {
+    "id": 621,
+    "user_id": 517,
+    "game_id": 70,
+    "invitation": "accepted",
+    "game_name": "Tornado"
+    }
+    }
+    ]
+    }
