@@ -34,6 +34,7 @@ const DailyGame: React.FC = () => {
   const [roundLocation, setRoundLocation] = useState<{location_name: string, country: string} | null>(null)
   const [score, setScore] = useState<number | null>(null);
   const [guessLocation, setGuessLocation] = useState<{location_name: string, country: string} | null>(null)
+  const [markers, setMarkers] = useState<{ lat: number; lng: number }[]>([]); 
   const navigate = useNavigate();
 
 // Define the function to handle location selection
@@ -100,6 +101,10 @@ const DailyGame: React.FC = () => {
         setGuessLocation({
           location_name: result.data.attributes.location_name,
           country:result.data.attributes.country})// Assuming the score is in this path
+
+          // Update markers state with guess location
+      setMarkers(prevMarkers => [...prevMarkers, { lat: result.data.attributes.lat, lng: result.data.attributes.lon }]);
+
       } catch (error) {
         console.error("Error submitting guess:", error);
       }
@@ -113,7 +118,7 @@ const DailyGame: React.FC = () => {
       <Header2 />
       <div className="daily-game">
         <div className="map-container">
-          <Map onLocationSelect={handleLocationSelect} />
+          <Map onLocationSelect={handleLocationSelect} markers={markers} />
         </div>
         <div className="details-container">
         {roundData ? ( 
