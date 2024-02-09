@@ -5,7 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './LandingPage.css'
 
 function LandingPage() {
-  const { id, token } = useParams()
+  const { id, token } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {

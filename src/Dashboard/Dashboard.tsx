@@ -197,7 +197,7 @@ const Dashboard: React.FC = () => {
           <Link to="/competitive">Competitive Game</Link>
         </div>
         <div className="link-box">
-          <Link to="/private-game">Private Game</Link>
+          <Link to="/new-private-game">New Private Game</Link>
         </div>
       </div>
       {error && <h2>Something happened with getting all of the data.</h2> }
