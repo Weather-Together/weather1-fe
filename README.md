@@ -16,10 +16,22 @@ WeatherTogether
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
 
-## 👩‍💻 👩‍💻 👨‍💻 👩‍💻 Collaborators  | 
-[Brendan Turner](https://github.com/BrendanTurner1)   | 
-[Chris Butler](https://github.com/butlertree)
+## 👨‍💻 👨‍💻 👨‍💻 👨‍💻 👨‍💻 👨‍💻  Collaborators  | 
+# LinkedIn
+[Brendan Turner]()   
+[Chris Butler](https://www.linkedin.com/in/christopher-butler-a428b42/)
+[Blaine Kennedy](https://www.linkedin.com/in/blaine-kennedy/)
+[Tommy Takahashi](https://www.linkedin.com/in/tommy-takahashi/)
+[Edward Rodriguez](https://www.linkedin.com/in/edward-avery-rodriguez/)
+[Michael Kuhlmeier](https://www.linkedin.com/in/michaelkuhlmeier/)
 
+# Github
+[Brendan Turner](https://github.com/BrendanTurner1)   
+[Chris Butler](https://github.com/butlertree)
+[Blaine Kennedy](https://github.com/bkchilidawg)
+[Tommy Takahashi](https://github.com/ttakahashi1591)
+[Edward Rodriguez](https://github.com/TheAveryRodriguez)
+[Michael Kuhlmeier](https://github.com/mbkuhl)
 </div>
 
 ## 💭 Abstract
@@ -35,15 +47,7 @@ The development process was characterized by a highly collaborative approach, wi
 ## 🎥 Preview 
 
 
-
-
-
 https://github.com/Weather-Together/weather1-fe/assets/140225441/c83546ce-8c76-4eb4-9548-3992a451d53d
-
-
-
-
-
 
 
 ## Link: 
@@ -70,6 +74,9 @@ https://github.com/Weather-Together/weather1-fe/assets/140225441/c83546ce-8c76-4
 
 
 ## 🚧 Challenges
-❗  
-❗ 
-❗ 
+❗  Working on WeatherTogether, we faced unique challenges that tested our adaptability and teamwork, especially in a remote and asynchronous collaboration environment. Coordinating between front-end and back-end teams, each with their own languages and frameworks, required clear communication and frequent knowledge sharing to ensure seamless integration.
+
+❗ Adopting new technologies was another hurdle. Both teams had to quickly master React and TypeScript for the FE and enhance the BE API for game support, demanding a steep learning curve. Implementing real-time weather data into the game logic added complexity, needing precise data handling to reflect accurate weather conditions.
+
+❗ Despite these challenges, our agile methodology, regular communication, and a shared passion for the project drove us forward. We learned to overcome obstacles through pair programming, code reviews, and a focus on creating a user-friendly experience. The project was not just about technical achievement but also about growth as developers and collaborators, culminating in a product we're proud to present.
+
