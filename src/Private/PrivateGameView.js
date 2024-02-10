@@ -26,25 +26,7 @@ const PrivateGameView = () => {
             }
         }
         handleSendInvite()
-    }, [])
-
-    // Function to handle location selection
-    const handleLocationSelect = (selectedLocation) => {
-        setLocation(selectedLocation);
-    };
-
-    // Function to handle voting
-    const handleVote = async () => {
-        if (location) {
-            try {
-                // Implement logic to handle voting
-            } catch (error) {
-                console.error('Error submitting vote:', error);
-            }
-        } else {
-            window.alert('Please select a location on the map.');
-        }
-    };
+    }, [game_id])
 
     // Function to send invite
     const handleSendInvite = async () => {
@@ -71,10 +53,6 @@ const PrivateGameView = () => {
         }
     };
 
-    useEffect(() => {
-        // Fetch participants, standings, game length, and voting status
-    }, []);
-
     return (
         <div className="private-game-view-container">
             <Header2 />
@@ -94,13 +72,6 @@ const PrivateGameView = () => {
                     <div className="game-length-section">
                         <p>Game Length: {gameData ? gameData.attributes.length_in_days : null} days</p>
                     </div>
-                    {/* <div className="voting-button-section">
-                        {gameData.hasVotedToday ? (
-                            <p>You have already voted today.</p>
-                        ) : (
-                            <button onClick={handleVote}>Vote</button>
-                        )}
-                    </div> */}
                     <div className="invite-section">
                         <h2>Invite Others</h2>
                         <input
