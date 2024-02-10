@@ -97,5 +97,9 @@
     background-color: #dddddd; /* Add a hover effect to link boxes */
   }
   
-
+  .game-list {
+    list-style: none;
+    padding: 0;
+  }
+  
   
