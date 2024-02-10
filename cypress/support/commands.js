@@ -22,6 +22,29 @@ Cypress.Commands.add('mockLoginSuccess', () => {
   })
 })
 
+Cypress.Commands.add('mockUserCreationSuccess', () => {
+  cy.intercept("POST", "https://weather-together-be.onrender.com/api/v0/users/", {
+    statusCode:201,
+    header: { 'Content-type': 'application/json', 'ACCEPT': 'application/json'},
+    body: {
+      data: {email: 'Brendan@gmail.com',
+      username: 'Brendan',
+      password: 'password',
+      confirm_confirmation: 'password'
+    }}
+  })
+})
+
+Cypress.Commands.add('mockUserInput', () => {
+  cy.get('.email').type('Brendan@gmail.com')
+    .get('.email').should('have.value', 'Brendan@gmail.com')
+  cy.get('.username').type('Brendan')
+    .get('.username').should('have.value', 'Brendan')
+  cy.get('.password').type('password')
+    .get('.password').should('have.value', 'password')
+  cy.get('.confirm-password').type('password')
+    .get('.confirm-password').should('have.value', 'password')
+})
 Cypress.Commands.add('mockLoginFail', () => {
   cy.intercept("POST", "https://weather-together-be.onrender.com/api/v0/users/login",{
     statusCode: 401,
