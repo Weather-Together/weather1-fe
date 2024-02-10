@@ -12,13 +12,14 @@ import PrivateGame from '../PrivateGame/PrivateGame';
 import CreatePrivateGame from '../CreatePrivateGame/CreatePrivateGame';
 import NotFound from '../NotFound/NotFound';
 import { Routes, Route } from 'react-router-dom';
+import PrivateGameView from "../Private/PrivateGameView";
 
 const mockUser = {
   "id": "465",
   "type": "user",
   "attributes": {
-  "email": "user1@gmail.com",
-  "username": "username1"
+    "email": "user1@gmail.com",
+    "username": "username1"
   }
 }
 
@@ -42,10 +43,10 @@ interface UserContextType {
 export const UserContext = createContext<UserContextType | undefined>(undefined);
 
 function App() {
- // Correcting the useState with the mockUser
-const [user, setUser] = useState<User>(mockUser as User);
+  // Correcting the useState with the mockUser
+  const [user, setUser] = useState<User>(mockUser as User);
 
-const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
+  const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   return (
     <UserContext.Provider value={userValue}>
@@ -62,10 +63,10 @@ const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
           <Route path='/competitive' element={<CompetitiveGame />} />
           <Route path='/private-game/:id/:game_id' element={<PrivateGame />} />
           <Route path='/new-private-game' element={<CreatePrivateGame />} />
-          {/* <Route path='/private-game-view/:id/:game_id' element={<PrivateGameView/>} /> */}
+          <Route path='/private-game-view/:id/:game_id' element={<PrivateGameView />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </div>
     </UserContext.Provider>
   );
