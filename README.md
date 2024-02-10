@@ -16,13 +16,22 @@ WeatherTogether
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
 
-## 👨‍💻 👨‍💻 👨‍💻 👨‍💻 👨‍💻  Collaborators  | 
-[Brendan Turner](https://github.com/BrendanTurner1)   | 
-[Chris Butler](https://github.com/butlertree)
-[Blaine Kennedy]
-[Tommy Takahashi]
-[Edward Rodriguez]
+## 👨‍💻 👨‍💻 👨‍💻 👨‍💻 👨‍💻 👨‍💻  Collaborators  | 
+# LinkedIn
+[Brendan Turner]()   
+[Chris Butler](https://www.linkedin.com/in/christopher-butler-a428b42/)
+[Blaine Kennedy](https://www.linkedin.com/in/blaine-kennedy/)
+[Tommy Takahashi](https://www.linkedin.com/in/tommy-takahashi/)
+[Edward Rodriguez](https://www.linkedin.com/in/edward-avery-rodriguez/)
+[Michael Kuhlmeier](https://www.linkedin.com/in/michaelkuhlmeier/)
 
+# Github
+[Brendan Turner](https://github.com/BrendanTurner1)   
+[Chris Butler](https://github.com/butlertree)
+[Blaine Kennedy](https://github.com/bkchilidawg)
+[Tommy Takahashi](https://github.com/ttakahashi1591)
+[Edward Rodriguez](https://github.com/TheAveryRodriguez)
+[Michael Kuhlmeier](https://github.com/mbkuhl)
 </div>
 
 ## 💭 Abstract
