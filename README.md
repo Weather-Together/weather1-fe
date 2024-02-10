@@ -16,9 +16,12 @@ WeatherTogether
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
 
-## 👩‍💻 👩‍💻 👨‍💻 👩‍💻 Collaborators  | 
+## 👨‍💻 👨‍💻 👨‍💻 👨‍💻 👨‍💻  Collaborators  | 
 [Brendan Turner](https://github.com/BrendanTurner1)   | 
 [Chris Butler](https://github.com/butlertree)
+[Blaine Kennedy]
+[Tommy Takahashi]
+[Edward Rodriguez]
 
 </div>
 
@@ -35,15 +38,7 @@ The development process was characterized by a highly collaborative approach, wi
 ## 🎥 Preview 
 
 
-
-
-
 https://github.com/Weather-Together/weather1-fe/assets/140225441/c83546ce-8c76-4eb4-9548-3992a451d53d
-
-
-
-
-
 
 
 ## Link: 
