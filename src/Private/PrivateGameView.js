@@ -4,7 +4,6 @@ import Header2 from '../Header2/Header2';
 import { useParams, Link } from 'react-router-dom';
 
 const PrivateGameView = () => {
-    const [location, setLocation] = useState(null); // Picked location
     const [inviteEmail, setInviteEmail] = useState(''); // Invite email
     const { id, game_id } = useParams();
     const [gameData, setGameData] = useState(null);
@@ -26,7 +25,7 @@ const PrivateGameView = () => {
             }
         }
         handleSendInvite()
-    }, [game_id])
+    }, [game_id, id])
 
     // Function to send invite
     const handleSendInvite = async () => {
