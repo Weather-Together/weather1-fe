@@ -16,7 +16,7 @@ const NewUser: React.FC = () => {
     const [error, setError] = useState<any | null>(null);
     const navigate = useNavigate();
 
-    const evaluatePassword = (pass1, pass2) => {
+    const validatePassword = (pass1, pass2) => {
         // setMatchPassword(false);
         if(pass1){
         if(pass1 !== pass2){
@@ -33,8 +33,8 @@ const NewUser: React.FC = () => {
         return emailRegex.test(email);
     }
 
-    const evaluateUsername = (userName) => {
-        if(userName.length > 5) {
+    const validateUsername = (userName) => {
+        if(userName.length >= 5) {
             setIsValidUserName(true)
             return true;
         }
@@ -42,7 +42,7 @@ const NewUser: React.FC = () => {
         return false
     }
 
-    const evaluateEmail = (email) => {
+    const validateEmail = (email) => {
         if(checkEmail(email)){
             setIsValidEmail(true)
             return true;
@@ -59,7 +59,7 @@ const NewUser: React.FC = () => {
             password: password,
             password_confirmation: confirmPassword
         }
-        if(evaluateEmail(email) && evaluatePassword(password, confirmPassword) && evaluateUsername(userName)){
+        if(validateEmail(email)  && validateUsername(userName) && validatePassword(password, confirmPassword)){
             try {
                 const response = await fetch("https://weather-together-be.onrender.com/api/v0/users/", 
                 {
@@ -89,27 +89,27 @@ const NewUser: React.FC = () => {
                 <form className="newuser-form">
                     <img src={logo} alt="Logo" width="80" height="80" style={{ "paddingBottom" : "5px"}}></img>
                     <label htmlFor="email">E-mail: </label>
-                    <input type="text" value={email} id="email"
+                    <input className='email' type="text" value={email} id="email"
                     onChange={(e) => setEmail(e.target.value)}></input>
-                    <label style={{ "color" : "red", "fontSize" : "10px"}}>
+                    <label className='email-error'style={{ "color" : "red", "fontSize" : "10px"}}>
                         {isValidEmail ? '':'Invalid Email'}
                     </label>
                     <label htmlFor="username">Username: </label>
-                    <input type="text" value={userName} id="username"
+                    <input className='username' type="text" value={userName} id="username"
                     onChange={(e) => setUserName(e.target.value)}></input>
-                    <label style={{ "color" : "red", "fontSize" : "10px"}}>
+                    <label className='username-error'style={{ "color" : "red", "fontSize" : "10px"}}>
                         {isValidUserName ? '':'Username must be 5 or more characters'}
                     </label>
-                    <label htmlFor="password">Password: </label>
-                    <input type="password" value={password} id="password"
+                    <label  htmlFor="password">Password: </label>
+                    <input className='password' type="password" value={password} id="password"
                     onChange={(e) => setPassword(e.target.value)}></input>
                     <label htmlFor="confirm-password">Confirm Password: </label>
-                    <input type="password" value={confirmPassword} id="confirm-password"
+                    <input className="confirm-password" type="password" value={confirmPassword} id="confirm-password"
                     onChange={(e) => setConfirmPassword(e.target.value)}></input>
-                    <label style={{ "color" : "red", "fontSize" : "10px"}}>
+                    <label className='password-error' style={{ "color" : "red", "fontSize" : "10px"}}>
                     {!matchPassword ? "Passwords don't match" : ''}</label>
                     <p>{error ? `${error}` : ''}</p>
-                    <button onClick={handleCreate}>Create Account</button>
+                    <button className="create-account"onClick={handleCreate}>Create Account</button>
                 </form>
             </div>
             
