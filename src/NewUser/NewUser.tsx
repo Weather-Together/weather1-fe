@@ -16,7 +16,7 @@ const NewUser: React.FC = () => {
     const [error, setError] = useState<any | null>(null);
     const navigate = useNavigate();
 
-    const evaluatePassword = (pass1, pass2) => {
+    const validatePassword = (pass1, pass2) => {
         // setMatchPassword(false);
         if(pass1){
         if(pass1 !== pass2){
@@ -33,7 +33,7 @@ const NewUser: React.FC = () => {
         return emailRegex.test(email);
     }
 
-    const evaluateUsername = (userName) => {
+    const validateUsername = (userName) => {
         if(userName.length >= 5) {
             setIsValidUserName(true)
             return true;
@@ -42,7 +42,7 @@ const NewUser: React.FC = () => {
         return false
     }
 
-    const evaluateEmail = (email) => {
+    const validateEmail = (email) => {
         if(checkEmail(email)){
             setIsValidEmail(true)
             return true;
@@ -59,7 +59,7 @@ const NewUser: React.FC = () => {
             password: password,
             password_confirmation: confirmPassword
         }
-        if(evaluateEmail(email)  && evaluateUsername(userName) && evaluatePassword(password, confirmPassword)){
+        if(validateEmail(email)  && validateUsername(userName) && validatePassword(password, confirmPassword)){
             try {
                 const response = await fetch("https://weather-together-be.onrender.com/api/v0/users/", 
                 {

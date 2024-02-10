@@ -31,15 +31,18 @@ describe('Should allow New User creation with checks', () => {
         cy.visit('http://localhost:3000/#/new-user')
     })
 
-    it('Should allow User to input into fields', () => {
-        cy.mockUserInput()
-    })
-
     it('Should allow for User creation and route to Login', () => {
-        cy.mockUserInput()
+        cy.get('.email').type('Brendan@gmail.com')
+          .get('.email').should('have.value', 'Brendan@gmail.com')
+        cy.get('.username').type('Brendan')
+          .get('.username').should('have.value', 'Brendan')
+        cy.get('.password').type('password')
+          .get('.password').should('have.value', 'password')
+        cy.get('.confirm-password').type('password')
+          .get('.confirm-password').should('have.value', 'password')
         cy.mockUserCreationSuccess()
         cy.get('.create-account').click()
-        cy.url().should('include', 'http://localhost:3000/#/login')
+        cy.url().should('include', '/login')
     })
 
     it('Should fail creation if email format is incorrect', () => {
