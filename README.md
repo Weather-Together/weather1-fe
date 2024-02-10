@@ -1,4 +1,4 @@
-# <img src="src/Images/logo_480.png" alt="Screenshot" width="50">  WeatherTogegether   
+# <img src="src/Images/logo_480.png" alt="Screenshot" width="50">  WeatherTogether   
 
 <div align="center">
 
@@ -18,7 +18,7 @@ WeatherTogether
 
 ## 👨‍💻 👨‍💻 👨‍💻 👨‍💻 👨‍💻 👨‍💻  Collaborators  | 
 # LinkedIn
-[Brendan Turner]()   
+[Brendan Turner](https://www.linkedin.com/in/brendan-turner-265917b7)   
 [Chris Butler](https://www.linkedin.com/in/christopher-butler-a428b42/)
 [Blaine Kennedy](https://www.linkedin.com/in/blaine-kennedy/)
 [Tommy Takahashi](https://www.linkedin.com/in/tommy-takahashi/)
