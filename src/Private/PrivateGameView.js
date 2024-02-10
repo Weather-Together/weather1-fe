@@ -8,6 +8,7 @@ const PrivateGameView = () => {
     const { id, game_id } = useParams();
     const [gameData, setGameData] = useState(null);
 
+
     useEffect(() => {
         const handleSendInvite = async () => {
             try {
@@ -52,6 +53,7 @@ const PrivateGameView = () => {
         }
     };
 
+
     return (
         <div className="private-game-view-container">
             <Header2 />
@@ -80,6 +82,7 @@ const PrivateGameView = () => {
                             onChange={(e) => setInviteEmail(e.target.value)}
                         />
                         <button onClick={handleSendInvite}>Send Invite</button>
+                        
                     </div>
                     <div className="current-round-section">
                         <Link to={`/private-game/${id}/${game_id}`}>

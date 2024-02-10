@@ -26,7 +26,7 @@ interface competitiveStats {
 
 
 interface custom {
-  names: string[] | null
+  game: any;
 }
 
 
@@ -38,6 +38,8 @@ const Dashboard: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const navigate = useNavigate();
+  const [invitationStatus, setInvitationStatus] = useState<string | null>(null); // Invitation status of the current user
+
 
   useEffect(() => {
     if(!localStorage.getItem('User')){
@@ -83,11 +85,21 @@ const Dashboard: React.FC = () => {
   
     
         // Extract game names from each game object
-        const gameNames = responseData.data.map((game: any) => game.attributes.game_name);
-        
+        const gameNames = responseData.data.map((game: any) => game.attributes);
+        console.log(gameNames.game_name, "Game Names") 
+        console.log(gameNames) 
+        console.log(gameNames.game_id, "344") 
+        console.log(gameNames.invitation, "sent")
+        const game = gameNames.map((game: any) => {
+          return{names: game.game_name,
+                  game_id: game.game_id,
+                  invitations: game.invitation}
+        })
+
+
+
         setCustomGames({
-          names: gameNames, // Store game names in an array
-        
+          game: game
         });
     
         console.log("fetched custom data", responseData.data);
@@ -137,6 +149,23 @@ const Dashboard: React.FC = () => {
     fetchCompetitiveData();
   }, [navigate]);
 
+  // const handleAcceptInvitation = async () => {
+  //   try {
+  //     const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${id}/games/${game_id}`, {
+  //       method: 'PATCH',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Accept': 'application/json'
+  //       },
+  //       body: JSON.stringify({ invitation_status: 'accepted' })
+  //     });
+  //     if (!response.ok) { throw new Error('Failed to accept invitation.'); }
+  //     setInvitationStatus('accepted'); // Update invitation status in state
+  //     console.log('Invitation accepted successfully.');
+  //   } catch (error) {
+  //     console.error('Error accepting invitation:', error);
+  //   }
+  // };
   return (
     <div className="dashboard-container">
       <Header2 />
@@ -180,11 +209,14 @@ const Dashboard: React.FC = () => {
         </div>
         <div className="custom-games">
         <h3>Custom Games</h3>
-        {customGames && customGames.names && customGames.names.length > 0 ? (
+        {customGames && customGames.game.length > 0 ? (
         <ul className="game-list">
-         {customGames.names.map((name, index) => (
-        <li key={index}>{name}</li>
-          ))}
+         {customGames.game.map((name, index) => (
+        <li key={index}>{name.names}</li>
+        // { name.invitation === 'sent' && (
+        //      <button onClick={handleAcceptInvitation}>Accept Invitation</button>
+        //    )}
+            ))}
       </ul>
       ) : (
        <p>No Games</p>
