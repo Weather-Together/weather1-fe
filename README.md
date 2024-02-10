@@ -74,6 +74,9 @@ https://github.com/Weather-Together/weather1-fe/assets/140225441/c83546ce-8c76-4
 
 
 ## 🚧 Challenges
-❗  
-❗ 
-❗ 
+❗  Working on WeatherTogether, we faced unique challenges that tested our adaptability and teamwork, especially in a remote and asynchronous collaboration environment. Coordinating between front-end and back-end teams, each with their own languages and frameworks, required clear communication and frequent knowledge sharing to ensure seamless integration.
+
+❗ Adopting new technologies was another hurdle. Both teams had to quickly master React and TypeScript for the FE and enhance the BE API for game support, demanding a steep learning curve. Implementing real-time weather data into the game logic added complexity, needing precise data handling to reflect accurate weather conditions.
+
+❗ Despite these challenges, our agile methodology, regular communication, and a shared passion for the project drove us forward. We learned to overcome obstacles through pair programming, code reviews, and a focus on creating a user-friendly experience. The project was not just about technical achievement but also about growth as developers and collaborators, culminating in a product we're proud to present.
+
