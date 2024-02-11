@@ -43,7 +43,7 @@ const CreatePrivateGame = () => {
     };
 
     try {
-      const response = await fetch(`http://https://weather-together-be.onrender.com/api/v0/users/${user.id}/games`, {
+      const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/games`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
