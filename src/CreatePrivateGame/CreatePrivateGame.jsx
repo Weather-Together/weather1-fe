@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './CreatePrivateGame.css';
 import Header2 from '../Header2/Header2';
-// import { useNavigate } from 'react-router-dom';
 
 
 const CreatePrivateGame = () => {
@@ -43,7 +42,7 @@ const CreatePrivateGame = () => {
     };
 
     try {
-      const response = await fetch(`http://https://weather-together-be.onrender.com/api/v0/users/${user.id}/games`, {
+      const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/games`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -55,7 +54,7 @@ const CreatePrivateGame = () => {
         throw new Error('Failed to fetch private round data');
       }
       const data = await response.json();
-      // navigate(`../private-game-view/:${user.id}/:${data.id}`)
+      navigate(`../private-game-view/:${user.id}/:${data.id}`)
       console.log('fetched data', data);
     }
     catch(error) {
