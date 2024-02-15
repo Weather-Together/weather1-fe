@@ -10,7 +10,7 @@ body {
 
 /* Theme Specific Styles */
 :root {
-  --background-color-light: lightgray;
+  --background-color-light: rgb(204, 228, 241);
   --background-color-dark: black;
   --text-color-light: #000;
   --text-color-dark: #fff;
