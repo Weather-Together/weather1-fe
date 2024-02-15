@@ -11,10 +11,10 @@
 
 .login-content {
     padding: 20px;
-    background-color: white;
+    background-color: var(--background-color);;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    color: black;
+    color: var(--text-color);
     font-weight: bold; 
     text-align: center; /* Centers the text inside the .login-content */
 }

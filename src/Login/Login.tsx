@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import logo from '../Images/logo_480.png';
 import './Login.css';
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 
 const Login: React.FC = () => {
@@ -76,6 +77,7 @@ const Login: React.FC = () => {
                     {isLoading ? 'Logging in...' : ''}
                 </form>
             </div>
+            <Footer />
         </div>    
     );
 };

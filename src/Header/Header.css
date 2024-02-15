@@ -1,86 +1,37 @@
-
-/* Header */
+/* Header Styles */
 header {
-    font-size: larger;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: darkgray;
-    color: black;
+    background-color: var(--background-color); /* Use theme color */
+    color: var(--text-color); /* Use theme color */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     width: 100%;
-    box-sizing: border-box;
     position: fixed;
     top: 0;
-    z-index: 1000; /* Ensure the header is above other content */
+    z-index: 10; /* Adjust if needed to ensure header is above other content */
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2rem;
-    font-weight: bold;
-    font-family: monospace;
-}
-
-nav {
-    display: flex;
-}
-
-nav a {
-    margin-right: 20px;
-    text-decoration: none;
-    color: white;
-    padding: 0.5rem 0.75rem;
+.theme-toggle {
+    cursor: pointer;
+    background-color: #444; /* Dark background for the button, adjust based on your theme */
+    color: #fff; /* Light text, adjust based on your theme */
+    border: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    padding: 5px 10px;
+    margin-left: auto; /* Push it to the right side of the header */
 }
 
-nav a:hover, nav a:focus {
-    background-color: rgba(255,255,255,0.2);
+.theme-toggle:focus {
+    outline: none;
 }
 
-
-/* Header */
-header {
-    font-size: larger;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: darkgray;
-    color: black;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    width: 100%;
-    box-sizing: border-box;
-    position: fixed;
-    top: 0;
-    z-index: 1000; /* Ensure the header is above other content */
+.theme-toggle:hover {
+    background-color: #666; /* Slightly lighter on hover */
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2rem;
-    font-weight: bold;
-    font-family: monospace;
-}
-
-nav {
-    display: flex;
-}
-
-nav a {
-    margin-right: 20px;
-    text-decoration: none;
-    color: white;
-    padding: 0.5rem 0.75rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-nav a:hover, nav a:focus {
-    background-color: rgba(255,255,255,0.2);
-}
+  
 
 /* Footer */
 footer {
@@ -89,8 +40,8 @@ footer {
     justify-content: flex-end;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: darkgray;
-    color: black;
+    background-color: var(--background-color); 
+    color: var(--text-color); ;
     box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
     width: 100%;
     box-sizing: border-box;

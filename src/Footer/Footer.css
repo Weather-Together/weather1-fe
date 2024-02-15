@@ -2,12 +2,12 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem; /* Consistent with header padding */
-    background-color: darkgrey; /* Matching the header's background color */
-    color: white; /* Matching the header's text color */
-    box-shadow: 0 -2px 4px rgba(0,0,0,0.1); /* Shadow on the top edge for depth */
+    padding: 1rem 2rem; 
+    background-color: var(--background-color); /* Matching the header's background color */
+    color: var(--text-color); /* Matching the header's text color */
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1); 
     width: 100%;
-    box-sizing: border-box; /* Ensures padding does not affect the total width */
+    box-sizing: border-box; 
 }
 
 footer h1 {

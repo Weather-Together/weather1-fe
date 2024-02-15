@@ -6,8 +6,8 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color:darkgray;
-    color: black;
+    background-color: var(--background-color);
+    color: var(--text-color);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     width: 100%;
     box-sizing: border-box;
@@ -21,16 +21,18 @@ header h1 {
     font-size: 2rem;
     font-weight: bold;
     font-family: monospace;
+    color: var(--text-color)
 }
 
 nav {
     display: flex;
+    color: var(--text-color);
 }
 
 nav a {
     margin-right: 20px;
     text-decoration: none;
-    color: white;
+    color: var(--text-color);
     padding: 0.5rem 0.75rem;
     border-radius: 5px;
     transition: background-color 0.3s ease;
@@ -40,19 +42,3 @@ nav a:hover, nav a:focus {
     background-color: rgba(255,255,255,0.2);
 }
 
-/* Footer */
-footer {
-    font-size: larger;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: darkgray;
-    color: black;
-    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
-    width: 100%;
-    box-sizing: border-box;
-    position: fixed;
-    bottom: 0;
-    z-index: 1000; /* Ensure the footer is above other content */
-}
