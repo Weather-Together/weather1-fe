@@ -22,10 +22,10 @@ const Header2: React.FC = () => {
     <h1>WeatherTogether</h1>
     </Link>
     <div className="nav-container">
-    <Link to="/dashboard" className="nav-link">Dashboard</Link>
-    <Link to="/profile" className="nav-link">Profile</Link>
-    <button onClick={handleLogout} className="header-button">Logout</button>
-    <button onClick={toggleTheme} className="header-button">Toggle Theme</button>
+    <Link to="/dashboard" className="nav-item">Dashboard</Link>
+    <Link to="/profile" className="nav-item">Profile</Link>
+    <button onClick={handleLogout} className="nav-item">Logout</button>
+    <button onClick={toggleTheme} className="nav-item">Toggle Theme</button>
     </div>
   </header>
 

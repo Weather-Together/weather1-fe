@@ -16,17 +16,12 @@ const Header: React.FC = () => {
 
   return (
     <header>
-      <div className="header-content">
         <Link to="/" style={{ textDecoration: "none", color: "white"}}><h1>WeatherTogether</h1></Link>
-        <nav>
-          <Link to="/new-user">New User</Link>
-          <Link to="/login">Login</Link>
-        </nav>
-      </div>
-      {/* Theme Toggle Button */}
-      <div className="theme-toggle">
-        <button onClick={toggleTheme}>Toggle Theme</button>
-      </div>
+        <div className="nav-container">
+          <Link to="/new-user" className="nav-item">New User</Link>
+          <Link to="/login" className="nav-item">Login</Link>
+          <button onClick={toggleTheme} className="nav-item">Toggle Theme</button>
+        </div> 
     </header>
   );
 }

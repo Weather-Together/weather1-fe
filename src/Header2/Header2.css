@@ -23,30 +23,27 @@ header {
     color: var(--text-color);
   }
   
+  
   .nav-container {
     display: flex;
     align-items: center;
-    margin-left: auto; /* This will push your navigation to the right */
+    margin-left: auto;
   }
   
-  nav a, .nav-container button {
+  .nav-item {
     margin-right: 20px;
     text-decoration: none;
     color: var(--text-color);
     padding: 0.5rem 0.75rem;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    border: 1px solid transparent; /* Add border to make it look like a box */
-    background-color: var(--button-bg-color); /* Optional: if you have a variable for button background */
+    border: 1px solid transparent;
+    background-color: var(--button-bg-color);
+    cursor: pointer;
   }
   
-  nav a:hover, nav a:focus, .nav-container button:hover {
+  .nav-item:hover, .nav-item:focus {
     background-color: rgba(255,255,255,0.2);
-    border-color: var(--text-color); /* Change border color on hover/focus */
-  }
-  
-  /* Add this to give some space around the toggle button and align it with the links */
-  .theme-toggle button {
-    margin-right: 0; /* Last item, no margin to the right */
+    border-color: var(--text-color);
   }
   

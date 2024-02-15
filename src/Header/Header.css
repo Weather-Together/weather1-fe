@@ -13,23 +13,30 @@ header {
     z-index: 10; /* Adjust if needed to ensure header is above other content */
 }
 
-.theme-toggle {
-    cursor: pointer;
-    background-color: #444; /* Dark background for the button, adjust based on your theme */
-    color: #fff; /* Light text, adjust based on your theme */
-    border: none;
+ 
+.nav-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+  
+  .nav-item {
+    margin-right: 20px;
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 0.5rem 0.75rem;
     border-radius: 5px;
-    padding: 5px 10px;
-    margin-left: auto; /* Push it to the right side of the header */
-}
-
-.theme-toggle:focus {
-    outline: none;
-}
-
-.theme-toggle:hover {
-    background-color: #666; /* Slightly lighter on hover */
-}
+    transition: background-color 0.3s ease;
+    border: 1px solid transparent;
+    background-color: var(--button-bg-color);
+    cursor: pointer;
+  }
+  
+  .nav-item:hover, .nav-item:focus {
+    background-color: rgba(255,255,255,0.2);
+    border-color: var(--text-color);
+  }
+  
 
   
 
