@@ -1,23 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; 
-import './Header2.css'
+import { ThemeContext } from '../App/App'; // Adjust the import path based on your file structure
+import './Header2.css';
 
-const Header: React.FC = () => {
-  const navigate = useNavigate()
+const Header2: React.FC = () => {
+  const navigate = useNavigate();
+  const { theme, setTheme } = useContext(ThemeContext); // Destructure theme and setTheme from the context
+
   const handleLogout = () => {
     localStorage.removeItem('User');
-    navigate('../login')
-  }
+    navigate('../login');
+  };
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light'); // Toggle theme
+  };
+
   return (
-    <header>
-      <Link to="/" style={{ textDecoration: "none", color: "white"}}><h1>WeatherTogether</h1></Link>
-      <nav>
-        <button onClick={handleLogout}>Logout</button>
-        <Link to="/dashboard">Dashboard</Link>
-        <Link to="/profile">Profile</Link>
-      </nav>
-    </header>
+  <header>
+    <Link to="/" className="header-title" style={{ textDecoration: "none", color: "white" }}>
+    <h1>WeatherTogether</h1>
+    </Link>
+    <div className="nav-container">
+    <Link to="/dashboard" className="nav-link">Dashboard</Link>
+    <Link to="/profile" className="nav-link">Profile</Link>
+    <button onClick={handleLogout} className="header-button">Logout</button>
+    <button onClick={toggleTheme} className="header-button">Toggle Theme</button>
+    </div>
+  </header>
+
   );
 }
 
-export default Header;
+export default Header2;
