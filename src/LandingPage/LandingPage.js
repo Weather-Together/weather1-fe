@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './LandingPage.css'
+import { Player } from '@lottiefiles/react-lottie-player'; // Import the Lottie Player
 
 function LandingPage() {
   const { id, token } = useParams();
@@ -29,8 +30,18 @@ function LandingPage() {
   return (
       <div className="landing-container">
         <Header />
-        <div className="landing-content">Instructions for the game!!!!!!</div>
+        <div className="landing-content">Instructions for the game!!!!!!  We should do something here so that people have some idea how to play this thing.  </div>
         {/* Eventually, you can add more content or components here */}
+
+        <Player
+        src='https://lottie.host/5af3a8d3-d4b3-4263-9473-61e3ec669ce7/1NQFFWKZvw.json'
+        className="player"
+        loop={true}
+        autoplay={true}
+      />
+
+
+
       </div>
     //setup email verification
   );
