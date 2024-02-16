@@ -4,6 +4,7 @@ import logo from '../Images/logo_480.png';
 import './Login.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import { Player } from '@lottiefiles/react-lottie-player'; // Import the Lottie Player
 
 
 const Login: React.FC = () => {
@@ -58,6 +59,14 @@ const Login: React.FC = () => {
     return (
         <div className="login-container">
             <Header />
+
+                <Player
+                src='https://lottie.host/f35fa82a-0091-4ee8-ad6d-77e329ed464a/KqOVOsmCeH.json'
+                className="player"
+                loop={true}
+                 autoplay={true}
+                />
+
             <div className="login-content">
                 <form className="login-form">
                     <img className='weather-logo'src={logo} alt="Logo" width="80" height="80" style={{ "paddingBottom" : "5px"}}></img>
@@ -77,6 +86,14 @@ const Login: React.FC = () => {
                     {isLoading ? 'Logging in...' : ''}
                 </form>
             </div>
+
+                 <Player
+                src='https://lottie.host/22de9b27-ab62-4b4f-b76f-0d0bfa2af678/wV6oqOj6AX.json'
+                className="player"
+                loop={true}
+                 autoplay={true}
+                />
+
             <Footer />
         </div>    
     );
