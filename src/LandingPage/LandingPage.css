@@ -7,7 +7,15 @@
     width: 100vw;
     padding-top: 60px; /* This pushes the content down, adjust this value based on your header's height */
     box-sizing: border-box;
+    padding: 10px;
 }
+
+
+.landing-content, .player {
+    width: 90%; /* Adjust width to ensure it doesn't stretch too much on smaller screens */
+    margin: 10px 0; /* Add some margin for spacing */
+}
+
 
 .landing-content {
     padding: 20px;
@@ -17,4 +25,23 @@
     color: black;
     font-weight: bold; 
     text-align: center; /* Centers the text inside the .login-content */
+}
+
+
+
+/* Media query for screens up to 480px wide */
+@media (max-width: 480px) {
+    .landing-container {
+        flex-direction: column; 
+    }
+
+    .landing-content {
+        order: 1; 
+    }
+
+    .player {
+        order: 2; 
+        width: 100%; 
+        height: auto; 
+    }
 }
