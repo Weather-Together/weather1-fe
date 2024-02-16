@@ -40,6 +40,7 @@ header {
     border: 1px solid transparent;
     background-color: var(--button-bg-color);
     cursor: pointer;
+    font-size: medium;
   }
   
   .nav-item:hover, .nav-item:focus {
@@ -47,3 +48,33 @@ header {
     border-color: var(--text-color);
   }
   
+
+
+  /* Media query for screens with a max-width of 480px */
+@media (max-width: 480px) {
+    header {
+      flex-direction: column; 
+      align-items: flex-start; 
+    }
+  
+    .nav-container {
+      display: flex; 
+      flex-direction: row; 
+      justify-content: flex-start; 
+      width: 100%; /* Full width */
+      padding-top: 10px; 
+    }
+  
+    .nav-item {
+      display: inline-block;
+      margin-right: 10px; 
+      padding: 10px; 
+      text-align: center; 
+    }
+
+    .nav-item:hover, .nav-item:focus {
+        background-color: rgba(255,255,255,0.2);
+        border-color: var(--text-color);
+      }
+      
+  }
