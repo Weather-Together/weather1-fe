@@ -30,7 +30,7 @@
 
 
 /* Media query for screens up to 480px wide */
-@media (max-width: 480px) {
+@media (max-width: 500px) {
     .landing-container {
         flex-direction: column; 
     }
