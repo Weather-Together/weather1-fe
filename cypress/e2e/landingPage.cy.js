@@ -7,10 +7,10 @@ describe('App Component Tests', () => {
     it('should get the basic page display', () => {
       cy.get('Header').should('contain', 'WeatherTogether');
       cy.get('Footer').should('contain', 'WeatherTogether');
-      cy.get('.nav-container').should('contain', 'Login')
-      cy.get('.nav-container').should('contain', 'Toggle Theme')
-      cy.get('.nav-container').should('contain', 'New User');
+      cy.get('.landing-container').should('contain', 'Login')
+      cy.get('.landing-container').should('contain', 'Toggle Theme')
+      cy.get('.landing-container').should('contain', 'New User');
       cy.get('h1').should('contain', 'WeatherTogether');
-      cy.get('.landing-content').should('contain', 'Instructions for the game!!!!!!');
+      cy.get('.landing-content').should('contain', 'We should do something here so that people have some idea how to play this thing.');
     });
   });
