@@ -14,6 +14,7 @@ import NotFound from '../NotFound/NotFound';
 import { Routes, Route } from 'react-router-dom';
 import PrivateGameView from "../Private/PrivateGameView";
 
+
 const mockUser = {
   "id": "465",
   "type": "user",

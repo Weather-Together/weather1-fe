@@ -3,6 +3,7 @@ import logo from '../Images/logo_480.png'
 import Header from '../Header/Header';
 import { useNavigate } from "react-router-dom";
 import './NewUser.css';
+import { Player } from '@lottiefiles/react-lottie-player'; // Import the Lottie Player
 
 
 const NewUser: React.FC = () => {
@@ -85,6 +86,14 @@ const NewUser: React.FC = () => {
     return (
         <div className="newuser-container">
             <Header />
+
+            <Player
+                src='https://lottie.host/f35fa82a-0091-4ee8-ad6d-77e329ed464a/KqOVOsmCeH.json'
+                className="player"
+                loop={true}
+                 autoplay={true}
+                />
+
             <div className="newuser-content">
                 <form className="newuser-form">
                     <img src={logo} alt="Logo" width="80" height="80" style={{ "paddingBottom" : "5px"}}></img>
@@ -112,7 +121,13 @@ const NewUser: React.FC = () => {
                     <button className="create-account"onClick={handleCreate}>Create Account</button>
                 </form>
             </div>
-            
+
+            <Player
+                src='https://lottie.host/22de9b27-ab62-4b4f-b76f-0d0bfa2af678/wV6oqOj6AX.json'
+                className="player"
+                loop={true}
+                 autoplay={true}
+                />    
         </div>    
     );
 };
