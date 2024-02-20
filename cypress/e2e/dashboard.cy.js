@@ -56,8 +56,9 @@ it('renders the dashboard interface with and contains buttons and links', () => 
     cy.get('.link-box').should('contain', 'Private Game');
     cy.get('Header').should('contain', 'WeatherTogether');
     cy.get('Footer').should('contain', 'WeatherTogether');
-    cy.get('nav a').should('contain', 'Dashboard')
-    cy.get('nav a').should('contain', 'Profile')
+    cy.get('.nav-container').should('contain', 'Dashboard')
+    cy.get('.nav-container').should('contain', 'Profile')
+    cy.get('.nav-container').should('contain', 'Toggle Theme')
     cy.get('button').should('contain', 'Logout')
    
 })

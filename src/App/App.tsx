@@ -1,4 +1,4 @@
-import React, { useState, createContext, useMemo } from 'react';
+import React, { useState, createContext, useMemo, useEffect } from 'react';
 import './App.css';
 import Login from '../Login/Login';
 import LandingPage from '../LandingPage/LandingPage'
@@ -34,6 +34,13 @@ interface User {
   };
 }
 
+//create them context
+interface ThemeContextType {
+  theme: string;
+  setTheme: React.Dispatch<React.SetStateAction<string>>;
+}
+
+
 interface UserContextType {
   user: User;
   setUser: React.Dispatch<React.SetStateAction<User>>;
@@ -42,15 +49,32 @@ interface UserContextType {
 // When creating the context
 export const UserContext = createContext<UserContextType | undefined>(undefined);
 
+//Added the theme to the context
+export const ThemeContext = createContext<ThemeContextType>({ theme: 'light', setTheme: () => {} });
+
+
 function App() {
+
+
   // Correcting the useState with the mockUser
   const [user, setUser] = useState<User>(mockUser as User);
 
+  const [theme, setTheme] = useState('light'); // Default theme is light
+
   const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
+  // Theme state and other states remain unchanged
+  
+useEffect(() => {
+  document.body.className = theme + '-theme';
+}, [theme]);
+
+
   return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
     <UserContext.Provider value={userValue}>
-      <div>
+    <div className={theme + '-theme'}>
+
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/:id/:token" element={<LandingPage />} />
@@ -69,6 +93,7 @@ function App() {
         <Footer />
       </div>
     </UserContext.Provider>
+    </ThemeContext.Provider>
   );
 }
 
