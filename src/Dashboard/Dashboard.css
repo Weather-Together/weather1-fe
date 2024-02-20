@@ -124,13 +124,12 @@
     .dashboard-container {
       display:flex;
       position: relative;
-      padding: 30px;
+      padding: 27px;
       padding-top: 200px; 
       padding-bottom: 80px; 
-      max-width: 95%;
+      max-width: 100%;
     }
   
-    /* Center align text in all containers */
     .dashboard-content,
     .user-stats,
     .competitive-stats,

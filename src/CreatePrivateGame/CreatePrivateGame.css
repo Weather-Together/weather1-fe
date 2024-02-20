@@ -23,3 +23,32 @@
   /* Centers the text inside the .login-content */
 }
 
+
+@media (max-width: 500px) {
+  /* Keep the header fixed at the top */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  /* Keep the footer fixed at the bottom */
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+    
+  .create-private-game-container {
+    display:flex;
+    position: relative;
+    padding: 27px;
+    padding-top: 150px; 
+    padding-bottom: 80px; 
+    max-width: 100%;
+  }
+
+  
+}
