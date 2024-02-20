@@ -27,8 +27,8 @@ html, body {
     overflow-y: auto;
     padding: 20px;
     background-color: #f9f9f91e;
-    border-radius: 5px; /* Matches with .landing-content for consistency */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Adds shadow */
+    
+  
    
 }
 
@@ -36,8 +36,6 @@ html, body {
     width: 100%;
     margin: 10px 0;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
     text-align: center;
 }
 
@@ -65,3 +63,43 @@ html, body {
     height: 100%;
 }
 
+
+
+  @media (max-width: 500px) {
+    /* Keep the header fixed at the top */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    
+    /* Keep the footer fixed at the bottom */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+      
+    .daily-game {
+      flex-direction: column;
+      padding-top: 80px; 
+      padding-bottom: 80px; 
+    }
+  
+    .map-container {
+      order: 2; /* Change the order to display below details container */
+      height: 100px; 
+      padding: 5px;
+      width: 97%;
+    }
+  
+    .details-container {
+       order: 1; /* Change the order to display above map container */
+       padding: 30px;
+       width: 80%;
+    
+    }
+  }
+  

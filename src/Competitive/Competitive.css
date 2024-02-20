@@ -31,3 +31,46 @@
     flex: 3;
     height: 100%;
 }
+
+
+
+
+
+@media (max-width: 500px) {
+    /* Keep the header fixed at the top */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    
+    /* Keep the footer fixed at the bottom */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+      
+    .competitive-game {
+      flex-direction: column;
+      padding-top: 80px; 
+      padding-bottom: 80px; 
+    }
+  
+    .map-container {
+      order: 2; /* Change the order to display below details container */
+      height: 100px; 
+      padding: 5px;
+      width: 97%;
+    }
+  
+    .details-container {
+       order: 1; /* Change the order to display above map container */
+       padding: 30px;
+       width: 80%;
+    
+    }
+  }
+  
