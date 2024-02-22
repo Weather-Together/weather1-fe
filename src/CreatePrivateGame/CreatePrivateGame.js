@@ -54,8 +54,8 @@ const CreatePrivateGame = () => {
         throw new Error('Failed to fetch private round data');
       }
       const data = await response.json();
-      navigate(`../private-game-view/${user.id}/${data.id}`)
-      console.log('fetched data', data);
+      navigate(`../private-game-view/${user.id}/${data.data.id}`)
+      console.log('fetched data', data.data);
     }
     catch(error) {
         // Handle errors
