@@ -38,13 +38,11 @@ const Dashboard: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const navigate = useNavigate();
-
   useEffect(() => {
     if(!localStorage.getItem('User')){
       return navigate('../login')
     }
     const storedUser = JSON.parse(localStorage.getItem('User'))
-  
     const fetchRoundData = async () => {
       try {
         const response = await fetch(`https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${storedUser.id}/daily_stats`);
@@ -71,7 +69,6 @@ const Dashboard: React.FC = () => {
         setError(error.message);
       }
     };
-
     const fetchCustomData = async () => {
       console.log("Fetching custom data...");
       try {
@@ -86,7 +83,7 @@ const Dashboard: React.FC = () => {
         const gameNames = responseData.data.map((game: any) => game.attributes.game_name);
         
         setCustomGames({
-          names: gameNames, // Store game names in an array
+          names: gameNames // Store game names in an array
         
         });
     

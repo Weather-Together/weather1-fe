@@ -70,7 +70,6 @@ useEffect(() => {
   document.body.className = theme + '-theme';
 }, [theme]);
 
-
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
     <UserContext.Provider value={userValue}>
