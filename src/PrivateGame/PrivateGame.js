@@ -16,7 +16,7 @@ function PrivateGame() {
 
     const fetchRoundData = async () => {
       try {
-        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${storedUser.id}/games/${game_id}/current_round`);
+        const response = await fetch(`https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${storedUser.id}/games/${game_id}/current_round`);
         if (!response.ok) {
           throw new Error('Failed to fetch private round data');
         }
@@ -41,7 +41,7 @@ function PrivateGame() {
   const handleSubmit = async () => {
     if (location) {
       try {
-        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${id}/games/${game_id}/vote`, {
+        const response = await fetch(`https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${id}/games/${game_id}/vote`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json', 

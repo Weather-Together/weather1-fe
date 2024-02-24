@@ -2,17 +2,17 @@
 //DASHBOARD COMPONENT
 describe('Dashboard Component', () => {
     beforeEach(() => {
-      cy.intercept("GET", `https://weather-together-be.onrender.com/api/v0/users/*/daily_stats`, {
+      cy.intercept("GET", `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/*/daily_stats`, {
         statusCode: 200,
         fixture: 'dailyGameStatsGet.json'
       }).as("getDailyStats");
 
-      cy.intercept("GET", `https://weather-together-be.onrender.com/api/v0/users/*/competitive_stats`, {
+      cy.intercept("GET", `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/*/competitive_stats`, {
         statusCode: 200,
         fixture: 'competitiveStatsGet.json'
       }).as("getCompetitiveStats");
 
-      cy.intercept("GET", `https://weather-together-be.onrender.com/api/v0/users/*/games`, {
+      cy.intercept("GET", `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/*/games`, {
         statusCode: 200,
         fixture: 'customGamesGet.json'
       }).as("getCustomGames");

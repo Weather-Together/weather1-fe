@@ -11,7 +11,7 @@ const PrivateGameView = () => {
     useEffect(() => {
         const handleSendInvite = async () => {
             try {
-                const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${id}/games/${game_id}`)
+                const response = await fetch(`https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${id}/games/${game_id}`)
 
                 if (!response.ok) { throw new Error("Failed to fetch data") }
                 const data = await response.json()
@@ -33,7 +33,7 @@ const PrivateGameView = () => {
             const newInvites = {
                 invitees: [inviteEmail]
             };
-            const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${id}/games/${game_id}/invite`, {
+            const response = await fetch(`https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${id}/games/${game_id}/invite`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
