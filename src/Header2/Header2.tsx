@@ -28,7 +28,7 @@ const Header2: React.FC = () => {
       <div className="nav-container">
         <div className="username-container">
           <h1 className="username">
-            Welcome {storedUser.attributes.username}!
+            Welcome {storedUser?.attributes.username}!
           </h1>
         </div>
         <Link to="/dashboard" className="nav-item">
