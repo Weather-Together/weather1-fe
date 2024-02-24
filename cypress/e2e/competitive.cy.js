@@ -1,7 +1,7 @@
 //COMPETITIVE GAME GET ON MOUNT
 describe('CompetitiveGame Component', () => {
     beforeEach(() => {
-      cy.intercept("GET", `https://weather-together-be.onrender.com/api/v0/rounds/current_competitive_round`, {
+      cy.intercept("GET", `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/rounds/current_competitive_round`, {
         statusCode: 200,
         fixture: 'competitiveGameGet.json'
       }).as("getCompetitiveGame");
@@ -31,7 +31,7 @@ describe('CompetitiveGame Component', () => {
 describe('CompetitiveGame Component - POST Submission', () => {
     beforeEach(() => {
       // Mock GET request for initial game data
-      cy.intercept('GET', `https://weather-together-be.onrender.com/api/v0/rounds/current_competitive_round`, {
+      cy.intercept('GET', `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/rounds/current_competitive_round`, {
         fixture: 'competitiveGameGet.json'
       }).as('competitiveGet');
   
@@ -45,7 +45,7 @@ describe('CompetitiveGame Component - POST Submission', () => {
   
     it('submits user-selected coordinates and validates the mock response', () => {
       // Intercept the POST request for submitting a guess
-      cy.intercept('POST', `https://weather-together-be.onrender.com/api/v0/users/*/rounds/*/votes/new`, {
+      cy.intercept('POST', `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/*/rounds/*/votes/new`, {
         fixture: 'competitiveGamePost.json'
       }).as('postGuess');
   

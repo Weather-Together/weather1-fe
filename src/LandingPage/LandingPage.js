@@ -13,7 +13,7 @@ function LandingPage() {
     if(id && token) {
     const verifyUser = async () => {
       try{
-      const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${id}/verify_account/${token}`);
+      const response = await fetch(`https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${id}/verify_account/${token}`);
        if(!response.ok) {
            const error = await response.json();
            console.log(error);

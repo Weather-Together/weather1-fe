@@ -47,7 +47,7 @@ const Dashboard: React.FC = () => {
   
     const fetchRoundData = async () => {
       try {
-        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${storedUser.id}/daily_stats`);
+        const response = await fetch(`https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${storedUser.id}/daily_stats`);
         if (!response.ok) {
           throw new Error('Failed to fetch daily round data');
         }
@@ -75,7 +75,7 @@ const Dashboard: React.FC = () => {
     const fetchCustomData = async () => {
       console.log("Fetching custom data...");
       try {
-        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${storedUser.id}/games`);
+        const response = await fetch(`https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${storedUser.id}/games`);
         if (!response.ok) {
           throw new Error('Failed to fetch daily round data');
         }
@@ -101,7 +101,7 @@ const Dashboard: React.FC = () => {
 
     const fetchCompetitiveData = async () => {
       try {
-        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${storedUser.id}/competitive_stats`);
+        const response = await fetch(`https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${storedUser.id}/competitive_stats`);
         if (!response.ok) {
           throw new Error('Failed to fetch competitive stats data');
         }

@@ -12,7 +12,7 @@
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 Cypress.Commands.add('mockLoginSuccess', () => {
-  cy.intercept("POST", "https://weather-together-be.onrender.com/api/v0/users/login",{
+  cy.intercept("POST", "https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/login",{
   statusCode: 201,
   header: { 'Content-type': 'application/json', 'ACCEPT': 'application/json'},
   body: {
@@ -23,7 +23,7 @@ Cypress.Commands.add('mockLoginSuccess', () => {
 })
 
 Cypress.Commands.add('mockUserCreationSuccess', () => {
-  cy.intercept("POST", "https://weather-together-be.onrender.com/api/v0/users/", {
+  cy.intercept("POST", "https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/", {
     statusCode:201,
     header: { 'Content-type': 'application/json', 'ACCEPT': 'application/json'},
     body: {
@@ -36,14 +36,14 @@ Cypress.Commands.add('mockUserCreationSuccess', () => {
 })
 
 Cypress.Commands.add('mockLoginFail', () => {
-  cy.intercept("POST", "https://weather-together-be.onrender.com/api/v0/users/login",{
+  cy.intercept("POST", "https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/login",{
     statusCode: 401,
     body: {errors:[{detail:'Invalid Username or Password'}]}
   })
 })
 
 Cypress.Commands.add('mockLoginEmailFail', () => {
-  cy.intercept("POST", "https://weather-together-be.onrender.com/api/v0/users/login",{
+  cy.intercept("POST", "https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/login",{
     statusCode: 401,
     body: {errors:[{detail:'User must verify email'}]}
   })

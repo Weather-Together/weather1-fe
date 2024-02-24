@@ -25,7 +25,7 @@ const CompetitiveGame = () => {
     if(storedUser) {setUser(storedUser)};
     const fetchRoundData = async () => {
       try {
-        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/rounds/current_competitive_round`);
+        const response = await fetch(`https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/rounds/current_competitive_round`);
         if (!response.ok) {
           throw new Error('Failed to fetch competitive round data');
         }
@@ -57,7 +57,7 @@ const CompetitiveGame = () => {
   const handleSubmit = async () => {
     if (location) {
       try {
-        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/rounds/${round}/votes/new`, {
+        const response = await fetch(`https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${user.id}/rounds/${round}/votes/new`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
