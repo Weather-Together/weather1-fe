@@ -11,7 +11,7 @@ const Header2: React.FC = () => {
     localStorage.removeItem("User");
     navigate("../login");
   };
-  const storedUser = JSON.parse(localStorage.getItem("User"));
+  const storedUser = JSON.parse(localStorage.getItem("User") || "{}");
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light"); // Toggle theme
   };
@@ -28,7 +28,7 @@ const Header2: React.FC = () => {
       <div className="nav-container">
         <div className="username-container">
           <h1 className="username">
-            Welcome {storedUser?.attributes.username}!
+            Welcome {storedUser.attributes ? storedUser.attributes.username : "Guest"}!
           </h1>
         </div>
         <Link to="/dashboard" className="nav-item">
