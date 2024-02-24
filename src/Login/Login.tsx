@@ -8,7 +8,7 @@ import { Player } from '@lottiefiles/react-lottie-player'; // Import the Lottie 
 
 
 const Login: React.FC = () => {
-    const [userName, setUsername] = useState<string | null> ('');
+    const [email, setEmail] = useState<string | null> ('');
     const [password, setPassword] = useState<string | null>('');
     const [loginFail, setLoginFail] = useState<boolean>(false);
     const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -27,7 +27,7 @@ const Login: React.FC = () => {
         event.preventDefault();
         setIsLoading(true); // Set isLoading
         const loginData = {
-            email: userName,
+            email: email,
             password: password
         };
         try{
@@ -70,9 +70,9 @@ const Login: React.FC = () => {
             <div className="login-content">
                 <form className="login-form">
                     <img className='weather-logo'src={logo} alt="Logo" width="80" height="80" style={{ "paddingBottom" : "5px"}}></img>
-                    <label htmlFor="username">Username:</label>
-                    <input className="username" type="text" value={userName} id="username"
-                    onChange={(e) => setUsername(e.target.value)}></input>
+                    <label htmlFor="email">Email Address:</label>
+                    <input className="email" type="text" value={email} id="email"
+                    onChange={(e) => setEmail(e.target.value)}></input>
                     <label htmlFor="passwordInput" >Password:</label>
                     <input className="password" type={!showPassword ? "password" : "text"} id="passwordInput" 
                     value={password}
