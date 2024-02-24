@@ -11,7 +11,7 @@ describe('Should display Login page with Nav and input fields', () => {
     })
 
     it('Should display login fixture', () => {
-        cy.get('.login-form').should('contain', 'Username:')
+        cy.get('.login-form').should('contain', 'Email Address:')
           .get('.login-form').should('contain', 'Password:')
           .get('.login-form').should('contain', 'Login')
           .get('.login-form').should('contain', 'Show Password')
@@ -20,8 +20,8 @@ describe('Should display Login page with Nav and input fields', () => {
     })
     
     it('should be able to input values', () => {
-        cy.get('.username').type('TestUser')
-        cy.get('.username').should('have.value', 'TestUser')
+        cy.get('.email').type('TestUser')
+        cy.get('.email').should('have.value', 'TestUser')
         cy.get('.password').type('TestPass')
         cy.get('.password').should('have.value', 'TestPass')
         cy.get('.password').should('have.attr', 'type', 'password')
@@ -38,7 +38,7 @@ describe('Should display Login page with Nav and input fields', () => {
 
     it('should login a user', () => {
         cy.mockLoginSuccess();
-        cy.get('.username').type('user1@gmail.com')
+        cy.get('.email').type('user1@gmail.com')
         cy.get('.password').type('password1')
         cy.get('.login-button').click()
         cy.url().should('include', 'http://localhost:3000/#/daily-game')
@@ -47,7 +47,7 @@ describe('Should display Login page with Nav and input fields', () => {
 
     it('should update DOM if login fails due to incorrect info', () => {
         cy.mockLoginFail()
-        cy.get('.username').type('fakeUser')
+        cy.get('.email').type('fakeUser')
         cy.get('.password').type('password1')
         cy.get('.login-button').click()
         cy.get('.password').should('have.value', '')
@@ -57,7 +57,7 @@ describe('Should display Login page with Nav and input fields', () => {
 
     it('should update DOM if login fails due to email verification', () => {
         cy.mockLoginEmailFail()
-        cy.get('.username').type('user6@gmail.com')
+        cy.get('.email').type('user6@gmail.com')
         cy.get('.password').type('password6')
         cy.get('.login-button').click()
         cy.get('.password').should('have.value', '')
