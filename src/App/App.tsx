@@ -76,7 +76,7 @@ function App() {
     let isMounted = true;
     const user = localStorage.getItem("User");
     if (user && isMounted) {
-      navigate("../dashboard");
+      navigate("/dashboard");
     }
     return () => {
       isMounted = false;
