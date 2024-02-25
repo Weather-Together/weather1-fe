@@ -70,9 +70,8 @@ function App() {
   useEffect(() => {
     document.body.className = theme + "-theme";
   }, [theme]);
-  
-  // eslint-disable-next-line react-hooks/exhaustive-deps
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     let isMounted = true;
     const user = localStorage.getItem("User");
