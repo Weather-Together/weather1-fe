@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Map from "../Map/Map";
 import "./Competitive.css";
 import Header2 from "../Header2/Header2";
-import { Navigate } from "react-router-dom";
 
 const CompetitiveGame = () => {
   const [user, setUser] = useState(null);
