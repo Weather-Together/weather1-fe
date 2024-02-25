@@ -30,7 +30,7 @@ header h1 {
 }
 
 .nav-item {
-  margin-right: 20px;
+  margin-right: 5px;
   text-decoration: none;
   color: var(--text-color);
   padding: 0.5rem 0.75rem;
@@ -52,6 +52,10 @@ header h1 {
   display: flex;
   justify-content: center;
   width: 55vw;
+}
+
+.username-container > .username {
+  font-size: 1.8em;
 }
 
 /* Media query for screens with a max-width of 480px */

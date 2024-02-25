@@ -50,7 +50,7 @@ const DailyGame: React.FC = () => {
     if(storedUser) {setUser(storedUser)};
     const fetchRoundData = async () => {
       try {
-        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${storedUser.id}/rounds/current_daily_round`);
+        const response = await fetch(`https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${storedUser.id}/rounds/current_daily_round`);
         if (!response.ok) {
           throw new Error('Failed to fetch daily round data');
         }
@@ -80,7 +80,7 @@ const DailyGame: React.FC = () => {
   const handleSubmit = async () => {
     if (location) {
       try {
-        const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/rounds/current_daily_round/vote`, {
+        const response = await fetch(`https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${user.id}/rounds/current_daily_round/vote`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

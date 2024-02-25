@@ -62,7 +62,7 @@ const NewUser: React.FC = () => {
         }
         if(validateEmail(email)  && validateUsername(userName) && validatePassword(password, confirmPassword)){
             try {
-                const response = await fetch("https://weather-together-be.onrender.com/api/v0/users/", 
+                const response = await fetch("https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/", 
                 {
                 method:'POST',
                 headers: { 'Content-Type': 'application/json', 'ACCEPT' : 'application/json'},
