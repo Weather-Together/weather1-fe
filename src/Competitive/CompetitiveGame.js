@@ -18,12 +18,10 @@ const CompetitiveGame = () => {
   };
 
   useEffect(() => {
-    // Function to fetch the current competitive round data
     const storedUser = JSON.parse(localStorage.getItem("User"));
     if (storedUser) {
       setUser(storedUser);
     }
-    
     const fetchRoundData = async () => {
       try {
         const response = await fetch(
@@ -58,6 +56,7 @@ const CompetitiveGame = () => {
   // console.log('Fetching with user ID:', user.id, 'and round:', round);
 
   const handleSubmit = async () => {
+    console.log(user)
     if (location) {
       try {
         const response = await fetch(
