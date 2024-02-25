@@ -8,13 +8,14 @@ const Header2: React.FC = () => {
   const { theme, setTheme } = useContext(ThemeContext); // Destructure theme and setTheme from the context
 
   const handleLogout = () => {
-    localStorage.removeItem("User");
+    localStorage.clear();
     navigate("../login");
   };
   const storedUser = JSON.parse(localStorage.getItem("User") || "{}");
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light"); // Toggle theme
   };
+
 
   return (
     <header>
