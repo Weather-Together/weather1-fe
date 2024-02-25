@@ -74,12 +74,12 @@ function App() {
     let isMounted = true;
     const user = localStorage.getItem("User");
     if (user && isMounted) {
-      navigate("../daily-game");
+      navigate("../dashboard");
     }
     return () => {
       isMounted = false;
     };
-  }, [navigate]);
+  }, []);
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <UserContext.Provider value={userValue}>
