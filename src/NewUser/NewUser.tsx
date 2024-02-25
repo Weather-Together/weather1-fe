@@ -15,6 +15,7 @@ const NewUser: React.FC = () => {
     const [isValidEmail, setIsValidEmail] = useState<boolean>(true);
     const [isValidUserName, setIsValidUserName] = useState<boolean>(true);
     const [error, setError] = useState<any | null>(null);
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const navigate = useNavigate();
 
     const validatePassword = (pass1, pass2) => {
@@ -72,9 +73,11 @@ const NewUser: React.FC = () => {
                     const error = await response.json()
                     console.log(error);
                     return setError(error.errors[0].detail);
+                } else {
+                    setSuccessMessage("Registration successful! Please check your email for a verification link.");
+                    setTimeout(() => navigate('../login'), 3000);
                 }
                 const result = await response.json();
-                navigate('../login');
                 console.log("Result: ", result);
 
             } 
@@ -93,7 +96,6 @@ const NewUser: React.FC = () => {
                 loop={true}
                  autoplay={true}
                 />
-
             <div className="newuser-content">
                 <form className="newuser-form">
                     <img src={logo} alt="Logo" width="80" height="80" style={{ "paddingBottom" : "5px"}}></img>
@@ -119,6 +121,7 @@ const NewUser: React.FC = () => {
                     {!matchPassword ? "Passwords don't match" : ''}</label>
                     <p>{error ? `${error}` : ''}</p>
                     <button className="create-account"onClick={handleCreate}>Create Account</button>
+                    {successMessage && <div><p className="success-message">{successMessage}</p></div>}
                 </form>
             </div>
 

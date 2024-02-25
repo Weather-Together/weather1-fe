@@ -24,3 +24,8 @@
     align-items: center;
     flex-direction: column;
 }
+
+.success-message {
+    color: green;
+    font-size: 10px;
+}
