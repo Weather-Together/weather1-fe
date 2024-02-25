@@ -16,6 +16,7 @@ const Header2: React.FC = () => {
     setTheme(theme === "light" ? "dark" : "light"); // Toggle theme
   };
 
+
   return (
     <header>
       <Link

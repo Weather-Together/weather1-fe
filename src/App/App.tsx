@@ -12,7 +12,6 @@ import PrivateGame from "../PrivateGame/PrivateGame";
 import CreatePrivateGame from "../CreatePrivateGame/CreatePrivateGame";
 import NotFound from "../NotFound/NotFound";
 import { Routes, Route } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import PrivateGameView from "../Private/PrivateGameView";
 
 const mockUser = {
@@ -57,7 +56,6 @@ export const ThemeContext = createContext<ThemeContextType>({
 });
 
 function App() {
-  const navigate = useNavigate();
   // Correcting the useState with the mockUser
   const [user, setUser] = useState<User>(mockUser as User);
 
@@ -66,22 +64,22 @@ function App() {
   const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   // Theme state and other states remain unchanged
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      localStorage.clear(); // This clears everything in local storage
+    };
+  
+    window.addEventListener('beforeunload', handleBeforeUnload);
+  
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
 
   useEffect(() => {
     document.body.className = theme + "-theme";
   }, [theme]);
 
-// eslint-disable-next-line react-hooks/exhaustive-deps
-useEffect(() => {
-  let isMounted = true;
-  const user = localStorage.getItem("User");
-  if (user && isMounted) {
-    navigate("/dashboard");
-  }
-  return () => {
-    isMounted = false;
-  };
-}, []); // Intentionally leaving out 'navigate' to only run on initial mount
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
