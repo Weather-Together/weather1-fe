@@ -71,17 +71,18 @@ function App() {
     document.body.className = theme + "-theme";
   }, [theme]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    let isMounted = true;
-    const user = localStorage.getItem("User");
-    if (user && isMounted) {
-      navigate("/dashboard");
-    }
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+// eslint-disable-next-line react-hooks/exhaustive-deps
+useEffect(() => {
+  let isMounted = true;
+  const user = localStorage.getItem("User");
+  if (user && isMounted) {
+    navigate("/dashboard");
+  }
+  return () => {
+    isMounted = false;
+  };
+}, []); // Intentionally leaving out 'navigate' to only run on initial mount
+
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <UserContext.Provider value={userValue}>
