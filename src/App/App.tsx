@@ -1,17 +1,17 @@
-import React, { useState, createContext, useMemo, useEffect } from 'react';
-import './App.css';
-import Login from '../Login/Login';
-import LandingPage from '../LandingPage/LandingPage'
-import DailyGame from '../DailyGame/DailyGame';
-import NewUser from '../NewUser/NewUser';
-import Profile from '../Profile/Profile';
-import Dashboard from '../Dashboard/Dashboard'
-import CompetitiveGame from '../Competitive/CompetitiveGame';
-import Footer from '../Footer/Footer';
-import PrivateGame from '../PrivateGame/PrivateGame';
-import CreatePrivateGame from '../CreatePrivateGame/CreatePrivateGame';
-import NotFound from '../NotFound/NotFound';
-import { Routes, Route } from 'react-router-dom';
+import React, { useState, createContext, useMemo, useEffect } from "react";
+import "./App.css";
+import Login from "../Login/Login";
+import LandingPage from "../LandingPage/LandingPage";
+import DailyGame from "../DailyGame/DailyGame";
+import NewUser from "../NewUser/NewUser";
+import Profile from "../Profile/Profile";
+import Dashboard from "../Dashboard/Dashboard";
+import CompetitiveGame from "../Competitive/CompetitiveGame";
+import Footer from "../Footer/Footer";
+import PrivateGame from "../PrivateGame/PrivateGame";
+import CreatePrivateGame from "../CreatePrivateGame/CreatePrivateGame";
+import NotFound from "../NotFound/NotFound";
+import { Routes, Route } from "react-router-dom";
 import PrivateGameView from "../Private/PrivateGameView";
 
 
@@ -55,8 +55,6 @@ export const ThemeContext = createContext<ThemeContextType>({ theme: 'light', se
 
 
 function App() {
-
-
   // Correcting the useState with the mockUser
   const [user, setUser] = useState<User>(mockUser as User);
 
@@ -70,6 +68,10 @@ useEffect(() => {
   document.body.className = theme + '-theme';
 }, [theme]);
 
+  useEffect(() => {
+    document.body.className = theme + "-theme";
+  }, [theme]);
+ 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
     <UserContext.Provider value={userValue}>

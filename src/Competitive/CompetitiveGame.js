@@ -22,6 +22,7 @@ const CompetitiveGame = () => {
   useEffect(() => {
     // Function to fetch the current competitive round data
     const storedUser = JSON.parse(localStorage.getItem('User'))
+    console.log(storedUser)
     if(storedUser) {setUser(storedUser)};
     const fetchRoundData = async () => {
       try {
@@ -55,6 +56,7 @@ const CompetitiveGame = () => {
   // console.log('Fetching with user ID:', user.id, 'and round:', round);
 
   const handleSubmit = async () => {
+    console.log(user)
     if (location) {
       try {
         const response = await fetch(`https://weather-together-be.onrender.com/api/v0/users/${user.id}/rounds/${round}/votes/new`, {
