@@ -75,7 +75,7 @@ const NewUser: React.FC = () => {
                     return setError(error.errors[0].detail);
                 } else {
                     setSuccessMessage("Registration successful! Please check your email for a verification link.");
-                    setTimeout(() => navigate('../login'), 5000);
+                    setTimeout(() => navigate('../login'), 3000);
                 }
                 const result = await response.json();
                 console.log("Result: ", result);
