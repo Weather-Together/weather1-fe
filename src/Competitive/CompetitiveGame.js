@@ -23,31 +23,34 @@ const CompetitiveGame = () => {
       setUser(storedUser);
     }
     const fetchRoundData = async () => {
-      try {
-        const response = await fetch(
-          `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/rounds/current_competitive_round`
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch competitive round data");
+      if(!localStorage.getItem("CompetitiveRoundData")) {
+        try {
+          const response = await fetch(
+            `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/rounds/current_competitive_round`
+          );
+          if (!response.ok) {
+            throw new Error("Failed to fetch competitive round data");
+          }
+          const data = await response.json();
+          setRound(data.data.id);
+          const competitiveRoundData = {
+            maxtemp: data.data.attributes.maxtemp_f,
+            mintemp: data.data.attributes.mintemp_f,
+            maxwind: data.data.attributes.maxwind_mph,
+            avghumidity: data.data.attributes.avghumidity,
+            totalprecip: data.data.attributes.totalprecip_in,
+          };
+          setRoundLocation({
+            location_name: data.data.attributes.location_name,
+            country: data.data.attributes.country,
+          });
+          localStorage.setItem("CompetitiveRoundData", JSON.stringify(competitiveRoundData))
+          console.log("Fetched round data:", data);
+        } catch (error) {
+          console.error("Error fetching round data:", error);
         }
-        const data = await response.json();
-        setRound(data.data.id);
-        setRoundData({
-          maxtemp: data.data.attributes.maxtemp_f,
-          mintemp: data.data.attributes.mintemp_f,
-          maxwind: data.data.attributes.maxwind_mph,
-          avghumidity: data.data.attributes.avghumidity,
-          totalprecip: data.data.attributes.totalprecip_in,
-        });
-        setRoundLocation({
-          location_name: data.data.attributes.location_name,
-          country: data.data.attributes.country,
-        });
-
-        console.log("Fetched round data:", data);
-      } catch (error) {
-        console.error("Error fetching round data:", error);
       }
+      setRoundData(JSON.parse(localStorage.getItem("CompetitiveRoundData")))
     };
 
     fetchRoundData();

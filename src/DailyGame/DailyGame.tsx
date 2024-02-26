@@ -47,31 +47,39 @@ const DailyGame: React.FC = () => {
       return navigate('../login')
     }
     const storedUser = JSON.parse(localStorage.getItem('User'))
-    if(storedUser) {setUser(storedUser)};
+    if(storedUser) {
+      setUser(storedUser)
+    };
     const fetchRoundData = async () => {
-      try {
-        const response = await fetch(`https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${storedUser.id}/rounds/current_daily_round`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch daily round data');
+      if(!localStorage.getItem("DailyRoundData")) {
+        try {
+          const response = await fetch(`https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${storedUser.id}/rounds/current_daily_round`);
+          if (!response.ok) {
+            throw new Error('Failed to fetch daily round data');
+          }
+          const data = await response.json();
+
+          const dailyRoundData = {
+            maxtemp: data.data.attributes.maxtemp_f, 
+            mintemp: data.data.attributes.mintemp_f,
+            maxwind: data.data.attributes.maxwind_mph,
+            avghumidity: data.data.attributes.avghumidity,
+            totalprecip: data.data.attributes.totalprecip_in
+          };
+          localStorage.setItem("DailyRoundData", JSON.stringify(dailyRoundData));
+
+          setRoundLocation({
+            location_name: data.data.attributes.location_name,
+            country: data.data.attributes.country
+          })
+
+          console.log("fetched data", data)
+        } catch (error) {
+          console.error("Error fetching round data:", error);
         }
-        const data = await response.json();
-
-        setRoundData({
-          maxtemp: data.data.attributes.maxtemp_f, 
-          mintemp: data.data.attributes.mintemp_f,
-          maxwind: data.data.attributes.maxwind_mph,
-          avghumidity: data.data.attributes.avghumidity,
-          totalprecip: data.data.attributes.totalprecip_in
-        });
-        setRoundLocation({
-          location_name: data.data.attributes.location_name,
-          country: data.data.attributes.country
-        })
-
-        console.log("fetched data", data)
-      } catch (error) {
-        console.error("Error fetching round data:", error);
       }
+      console.log('TEST', localStorage.getItem("DailyRoundData"))
+      setRoundData(JSON.parse(localStorage.getItem("DailyRoundData")))
     };
 
     fetchRoundData();
