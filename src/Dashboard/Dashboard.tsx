@@ -111,7 +111,7 @@ const Dashboard: React.FC = () => {
 
           //format the scores in an array
           const top5scores = data.competitive_stats.top_5_competitive_users
-            .map(user => user.score.toFixed(2))
+            .map(user => Math.round(user.score))
             .join(", ");
 
             //an array of usernames
@@ -124,7 +124,7 @@ const Dashboard: React.FC = () => {
             top5score: top5scores,
             userRank: data.competitive_stats.user_competitive_rank,
             gameCount: data.competitive_stats.competitive_game_count,
-            avgCompScore: data.competitive_stats.average_score_in_competitive_games.toFixed(2),
+            avgCompScore: Math.round(data.competitive_stats.average_score_in_competitive_games.toString()),
           };
           localStorage.setItem('CompetitiveData', JSON.stringify(competitiveData))
           console.log("fetched competitive stats data", data);
@@ -139,7 +139,7 @@ const Dashboard: React.FC = () => {
     fetchCustomData();
     fetchCompetitiveData();
   }, [navigate]);
-
+  const storedUser = JSON.parse(localStorage.getItem('User'))
   return (
     <div className="dashboard-container">
       <Header2 />
@@ -149,18 +149,18 @@ const Dashboard: React.FC = () => {
 
       <div className="dashboard-content">
         <div className="user-stats">
-          <h3>User Stats</h3>
+          <h3>{storedUser.attributes.username}'s Daily Stats</h3>
           {dailyStatsData && (
             <>
-              <p>Total Games: {dailyStatsData.gameCount}</p>
-              <p>Avg. Score: {dailyStatsData.avgScore || 'N/A'}</p>
-              <p>Best Score: {dailyStatsData.bestScore || 'N/A'}</p> 
+              <p>Total Games: {Math.round(dailyStatsData.gameCount)}</p>
+              <p>Avg. Score: {Math.round(dailyStatsData.avgScore)|| 'N/A'}</p>
+              <p>Best Score: {Math.round(dailyStatsData.bestScore) || 'N/A'}</p> 
               <p>Date: {dailyStatsData.date}</p>
-              <p>Level 5: {dailyStatsData.level5}</p>
-              <p>Level 4: {dailyStatsData.level4}</p>
-              <p>Level 3: {dailyStatsData.level3}</p>
-              <p>Level 2: {dailyStatsData.level2}</p>
-              <p>Level 1: {dailyStatsData.level1}</p>
+              <p>Level 5: {Math.round(dailyStatsData.level5) || "N/A"}</p>
+              <p>Level 4: {Math.round(dailyStatsData.level4)  || "N/A"}</p>
+              <p>Level 3: {Math.round(dailyStatsData.level3)  || "N/A"}</p>
+              <p>Level 2: {Math.round(dailyStatsData.level2 ) || "N/A"}</p>
+              <p>Level 1: {Math.round(dailyStatsData.level1) || "N/A"}</p>
             </>
           )}
         </div>
