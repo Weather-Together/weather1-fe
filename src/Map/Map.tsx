@@ -3,6 +3,8 @@ import { MapContainer, TileLayer, Marker, useMapEvent } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import customMarkerIcon from '../Images/marker-icon.png';
+import leafIcon from '../Images/leaf-red.png';
+import leafShadow from '../Images/leaf-shadow.png';
 
 interface MapProps {
   onLocationSelect: (location: { lat: number; lng: number }) => void;
@@ -22,9 +24,14 @@ const Map: React.FC<MapProps> = ({ onLocationSelect }) => {
 const [markers, setMarkers] = useState<{ lat: number; lng: number }[]>([]);
 
 const customMarker = L.icon({
-  iconUrl: customMarkerIcon,
-  iconSize: [32, 32],
-  iconAnchor: [16, 32],
+  iconUrl: leafIcon,
+  shadowUrl: leafShadow,
+
+  iconSize:     [38, 95], // size of the icon
+  shadowSize:   [50, 64], // size of the shadow
+  iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+  shadowAnchor: [4, 62],  // the same for the shadow
+  popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
 const MapClickHandler: React.FC<MapProps> = ({ onLocationSelect }) => {
