@@ -1,7 +1,8 @@
-import React from 'react';
-import { MapContainer, TileLayer, useMapEvent } from 'react-leaflet';
+import React, { useState} from 'react';
+import { MapContainer, TileLayer, Marker, useMapEvent } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import customMarkerIcon from '../Images/marker-icon.png';
 
 interface MapProps {
   onLocationSelect: (location: { lat: number; lng: number }) => void;
@@ -18,12 +19,21 @@ const Map: React.FC<MapProps> = ({ onLocationSelect }) => {
     L.latLng(89.99346179538875, 180)
   );
 
+const [markers, setMarkers] = useState<{ lat: number; lng: number }[]>([]);
+
+const customMarker = L.icon({
+  iconUrl: customMarkerIcon,
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+});
 
 const MapClickHandler: React.FC<MapProps> = ({ onLocationSelect }) => {
   useMapEvent('click', (e) => {
     const { lat, lng } = e.latlng;
     alert(`Selected Location - Latitude: ${lat.toFixed(2)}, Longitude: ${lng.toFixed(2)}`);
     onLocationSelect({ lat, lng });
+    setMarkers([]);
+    setMarkers([{ lat, lng }]);
   });
 
   return null;
@@ -46,6 +56,13 @@ const MapClickHandler: React.FC<MapProps> = ({ onLocationSelect }) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <MapClickHandler onLocationSelect={onLocationSelect} />
+        {markers.map((marker, index) => (
+          <Marker 
+            key={index} 
+            position={[marker.lat, marker.lng]} 
+            icon={customMarker}
+          />
+        ))}
       </MapContainer>
     </div>
   );
