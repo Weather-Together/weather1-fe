@@ -2,7 +2,6 @@ import React, { useState} from 'react';
 import { MapContainer, TileLayer, Marker, useMapEvent } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import customMarkerIcon from '../Images/marker-icon.png';
 import leafIcon from '../Images/leaf-red.png';
 import leafShadow from '../Images/leaf-shadow.png';
 
