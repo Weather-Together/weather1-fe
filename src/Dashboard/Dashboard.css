@@ -146,13 +146,12 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       padding: 10px;
       align-items: center;
-      
-      
     }
-  
-    .dashboard-content {
-      order: 2;
-      margin-top: 20px;
-    }
+
+  .game-count-stats, .avg-best {
+    display: flex;
+    flex-direction: row;
+    margin-right: 20px;
+    font-size: 10px;
   }
-  
+}
