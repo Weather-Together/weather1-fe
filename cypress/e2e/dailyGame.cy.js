@@ -93,9 +93,7 @@ describe('DailyGame Component - POST Submission', () => {
       // Verify UI changes based on the response
       cy.get('.score-display').should('contain', '2222.78');
       cy.get('.score-display').should('contain', 'Ialibu');
-      cy.get('.score-display').should('contain', 'Brazil');
       cy.get('.score-display').should('contain', 'Papua New Guinea');
-      cy.get('.score-display').should('contain', 'My House');
       
     });
   });

@@ -14,6 +14,7 @@ html, body {
     padding-top: 60px; /* Adjust based on the height of the header */
 }
 
+
 .map-container {
     flex: 3;
     height: 100%;
@@ -27,9 +28,6 @@ html, body {
     overflow-y: auto;
     padding: 20px;
     background-color: #f9f9f91e;
-    
-  
-   
 }
 
 .weather-data-container, .location-display, .score-display {
@@ -55,6 +53,87 @@ html, body {
 .submit-button:hover {
     background-color: #0056b3; 
     transform: scale(1.05); /* Slightly enlarges the button on hover */
+}
+
+/* Scoring Modal */
+
+.modal-container {
+  display: flex;
+  align-items: center;
+}
+
+.score-modal {
+  z-index: 1000;
+  max-height: 600px;
+  max-width: 850px;
+  width: 100vh;
+  height: 70vh;
+  border-radius: 25px;
+  background-color: #BFDFFB;
+
+}
+
+.close-dialog {
+  display: flex;
+  justify-content: right;
+}
+
+.dialog-button {
+  cursor: pointer;
+  background-color: #007bff; 
+  border: none;
+  border-radius: 5px;
+  color: white; 
+}
+
+.filler {
+  height: 8%;
+}
+
+.score-logic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.info-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.location-img {
+  max-height: 200px;
+  max-width: 300px;
+}
+.scoring {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+  justify-content: space-around;
+}
+
+.modal-dashboard {
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-button {
+  background-color: #007bff; 
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: white; 
+}
+
+.dashboard-button:hover {
+  background-color: #0056b3; 
+  transform: scale(1.05); /* Slightly enlarges the button on hover */
 }
 
 
