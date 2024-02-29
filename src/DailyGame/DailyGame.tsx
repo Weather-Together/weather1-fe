@@ -32,6 +32,7 @@ const DailyGame: React.FC = () => {
   const [location, setLocation] = useState<ILocation | null>(null);
   const [roundData, setRoundData] = useState<RoundData | null>(null); // Store round data from API
   const [roundLocation, setRoundLocation] = useState<{location_name: string, country: string} | null>(null)
+  const [guessData, setGuessData] = useState<any | null>(null)
   const [score, setScore] = useState<number | null>(null);
   const [guessLocation, setGuessLocation] = useState<{location_name: string, country: string} | null>(null)
   const navigate = useNavigate();
@@ -105,6 +106,7 @@ const DailyGame: React.FC = () => {
         const result = await response.json();
         setScore(result.data.attributes.score); 
         console.log("score", result.data.attributes)
+        setGuessData(result.data.attributes)
         setGuessLocation({
           location_name: result.data.attributes.location_name,
           country:result.data.attributes.country})// Assuming the score is in this path
@@ -163,6 +165,67 @@ const DailyGame: React.FC = () => {
             </div>
           )}
         </div>
+        {guessLocation ? <dialog className='score-modal' open>
+            <form method='dialog'>
+              <button>X</button>
+            </form>
+            <div className='score-logic'>
+              <div className='scoring max-temp'>
+                <p>Max Temp:</p>
+                <p>{roundData.maxtemp} °F</p>
+                <p>-</p>
+                <p>{guessData.maxtemp_f} °F</p>
+                <p>=</p>
+                <p>{(roundData.maxtemp - guessData.maxtemp_f).toFixed(2)}²</p>
+              </div>
+              <div className='scoring min-temp'>
+                <p>Min Temp:</p>
+                <p>{roundData.mintemp} °F</p>
+                <p>-</p>
+                <p>{guessData.mintemp_f} °F</p>
+                <p>=</p>
+                <p>{(roundData.mintemp - guessData.mintemp_f).toFixed(2)}²</p>
+              </div>
+              <div className='scoring max-wind'>
+                <>Max Wind:</>
+                <p>{roundData.maxwind} MPH</p>
+                <p>-</p>
+                <p>{guessData.maxwind_mph} MPH</p>
+                <p>=</p>
+                <p>{(roundData.maxwind - guessData.maxwind_mph).toFixed(2)}²</p>
+              </div>
+              <div className='scoring avg-humidity'>
+                <p>Avg. Humidity:</p>
+                <p>{roundData.avghumidity}%</p>
+                <p>-</p>
+                <p>{guessData.avghumidity}%</p>
+                <p>=</p>
+                <p>{(roundData.avghumidity - guessData.avghumidity).toFixed(2)}²</p>
+              </div>
+              <div className='scoring total-precipitation'>
+                <p>Total Precip:</p>
+                <p>{roundData.totalprecip} in</p>
+                <p>-</p>
+                <p>{guessData.totalprecip_in} in</p>
+                <p>=</p>
+                <p>{(roundData.totalprecip - guessData.totalprecip_in).toFixed(2)}²</p>
+              </div>
+            </div>
+            <div className='filler'></div>
+            <div className='info-section'>
+              <div className='location-info'>
+                <h3>Your Guess: </h3>
+                <p>{guessLocation.location_name}, {guessLocation.country}</p>
+                <a href={guessData.wiki}>Wiki Page</a>
+              </div>
+              <img className='location-img' src={guessData.image} alt={`${guessLocation.location_name}`}></img>
+              <div className='score-total'>
+                <h3>Total Score: </h3>
+                <p>{score.toFixed(2)}</p>
+              </div>
+            </div>
+          </dialog> :
+          <p></p>}
       </div>
     </div>
   );
