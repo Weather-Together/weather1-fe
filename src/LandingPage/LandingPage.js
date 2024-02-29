@@ -33,7 +33,7 @@ function LandingPage() {
       <div className="landing-container">
         <Header />
         <div className="landing-content"> 
-          <img src={instructionImage} id="instructions"/>
+          <img src={instructionImage} alt="instructions" id="instructions"/>
         </div>
         
         {/* Eventually, you can add more content or components here */}
