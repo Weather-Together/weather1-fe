@@ -11,6 +11,5 @@ describe('App Component Tests', () => {
       cy.get('.landing-container').should('contain', 'Toggle Theme')
       cy.get('.landing-container').should('contain', 'New User');
       cy.get('h1').should('contain', 'WeatherTogether');
-      cy.get('.landing-content').should('contain', 'We should do something here so that people have some idea how to play this thing.');
     });
   });

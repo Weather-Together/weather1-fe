@@ -18,15 +18,18 @@
 
 
 .landing-content {
-    padding: 20px;
-    background-color: white;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     color: black;
     font-weight: bold; 
     text-align: center; /* Centers the text inside the .login-content */
 }
 
+
+#instructions {
+  width:60vh;
+  min-width:45vw;
+  margin-top: 30px;
+}
 
 
 /* Media query for screens up to 480px wide */

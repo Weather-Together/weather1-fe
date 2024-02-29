@@ -4,6 +4,8 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './LandingPage.css'
 import { Player } from '@lottiefiles/react-lottie-player'; // Import the Lottie Player
+import instructionImage from '../Images/instruction.png';
+
 
 function LandingPage() {
   const { id, token } = useParams();
@@ -30,7 +32,10 @@ function LandingPage() {
   return (
       <div className="landing-container">
         <Header />
-        <div className="landing-content">Instructions for the game!!!!!!  We should do something here so that people have some idea how to play this thing.  </div>
+        <div className="landing-content"> 
+          <img src={instructionImage} alt="instructions" id="instructions"/>
+        </div>
+        
         {/* Eventually, you can add more content or components here */}
 
         <Player
