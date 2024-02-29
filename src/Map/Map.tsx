@@ -11,8 +11,8 @@ interface MapProps {
 
 
 const Map: React.FC<MapProps> = ({ onLocationSelect }) => {
-  const initialCenter: L.LatLngExpression = [0, 0];
-  const initialZoom: number = 2;
+  const initialCenter: L.LatLngExpression = [38.8977, -77.0365];
+  const initialZoom: number = 6;
   const minZoom: number = 2.4;
   const maxZoom: number = 18;
   const bounds: L.LatLngBounds = L.latLngBounds(
@@ -36,7 +36,6 @@ const customMarker = L.icon({
 const MapClickHandler: React.FC<MapProps> = ({ onLocationSelect }) => {
   useMapEvent('click', (e) => {
     const { lat, lng } = e.latlng;
-    alert(`Selected Location - Latitude: ${lat.toFixed(2)}, Longitude: ${lng.toFixed(2)}`);
     onLocationSelect({ lat, lng });
     setMarkers([]);
     setMarkers([{ lat, lng }]);
