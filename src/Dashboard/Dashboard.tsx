@@ -40,7 +40,7 @@ const Dashboard: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const navigate = useNavigate();
-
+  const storedUser = JSON.parse(localStorage.getItem("User"));
   useEffect(() => {
     if (!localStorage.getItem("User")) {
       return navigate("../login");
@@ -151,7 +151,6 @@ const Dashboard: React.FC = () => {
     fetchCustomData();
     fetchCompetitiveData();
   }, [navigate]);
-  const storedUser = JSON.parse(localStorage.getItem("User"));
   const options: ChartOptions<"bar"> = {
     indexAxis: 'y',
     scales: {
@@ -193,7 +192,7 @@ const Dashboard: React.FC = () => {
         <div className="dashboard-content">
           <div className="user-stats">
             <div className="game-count-stats">
-            <h3 className="user-title">{storedUser.attributes.username}'s Daily Stats</h3>
+            <h3 className="user-title">{storedUser.attributes?.username}'s Daily Stats</h3>
             <p className="total-games">Games Played: {Math.round(dailyStatsData.gameCount)}</p>
             </div>
             <div className="chart-container">

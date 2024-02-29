@@ -1,9 +1,10 @@
 {
-  "id": "404",
-  "type": "user",
-  "attributes": {
-  "email": "user1@gmail.com",
-  "username": "username1",
-  "password": "password1"
+  "data": {
+      "id": "270",
+      "type": "user",
+      "attributes": {
+          "email": "user1@gmail.com",
+          "username": "username1"
+      }
   }
 }

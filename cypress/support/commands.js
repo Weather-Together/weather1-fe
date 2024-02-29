@@ -53,6 +53,7 @@ Cypress.Commands.add('logUserIn', () => {
   window.localStorage.setItem('User', JSON.stringify({
     data:{
        email: 'user1@gmail.com',
+       username: "estim8tedpropht",
        id: 460}
     }))
 })
