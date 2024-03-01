@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import logo from '../Images/logo_480.png';
 import './Login.css';
 import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import { Player } from '@lottiefiles/react-lottie-player'; // Import the Lottie Player
 
 

@@ -12,7 +12,6 @@ const Header2: React.FC = () => {
     localStorage.clear();
     navigate("../login");
   };
-  const storedUser = JSON.parse(localStorage.getItem("User") || "{}");
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light"); // Toggle theme
   };

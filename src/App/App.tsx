@@ -7,7 +7,6 @@ import NewUser from "../NewUser/NewUser";
 import Profile from "../Profile/Profile";
 import Dashboard from "../Dashboard/Dashboard";
 import CompetitiveGame from "../Competitive/CompetitiveGame";
-import Footer from "../Footer/Footer";
 import PrivateGame from "../PrivateGame/PrivateGame";
 import CreatePrivateGame from "../CreatePrivateGame/CreatePrivateGame";
 import NotFound from "../NotFound/NotFound";
