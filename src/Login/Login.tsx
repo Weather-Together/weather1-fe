@@ -93,8 +93,6 @@ const Login: React.FC = () => {
                 loop={true}
                  autoplay={true}
                 />
-
-            <Footer />
         </div>    
     );
 };

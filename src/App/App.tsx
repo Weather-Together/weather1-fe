@@ -110,7 +110,6 @@ function App() {
             />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <Footer />
         </div>
       </UserContext.Provider>
     </ThemeContext.Provider>

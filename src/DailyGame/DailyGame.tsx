@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Map from '../Map/Map';
 import { useNavigate } from 'react-router-dom';
 import './DailyGame.css';
+import Footer from '../Footer/Footer';
 import Header2 from '../Header2/Header2';
 import notFoundImage from '../Images/img-not-found.png';
 
@@ -245,6 +246,7 @@ const DailyGame: React.FC = () => {
           </div> :
           <p></p>}
       </div>
+      <Footer/>
     </div>
   );
   }
