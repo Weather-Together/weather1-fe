@@ -39,6 +39,10 @@ header {
   }
   
 
+  .grid-title {
+    display: grid;
+    grid-template-columns: 15% 85%;
+  }
   
 
 /* Footer */

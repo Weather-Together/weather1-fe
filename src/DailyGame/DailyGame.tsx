@@ -3,6 +3,7 @@ import Map from '../Map/Map';
 import { useNavigate } from 'react-router-dom';
 import './DailyGame.css';
 import Header2 from '../Header2/Header2';
+import notFoundImage from '../Images/img-not-found.png';
 
 interface RoundData {
   maxtemp: number;
@@ -36,6 +37,7 @@ const DailyGame: React.FC = () => {
   const [guessImage, setGuessImage] = useState<any | null>(null)
   const [score, setScore] = useState<number | null>(null);
   const [guessLocation, setGuessLocation] = useState<{location_name: string, country: string} | null>(null)
+  const [showModal, setShowModal] = useState(false)
   const navigate = useNavigate();
 
 // Define the function to handle location selection
@@ -112,6 +114,7 @@ const DailyGame: React.FC = () => {
         setGuessLocation({
           location_name: result.data.attributes.location_name,
           country:result.data.attributes.country})// Assuming the score is in this path
+        setShowModal(true);
       } catch (error) {
         console.error("Error submitting guess:", error);
       }
@@ -120,9 +123,13 @@ const DailyGame: React.FC = () => {
     }
   };
 
-const toDashboard = () => {
-  navigate('../dashboard')
-}
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const toDashboard = () => {
+    navigate('../dashboard')
+  }
 
   return (
     <div>
@@ -172,7 +179,7 @@ const toDashboard = () => {
           )}
         </div>
         {guessLocation ? <div className='modal-container'>
-          <dialog className='score-modal' open>
+          <dialog className='score-modal' open={showModal} onClose={handleCloseModal}>
             <form className='close-dialog' method='dialog'>
               <button className='dialog-button'>X</button>
             </form>
@@ -225,14 +232,14 @@ const toDashboard = () => {
                 <p>{guessLocation.location_name}, {guessLocation.country}</p>
                 <a href={guessData.wiki}>Wiki Page</a>
               </div>
-              <img className='location-img' src={guessImage[0]} alt={`${guessLocation.location_name}`} style={{ border: '1px solid black' }}></img>
+              <img className='location-img' src={guessImage ? guessImage[0] : notFoundImage} alt={`${guessLocation.location_name}`} style={{ border: '1px solid black' }}></img>
               <div className='score-total'>
                 <h3>Total Score: </h3>
                 <p>{score.toFixed(2)}</p>
               </div>
             </div>
             <div className='modal-dashboard'>
-            <button onClick={toDashboard} className='dashboard-button'>Dasboard</button>
+            <button onClick={toDashboard} className='dashboard-button'>Dashboard</button>
             </div>
           </dialog>
           </div> :
