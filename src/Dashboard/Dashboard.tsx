@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 // import { UserContext } from '../App/App'; 
 import './Dashboard.css';
+import Footer from "../Footer/Footer"
 
 interface dailyStats {
   gameCount: number;
@@ -139,7 +140,6 @@ const Dashboard: React.FC = () => {
     fetchCustomData();
     fetchCompetitiveData();
   }, [navigate]);
-
   return (
     <div className="dashboard-container">
       <Header2 />
@@ -204,6 +204,7 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
       {error && <h2>Something happened with getting all of the data.</h2> }
+      <Footer/>
     </div>
   );
 }
