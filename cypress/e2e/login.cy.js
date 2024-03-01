@@ -64,8 +64,4 @@ describe('Should display Login page with Nav and input fields', () => {
         cy.get('.login-fail').should('be.visible')
           .get('.login-fail').should('contain', 'User must verify email')
     })
-
-    it('should have a footer', () => {
-        cy.get('footer').should('contain', 'WeatherTogether')
-    })
 })

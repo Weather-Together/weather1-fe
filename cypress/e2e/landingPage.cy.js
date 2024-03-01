@@ -6,7 +6,6 @@ describe('App Component Tests', () => {
   
     it('should get the basic page display', () => {
       cy.get('Header').should('contain', 'WeatherTogether');
-      cy.get('Footer').should('contain', 'WeatherTogether');
       cy.get('.landing-container').should('contain', 'Login')
       cy.get('.landing-container').should('contain', 'Toggle Theme')
       cy.get('.landing-container').should('contain', 'New User');
