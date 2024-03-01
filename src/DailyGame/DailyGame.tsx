@@ -36,6 +36,7 @@ const DailyGame: React.FC = () => {
   const [guessImage, setGuessImage] = useState<any | null>(null)
   const [score, setScore] = useState<number | null>(null);
   const [guessLocation, setGuessLocation] = useState<{location_name: string, country: string} | null>(null)
+  const [showModal, setShowModal] = useState(false)
   const navigate = useNavigate();
 
 // Define the function to handle location selection
@@ -112,6 +113,7 @@ const DailyGame: React.FC = () => {
         setGuessLocation({
           location_name: result.data.attributes.location_name,
           country:result.data.attributes.country})// Assuming the score is in this path
+        setShowModal(true);
       } catch (error) {
         console.error("Error submitting guess:", error);
       }
@@ -120,9 +122,13 @@ const DailyGame: React.FC = () => {
     }
   };
 
-const toDashboard = () => {
-  navigate('../dashboard')
-}
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const toDashboard = () => {
+    navigate('../dashboard')
+  }
 
   return (
     <div>
@@ -172,7 +178,7 @@ const toDashboard = () => {
           )}
         </div>
         {guessLocation ? <div className='modal-container'>
-          <dialog className='score-modal' open>
+          <dialog className='score-modal' open={showModal} onClose={handleCloseModal}>
             <form className='close-dialog' method='dialog'>
               <button className='dialog-button'>X</button>
             </form>
@@ -232,7 +238,7 @@ const toDashboard = () => {
               </div>
             </div>
             <div className='modal-dashboard'>
-            <button onClick={toDashboard} className='dashboard-button'>Dasboard</button>
+            <button onClick={toDashboard} className='dashboard-button'>Dashboard</button>
             </div>
           </dialog>
           </div> :
