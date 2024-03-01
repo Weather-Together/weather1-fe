@@ -3,6 +3,7 @@ import Map from '../Map/Map';
 import { useNavigate } from 'react-router-dom';
 import './DailyGame.css';
 import Header2 from '../Header2/Header2';
+import notFoundImage from '../Images/img-not-found.png';
 
 interface RoundData {
   maxtemp: number;
@@ -231,7 +232,7 @@ const DailyGame: React.FC = () => {
                 <p>{guessLocation.location_name}, {guessLocation.country}</p>
                 <a href={guessData.wiki}>Wiki Page</a>
               </div>
-              <img className='location-img' src={guessImage[0]} alt={`${guessLocation.location_name}`} style={{ border: '1px solid black' }}></img>
+              <img className='location-img' src={guessImage ? guessImage[0] : notFoundImage} alt={`${guessLocation.location_name}`} style={{ border: '1px solid black' }}></img>
               <div className='score-total'>
                 <h3>Total Score: </h3>
                 <p>{score.toFixed(2)}</p>
