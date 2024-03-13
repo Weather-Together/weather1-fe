@@ -155,4 +155,10 @@
       margin-top: 20px;
     }
   }
+
+  .bar {
+    width: calc(var(--variable-width) + 20px);
+    height: 10vh;
+    color: red;
+  }
   

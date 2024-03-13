@@ -156,11 +156,11 @@ const Dashboard: React.FC = () => {
               <p>Avg. Score: {dailyStatsData.avgScore || 'N/A'}</p>
               <p>Best Score: {dailyStatsData.bestScore || 'N/A'}</p> 
               <p>Date: {dailyStatsData.date}</p>
-              <p>Level 5: {dailyStatsData.level5}</p>
-              <p>Level 4: {dailyStatsData.level4}</p>
-              <p>Level 3: {dailyStatsData.level3}</p>
-              <p>Level 2: {dailyStatsData.level2}</p>
-              <p>Level 1: {dailyStatsData.level1}</p>
+              <div className='bar'><p>Level 5: {dailyStatsData.level5}</p></div>
+              <div className='bar'><p>Level 4: {dailyStatsData.level4}</p></div>
+              <div className='bar'><p>Level 3: {dailyStatsData.level3}</p></div>
+             <div className='bar'><p>Level 2: {dailyStatsData.level2}</p></div>
+            <div className='bar'><p>Level 1: {dailyStatsData.level1}</p></div>
             </>
           )}
         </div>
