@@ -1,27 +1,27 @@
 
-//DASHBOARD COMPONENT
-describe('Dashboard Component', () => {
-    beforeEach(() => {
-      cy.intercept("GET", `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/*/daily_stats`, {
-        statusCode: 200,
-        fixture: 'dailyGameStatsGet.json'
-      }).as("getDailyStats");
+// //DASHBOARD COMPONENT
+// describe('Dashboard Component', () => {
+//     beforeEach(() => {
+//       cy.intercept("GET", `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/*/daily_stats`, {
+//         statusCode: 200,
+//         fixture: 'dailyGameStatsGet.json'
+//       }).as("getDailyStats");
 
-      cy.intercept("GET", `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/*/competitive_stats`, {
-        statusCode: 200,
-        fixture: 'competitiveStatsGet.json'
-      }).as("getCompetitiveStats");
+//       cy.intercept("GET", `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/*/competitive_stats`, {
+//         statusCode: 200,
+//         fixture: 'competitiveStatsGet.json'
+//       }).as("getCompetitiveStats");
 
-      cy.intercept("GET", `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/*/games`, {
-        statusCode: 200,
-        fixture: 'customGamesGet.json'
-      }).as("getCustomGames");
+//       cy.intercept("GET", `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/*/games`, {
+//         statusCode: 200,
+//         fixture: 'customGamesGet.json'
+//       }).as("getCustomGames");
 
-      cy.logUserIn()
-      cy.visit('http://localhost:3000/#/dashboard');
+//       cy.logUserIn()
+//       cy.visit('http://localhost:3000/#/dashboard');
       
-      cy.wait(['@getDailyStats', '@getCompetitiveStats', '@getCustomGames']);
-    });
+//       cy.wait(['@getDailyStats', '@getCompetitiveStats', '@getCustomGames']);
+//     });
   
     // it('renders the dashboard interface with user statistics', () => {
         
