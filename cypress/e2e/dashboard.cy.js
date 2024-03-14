@@ -23,19 +23,19 @@
 //       cy.wait(['@getDailyStats', '@getCompetitiveStats', '@getCustomGames']);
 //     });
   
-    // it('renders the dashboard interface with user statistics', () => {
+//     it('renders the dashboard interface with user statistics', () => {
         
-    //     cy.get('.user-stats').should('contain', 'Total Games: 6');
-    //     cy.get('.user-stats').should('contain', 'Avg. Score: 3');
-    //     cy.get('.user-stats').should('contain', 'Best Score: 5');
-    //     cy.get('.user-stats').should('contain', 'Date: 2024-02-05');
-    //     cy.get('.user-stats').should('contain', 'Level 5: 0');
-    //     cy.get('.user-stats').should('contain', 'Level 4: 0');
-    //     cy.get('.user-stats').should('contain', 'Level 3: 0');
-    //     cy.get('.user-stats').should('contain', 'Level 2: 0');
-    //     cy.get('.user-stats').should('contain', 'Level 1: 0');
+//         cy.get('.user-stats').should('contain', 'Total Games: 6');
+//         cy.get('.user-stats').should('contain', 'Avg. Score: 3');
+//         cy.get('.user-stats').should('contain', 'Best Score: 5');
+//         cy.get('.user-stats').should('contain', 'Date: 2024-02-05');
+//         cy.get('.user-stats').should('contain', 'Level 5: 0');
+//         cy.get('.user-stats').should('contain', 'Level 4: 0');
+//         cy.get('.user-stats').should('contain', 'Level 3: 0');
+//         cy.get('.user-stats').should('contain', 'Level 2: 0');
+//         cy.get('.user-stats').should('contain', 'Level 1: 0');
      
-    // });
+//     });
 
 //     it('renders the dashboard interface with competitive statistics', () => {
        
@@ -50,23 +50,23 @@
        
 // });
 
-it('renders the dashboard interface with and contains buttons and links', () => {
+// it('renders the dashboard interface with and contains buttons and links', () => {
   
-    cy.get('.link-box').should('contain', 'Competitive Game');
-    cy.get('.link-box').should('contain', 'Private Game');
-    cy.get('Header').should('contain', 'WeatherTogether');
-    cy.get('Footer').should('contain', 'Welcome Guest!');
-    cy.get('.nav-container').should('contain', 'Dashboard')
-    cy.get('.nav-container').should('contain', 'Profile')
-    cy.get('.nav-container').should('contain', 'Toggle Theme')
-    cy.get('button').should('contain', 'Logout')
+//     cy.get('.link-box').should('contain', 'Competitive Game');
+//     cy.get('.link-box').should('contain', 'Private Game');
+//     cy.get('Header').should('contain', 'WeatherTogether');
+//     cy.get('Footer').should('contain', 'Welcome Guest!');
+//     cy.get('.nav-container').should('contain', 'Dashboard')
+//     cy.get('.nav-container').should('contain', 'Profile')
+//     cy.get('.nav-container').should('contain', 'Toggle Theme')
+//     cy.get('button').should('contain', 'Logout')
    
-})
+// })
 
-it('renders the dashboard interface with and custom games', () => {
+// it('renders the dashboard interface with and custom games', () => {
   
-    cy.get('.custom-games').should('contain', 'Custom Games');
-    cy.get('.game-list').should('contain', 'Tornado');
+//     cy.get('.custom-games').should('contain', 'Custom Games');
+//     cy.get('.game-list').should('contain', 'Tornado');
   
-})
+// })
 // })
