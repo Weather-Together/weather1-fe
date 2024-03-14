@@ -276,13 +276,20 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
           <div className="custom-games">
-            <h3>Custom Games</h3>
+            <div className="custom-heading-container">
+            <h3 className="custom-heading">Custom Games</h3>
+            <div className="links">
+                <div className="link-box">
+                  <Link to="/new-private-game">Create New Game</Link>
+                </div>
+              </div>
+            </div>
             {customGames &&
             customGames.names &&
             customGames.names.length > 0 ? (
               <ul className="game-list">
                 {customGames.names.map((name, index) => (
-                  <li key={index}>{name}</li>
+                  <li className="custom-list-item" key={index}>{name}</li>
                 ))}
               </ul>
             ) : (

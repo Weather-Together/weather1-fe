@@ -10,34 +10,61 @@
   
   .dashboard-content {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap to the next row */
-    justify-content: space-around; /* Distribute items evenly along the row */
-    padding: 20px;
     background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    color: black;
-    font-weight: bold;
-    text-align: center;
+    flex-direction: row; /* Align children horizontally */
+    flex-wrap: wrap; /* Allow wrapping to the next line */
+    justify-content: space-between; /* Space out the children */
+    align-items: flex-start; /* Align items at the start of the cross axis */
+    padding: 20px;
     gap: 20px; /* Space between items */
-    width: 100vw;
+    overflow: auto;
+  }
+  .daily-game-stats, .competitive-stats, .custom-games {
+    background-color: ghostwhite;
+    margin: 20px; /* Adds external spacing */
+    box-shadow: 0 8px 8px rgba(0,0,0,0.5); /* Adds a shadow for depth */
   }
   
-  .daily-game-stats,
-  .competitive-stats,
+  .daily-game-stats {
+    flex: 1; /* Allows the box to grow */
+    min-width: 300px; /* Minimum width before wrapping */
+  }
+  
+  .competitive-stats {
+    flex: 1; /* Allows the box to grow */
+    min-width: 300px; /* Minimum width before wrapping */
+  }
+
   .custom-games {
     display: flex;
     flex-direction: column;
-    flex: 1; /* Equal width for all three boxes */
-    min-width: 20vw; /* Minimum width for each box */
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    color: black;
-    font-weight: bold;
     text-align: center;
+    width: 50%;
+    order: 3;
+    /* other styles */
   }
+
+
+  .custom-heading {
+    margin: 2.0vw;
+  }
+
+
   
+
+  
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .dashboard-content {
+      flex-direction: column; /* Stack children vertically on smaller screens */
+    }
+  
+    .daily-game-stats, .competitive-stats {
+      width: 100%; /* Allow these elements to take full width on smaller screens */
+    }
+  }
+
   .dashboard-content nav {
     flex-basis: 100%; /* Make the navigation span the full width */
     text-align: center;
@@ -56,10 +83,8 @@
    
   
   .links a {
-    margin-right: 20px;
     text-decoration: none;
     color: black;
-    
     padding: 0.5rem 0.75rem;
     border-radius: 5px;
     transition: background-color 0.3s ease;
@@ -71,15 +96,13 @@
   }
   
 
-
-  
   .link-box {
     background-color: #f0f0f0; /* Background color for link boxes */
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     margin-right: 20px; /* Space between link boxes */
     padding: 10px; /* Adjust padding for link boxes */
-    width: 40px;
+    width: 20px;
     text-align: center;
   }
   
@@ -96,8 +119,29 @@
   }
   
   .game-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Center the list items */
+    width: 100%; /* Optional: Adjust based on your design */
     list-style: none;
     padding: 0;
+    justify-content: center;
+  }
+  
+  .game-list li {
+    text-align: center; /* Ensures the text in each list item is centered */
+  }
+
+  li {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 1.8em;
+  }
+
+  .custom-heading-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
   }
   
   
@@ -178,7 +222,8 @@
   }
 
   .link-box {
-    width: 8vw;
+    width: 15vw;
+    margin: 1.8vw;
   }
 
 
