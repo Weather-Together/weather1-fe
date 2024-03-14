@@ -69,4 +69,4 @@ it('renders the dashboard interface with and custom games', () => {
     cy.get('.game-list').should('contain', 'Tornado');
   
 })
-})
+// })
