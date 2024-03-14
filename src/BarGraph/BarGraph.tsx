@@ -1,7 +1,9 @@
 import React from 'react';
 
 interface BarGraphProps {
-  data: { label: string; value: number }[];
+  data: {
+    label: string;
+    value: number; }[];
 }
 
 const BarGraph: React.FC<BarGraphProps> = ({ data }) => {
@@ -9,23 +11,24 @@ const BarGraph: React.FC<BarGraphProps> = ({ data }) => {
   const maxValue = Math.max(...data.map(item => item.value));
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-end', height: '300px', backgroundColor: '#f0f0f0', padding: '10px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px'}}>
       {data.map((item, index) => (
-        <div key={index} style={{ textAlign: 'center', width: '20%' }}>
+        <div key={index} style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
           <div
             style={{
-              height: `${(item.value / maxValue) * 100}%`,
+              width: `${(item.value / maxValue) * 100}%`, // Width varies based on data
               backgroundColor: '#3498db',
               color: 'white',
               display: 'flex',
-              alignItems: 'flex-end',
-              justifyContent: 'center',
-              padding: '5px 0',
+              alignItems: 'center',
+              justifyContent: 'flex-end',
+              padding: '5px',
+              height: '30px', // Fixed height for all bars
             }}
           >
             {item.value}
           </div>
-          <div>{item.label}</div>
+          <span style={{ marginLeft: '10px' }}>{item.label}</span>
         </div>
       ))}
     </div>
