@@ -185,8 +185,8 @@ const DailyGame: React.FC = () => {
               <button className='dialog-button'>X</button>
             </form>
             <div className='column-headings'>
-              <h4 className='cell header'>Target Value</h4>
-              <h4 className='cell header'>Actual Value </h4>
+              <h4 className='cell header'>Target Values</h4>
+              <h4 className='cell header'>Actual Values</h4>
               <h4 className='cell header'>Margin</h4>
             </div>
             <div className='score-logic'>
