@@ -208,26 +208,35 @@ const Dashboard: React.FC = () => {
             </div>
             <div className="custom-games">
             <div className="custom-heading-container">
-            <h3 className="custom-heading">Custom Games</h3>
-            <div className="links">
+              <h3 className="custom-heading">Custom Games</h3>
+              <div className="links">
                 <div className="link-box">
                   <Link to="/new-private-game">Create New Game</Link>
                 </div>
               </div>
             </div>
-            Custom Games go here
-            {/* {customGames &&
-            customGames.names &&
-            customGames.names.length > 0 ? (
-              <ul className="game-list">
-                {customGames.names.map((name, index) => (
-                  <li className="custom-list-item" key={index}>{name}</li>
-                ))}
-              </ul>
-            ) : (
-              <p>No Games</p>
-            )} */}
-          </div>
+            <DashboardCustom />
+              {/* <div className="custom-heading-container">
+                <h3 className="custom-heading">Custom Games</h3>
+                <div className="links">
+                    <div className="link-box">
+                      <Link to="/new-private-game">Create New Game</Link>
+                    </div>
+                  </div>
+              </div> */}
+              {/* Custom Games go here */}
+              {/* {customGames &&
+              customGames.names &&
+              customGames.names.length > 0 ? (
+                <ul className="game-list">
+                  {customGames.names.map((name, index) => (
+                    <li className="custom-list-item" key={index}>{name}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p>No Games</p>
+              )} */}
+            </div>
           </div>
   
           <div className="competitive-stats">
@@ -304,17 +313,7 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
   
-          <div className="custom-games">
-            <div className="custom-heading-container">
-              <h3 className="custom-heading">Custom Games</h3>
-              <div className="links">
-                <div className="link-box">
-                  <Link to="/new-private-game">Create New Game</Link>
-                </div>
-              </div>
-            </div>
-            <DashboardCustom />
-          </div>
+
         </div>
       )}
       {error && <h2>Something happened with getting all of the data.</h2>}
