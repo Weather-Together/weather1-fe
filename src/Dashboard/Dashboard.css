@@ -4,13 +4,16 @@
     align-items: center;
     height: calc(100vh - 60px);
     width: 100vw;
-    padding-top: 110px;
+    padding-top: 60px;
     box-sizing: border-box;
   }
   
   .dashboard-content {
-    display: flex;
-    background-color: white;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    align-items: center;
+    width: 80vw;
+    background-color: rgb(204, 228, 241);
     flex-direction: row; /* Align children horizontally */
     flex-wrap: wrap; /* Allow wrapping to the next line */
     justify-content: space-between; /* Space out the children */
@@ -21,8 +24,9 @@
   }
   .daily-game-stats, .competitive-stats, .custom-games {
     background-color: ghostwhite;
-    margin: 20px; /* Adds external spacing */
-    box-shadow: 0 8px 8px rgba(0,0,0,0.5); /* Adds a shadow for depth */
+    padding: 10px;
+    margin: 10px; /* Adds external spacing */
+    box-shadow: 0 4px 4px rgba(0,0,0,0.5); /* Adds a shadow for depth */
   }
   
   .daily-game-stats {
@@ -33,15 +37,15 @@
   .competitive-stats {
     flex: 1; /* Allows the box to grow */
     min-width: 300px; /* Minimum width before wrapping */
+    height: 85.5vh; /* Minimum width before wrapping */
   }
 
   .custom-games {
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 50%;
+    width: 47vw;
     order: 3;
-    /* other styles */
   }
 
 
@@ -200,7 +204,7 @@
   .daily-game-stats {
     display: flex;
     flex-direction: column;
-    width: 50vw;
+    width: 47vw;
   }
 
   .avg-best, .leaderboard-container {
