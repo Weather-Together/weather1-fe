@@ -96,12 +96,13 @@ html, body {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  height: 20%;
 }
 
 .location-img {
   text-align: center;
- max-height: 18vh;
- max-width: 15vw;
+ max-height: 14vh;
+ max-width: 28vw;
 }
 .scoring {
   display: flex;
@@ -122,6 +123,7 @@ html, body {
   border: none;
   border-radius: 5px;
   color: white; 
+  margin-top: 1.5vh;
 }
 
 .dashboard-button:hover {
@@ -155,6 +157,81 @@ html, body {
    margin-left: 8vw;
 }
 
+@media (max-width: 1440px) {
+  .score-modal {
+    width: 60vw;
+    height: 60vh;
+    font-size: 1.8vh;
+  }
+
+  .location-img {
+    margin-bottom: -1.8vh;
+  
+}
+  .header {
+    margin-left: 10vw;
+  }
+  .dashboard-button {
+    margin-top: 3.4vh;
+  }
+}
+
+@media (max-width: 1024px) {
+  .modal-dashboard {
+    padding-top: 1.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .score-modal {
+    width: 60vw;
+    height: 55vh;
+    font-size: 1.5vh;
+  }
+
+  .header {
+    margin-left: 10vw;
+  }
+
+  .dashboard-button {
+    margin-top: 4.8vh;
+  }
+  .location-img{
+    margin-top: 2.8vh;
+  }
+
+  .dashboard-button {
+    font-size: 1.4vh;
+    margin-top: 5.0vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-dashboard {
+    padding-top: 1.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .score-modal {
+    width: 70vw;
+    height: 50vh;
+    font-size: 1.5vh;
+  }
+  .header {
+    margin-left: 14vw;
+  }
+
+  .location-img{
+    margin-top: 3.8vh;
+    height: 14.8vh;
+  }
+
+  .dashboard-button {
+    font-size: 1.2vh;
+    margin-top: 3.6vh;
+  }
+}
 
   @media (max-width: 500px) {
     /* Keep the header fixed at the top */
@@ -194,3 +271,42 @@ html, body {
     }
   }
   
+
+  @media (max-width: 425px) {
+    .modal-dashboard {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .score-modal {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 80vw;
+      height: 60vh;
+      font-size: 1.0vh;
+    }
+    .header {
+      margin-left: 14vw;
+    }
+  
+    .location-img{
+      margin-top: 3.8vh;
+      height: 14.8vh;
+    }
+  
+    .dashboard-button {
+      font-size: 1.2vh;
+      margin-top: 3.6vh;
+    }
+    .close-dialog {
+      display: flex;
+      justify-content: flex-end;
+    }
+    
+  }
