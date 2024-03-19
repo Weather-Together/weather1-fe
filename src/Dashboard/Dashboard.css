@@ -1,229 +1,249 @@
 .dashboard-container {
-  display: flex;
-  flex-direction: column; /* Stack items vertically */
-  align-items: center;
-  height: calc(100vh - 60px);
-  width: 100vw;
-  padding-top: 110px;
-  box-sizing: border-box;
-}
-
-.dashboard-content {
-  display: flex;
-  background-color: white;
-  flex-direction: row; /* Align children horizontally */
-  flex-wrap: wrap; /* Allow wrapping to the next line */
-  justify-content: space-between; /* Space out the children */
-  align-items: flex-start; /* Align items at the start of the cross axis */
-  padding: 20px;
-  gap: 20px; /* Space between items */
-  overflow: auto;
-}
-
-.daily-game-stats,
-.competitive-stats,
-.custom-games {
-  background-color: ghostwhite;
-  margin: 20px; /* Adds external spacing */
-  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5); /* Adds a shadow for depth */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+    height: calc(100vh - 60px);
+    width: 100vw;
+    padding-top: 110px;
+    box-sizing: border-box;
+  }
   
-}
-
-
-.daily-game-stats {
-  flex: 1; /* Allows the box to grow */
-  min-width: 300px; /* Minimum width before wrapping */
-}
-
-.competitive-stats {
-  flex: 1; /* Allows the box to grow */
-  min-width: 300px; /* Minimum width before wrapping */
-}
-
-.custom-games {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  width: 100%;
-  order: 3;
-  /* other styles */
-}
-
-.custom-heading {
-  margin: 2.0vw;
-}
-
-.dashboard-content nav {
-  flex-basis: 100%; /* Make the navigation span the full width */
-  text-align: center;
-  margin-top: 20px; /* Add some spacing between the boxes and links */
-}
-
-.dashboard-content nav a {
-  margin-right: 20px;
-  text-decoration: none;
-  color: black;
-  padding: 0.5rem 0.75rem;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.links a {
-  text-decoration: none;
-  color: black;
-  padding: 0.5rem 0.75rem;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.links a:hover {
-  background-color: #dddddd; /* Add a hover effect */
-}
-
-.link-box {
-  background-color: #f0f0f0; /* Background color for link boxes */
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  margin-right: 20px; /* Space between link boxes */
-  padding: 10px; /* Adjust padding for link boxes */
-  width: 20px;
-  text-align: center;
-}
-
-.link-box a {
-  text-decoration: none;
-  color: black;
-  padding: 0.5rem 0.75rem;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.link-box a:hover {
-  background-color: #dddddd; /* Add a hover effect to link boxes */
-}
-
-.game-list {
-  display: flex;
-  flex-direction: row;
-  align-items: center; /* Center the list items */
-  width: 100%; /* Optional: Adjust based on your design */
-  list-style: none;
-  padding: 0;
-  justify-content: center;
-}
-
-.game-list li {
-  text-align: center; /* Ensures the text in each list item is centered */
-}
-
-li {
-  border: 1px solid black;
-  padding: 10px;
-  margin: 1.8em;
-}
-
-.custom-heading-container {
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
-}
-
-@media (max-width: 500px) {
-  /* Keep the header fixed at the top */
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+  .dashboard-content {
+    display: flex;
+    background-color: white;
+    flex-direction: row; /* Align children horizontally */
+    flex-wrap: wrap; /* Allow wrapping to the next line */
+    justify-content: space-between; /* Space out the children */
+    align-items: flex-start; /* Align items at the start of the cross axis */
+    padding: 20px;
+    gap: 20px; /* Space between items */
+    overflow: auto;
+  }
+  .daily-game-stats, .competitive-stats, .custom-games {
+    background-color: ghostwhite;
+    margin: 20px; /* Adds external spacing */
+    box-shadow: 0 8px 8px rgba(0,0,0,0.5); /* Adds a shadow for depth */
+  }
+  
+  .daily-game-stats {
+    flex: 1; /* Allows the box to grow */
+    min-width: 300px; /* Minimum width before wrapping */
+  }
+  
+  .competitive-stats {
+    flex: 1; /* Allows the box to grow */
+    min-width: 300px; /* Minimum width before wrapping */
   }
 
-  /* Keep the footer fixed at the bottom */
-  footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-  }
-
-  .dashboard-container {
+  .custom-games {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    text-align: center;
+    width: 50%;
+    order: 3;
+    /* other styles */
+  }
+
+
+  .custom-heading {
+    margin: 2.0vw;
+  }
+
+
+  
+
+  
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .dashboard-content {
+      flex-direction: column; /* Stack children vertically on smaller screens */
+    }
+  
+    .daily-game-stats, .competitive-stats {
+      width: 100%; /* Allow these elements to take full width on smaller screens */
+    }
+  }
+
+  .dashboard-content nav {
+    flex-basis: 100%; /* Make the navigation span the full width */
+    text-align: center;
+    margin-top: 20px; /* Add some spacing between the boxes and links */
+  }
+  
+  .dashboard-content nav a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: black;
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+   
+  
+  .links a {
+    text-decoration: none;
+    color: black;
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    
+  }
+  
+  .links a:hover {
+    background-color: #dddddd; /* Add a hover effect */
+  }
+  
+
+  .link-box {
+    background-color: #f0f0f0; /* Background color for link boxes */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-right: 20px; /* Space between link boxes */
+    padding: 10px; /* Adjust padding for link boxes */
+    width: 20px;
+    text-align: center;
+  }
+  
+  .link-box a {
+    text-decoration: none;
+    color: black;
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .link-box a:hover {
+    background-color: #dddddd; /* Add a hover effect to link boxes */
+  }
+  
+  .game-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Center the list items */
+    width: 100%; /* Optional: Adjust based on your design */
+    list-style: none;
+    padding: 0;
     justify-content: center;
-    padding: 27px;
-    padding-top: 700px; /* Adjust based on the height of the header */
-    padding-bottom: 80px;
-    max-width: 100%;
-    height: calc(100vh - 10px); /* Adjust based on the height of the header */
-    overflow-y: auto;
+  }
+  
+  .game-list li {
+    text-align: center; /* Ensures the text in each list item is centered */
+  }
+
+  li {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 1.8em;
+  }
+
+  .custom-heading-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+  }
+  
+  
+
+  
+
+  @media (max-width: 500px) {
+    /* Keep the header fixed at the top */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    
+    /* Keep the footer fixed at the bottom */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+      
+    .dashboard-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 27px;
+      padding-top: 700px; /* Adjust based on the height of the header */
+      padding-bottom: 80px;
+      max-width: 100%;
+      height: calc(100vh - 10px); /* Adjust based on the height of the header */
+      overflow-y: auto;
+    }
+  
+    .link-box {
+      order: 1;
+      margin-bottom: 20px;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      align-items: center;
+      
+      
+    }
+  
+    .dashboard-content {
+      order: 2;
+      margin-top: 20px;
+    }
+  }
+  .daily-game-stats {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+  }
+
+  .avg-best, .leaderboard-container {
+    display: flex;
+    flex-direction: row;
+    width: 20vw;
+  }
+
+  .games-played{
+    padding-left: 5vw;
+    margin-bottom: 5vh;
+  }
+
+  .competitive-stats-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
   }
 
   .link-box {
-    order: 1;
-    margin-bottom: 20px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    align-items: center;
+    width: 15vw;
+    margin: 1.8vw;
   }
 
-  .dashboard-content {
-    order: 2;
-    margin-top: 20px;
+
+  .competitive-stats table {
+    width: 100%; /* Full-width table */
+    border-collapse: collapse; /* Collapses the border */
   }
-}
-
-.daily-game-stats {
-  display: flex;
-  flex-direction: column;
-  width: 50vw;
-}
-
-.avg-best,
-.leaderboard-container {
-  display: flex;
-  flex-direction: row;
-  width: 20vw;
-}
-
-.games-played {
-  padding-left: 5vw;
-  margin-bottom: 5vh;
-}
-
-.competitive-stats-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.link-box {
-  width: 15vw;
-  margin: 1.8vw;
-}
-
-.competitive-stats table {
-  width: 100%; /* Full-width table */
-  border-collapse: collapse; /* Collapses the border */
-}
-
-.competitive-stats th,
-.competitive-stats td {
-  border: 1px solid #ddd; /* Add a border to table header and table data cells */
-  padding: .5px; /* Add some padding for content */
-  margin-right: 30px;
-  text-align: left; /* Align the text to the left */
-}
-
-.competitive-stats th {
-  background-color: #f4f4f4; /* Background color for header cells */
-  color: #333; /* Text color for header cells */
-}
-
-.competitive-stats tr:nth-child(even) {
-  background-color: #f9f9f9; /* Zebra stripes effect for even rows */
-}
+  
+  .competitive-stats th, .competitive-stats td {
+    border: 1px solid #ddd; /* Add a border to table header and table data cells */
+    padding: .5px; /* Add some padding for content */
+    margin-right: 30px;
+    text-align: left; /* Align the text to the left */
+  }
+  
+  .competitive-stats th {
+    background-color: #f4f4f4; /* Background color for header cells */
+    color: #333; /* Text color for header cells */
+  }
+  
+  .competitive-stats tr:nth-child(even) {
+    background-color: #f9f9f9; /* Zebra stripes effect for even rows */
+  }

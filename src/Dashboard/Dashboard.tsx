@@ -5,7 +5,6 @@ import React, { useState, useEffect } from "react";
 import "./Dashboard.css";
 import Footer from "../Footer/Footer";
 import BarGraph from "../BarGraph/BarGraph";
-import DashboardCustom from "../DashboardCustom/DashboardCustom";
 
 interface dailyStats {
   gameCount: number;
@@ -192,11 +191,13 @@ const Dashboard: React.FC = () => {
             <h5>Games Played: {dailyStatsData && dailyStatsData.gameCount}</h5>
             {dailyStatsData && <BarGraph data={barGraphData} />}
             <div className="avg-best">
-              <h5>Average Score: {dailyStatsData && dailyStatsData.avgScore}</h5>
+              <h5>
+                Average Score: {dailyStatsData && dailyStatsData.avgScore}
+              </h5>
               <h5>Best Score: {dailyStatsData && dailyStatsData.bestScore}</h5>
             </div>
           </div>
-  
+
           <div className="competitive-stats">
             <div className="competitive-stats-header">
               <h3>Competitive Stats</h3>
@@ -222,13 +223,15 @@ const Dashboard: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {competitiveData.top5username.split(", ").map((username, index) => (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>{username}</td>
-                      <td>{competitiveData.top5score.split(", ")[index]}</td>
-                    </tr>
-                  ))}
+                  {competitiveData.top5username
+                    .split(", ")
+                    .map((username, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{username}</td>
+                        <td>{competitiveData.top5score.split(", ")[index]}</td>
+                      </tr>
+                    ))}
                   <tr key={storedUser.id}>
                     <td>{competitiveData.userRank || "No rank"}</td>
                     <td>
@@ -236,7 +239,9 @@ const Dashboard: React.FC = () => {
                         ? storedUser.attributes.username
                         : "No username"}
                     </td>
-                    <td>{competitiveData.avgCompScore || "No scores"}</td>
+                    <td>
+                      {competitiveData.avgCompScore || "No scores"}
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -270,24 +275,33 @@ const Dashboard: React.FC = () => {
                 )}
             </div>
           </div>
-  
           <div className="custom-games">
             <div className="custom-heading-container">
-              <h3 className="custom-heading">Custom Games</h3>
-              <div className="links">
+            <h3 className="custom-heading">Custom Games</h3>
+            <div className="links">
                 <div className="link-box">
                   <Link to="/new-private-game">Create New Game</Link>
                 </div>
               </div>
             </div>
-            <DashboardCustom />
+            {customGames &&
+            customGames.names &&
+            customGames.names.length > 0 ? (
+              <ul className="game-list">
+                {customGames.names.map((name, index) => (
+                  <li className="custom-list-item" key={index}>{name}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>No Games</p>
+            )}
           </div>
         </div>
       )}
       {error && <h2>Something happened with getting all of the data.</h2>}
       <Footer />
     </div>
-  );               
-     }  
+  );
+};
 
 export default Dashboard;
