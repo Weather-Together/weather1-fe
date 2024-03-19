@@ -184,48 +184,54 @@ const DailyGame: React.FC = () => {
             <form className='close-dialog' method='dialog'>
               <button className='dialog-button'>X</button>
             </form>
+            <div className='column-headings'>
+              <h4 className='cell header'>Target Value</h4>
+              <h4 className='cell header'>Actual Value </h4>
+              <h4 className='cell header'>Margin</h4>
+            </div>
             <div className='score-logic'>
               <div className='scoring max-temp'>
-                <p>Max Temp:</p>
-                <p>{roundData.maxtemp} °F</p>
-                <p>-</p>
-                <p>{guessData.maxtemp_f} °F</p>
-                <p>=</p>
-                <p>{(roundData.maxtemp - guessData.maxtemp_f).toFixed(2)}²</p>
+                <p className="heading cell">Max Temp:</p>
+                <p className='cell'>{roundData.maxtemp} °F</p>
+                <p className='cell'>-</p>
+                <p className='cell'>{guessData.maxtemp_f} °F</p>
+                <p className='cell'>=</p>
+                <p className='cell'>{(roundData.maxtemp - guessData.maxtemp_f).toFixed(2)}²</p>
               </div>
               <div className='scoring min-temp'>
-                <p>Min Temp:</p>
-                <p>{roundData.mintemp} °F</p>
-                <p>-</p>
-                <p>{guessData.mintemp_f} °F</p>
-                <p>=</p>
-                <p>{(roundData.mintemp - guessData.mintemp_f).toFixed(2)}²</p>
+                <p className='heading cell'>Min Temp:</p>
+                <p className='cell'>{roundData.mintemp} °F</p>
+                <p className='cell'>-</p>
+                <p className='cell'>{guessData.mintemp_f} °F</p>
+                <p className='cell'>=</p>
+                <p className='cell'>{(roundData.mintemp - guessData.mintemp_f).toFixed(2)}²</p>
               </div>
               <div className='scoring max-wind'>
-                <>Max Wind:</>
-                <p>{roundData.maxwind} MPH</p>
-                <p>-</p>
-                <p>{guessData.maxwind_mph} MPH</p>
-                <p>=</p>
-                <p>{(roundData.maxwind - guessData.maxwind_mph).toFixed(2)}²</p>
+                <p className='heading cell'>Max Wind:</p>
+                <p className='cell'>{roundData.maxwind} MPH</p>
+                <p className='cell'>-</p>
+                <p className='cell'>{guessData.maxwind_mph} MPH</p>
+                <p className='cell'>=</p>
+                <p className='cell'>{(roundData.maxwind - guessData.maxwind_mph).toFixed(2)}²</p>
               </div>
               <div className='scoring avg-humidity'>
-                <p>Avg. Humidity:</p>
-                <p>{roundData.avghumidity}%</p>
-                <p>-</p>
-                <p>{guessData.avghumidity}%</p>
-                <p>=</p>
-                <p>{(roundData.avghumidity - guessData.avghumidity).toFixed(2)}²</p>
+                <p className='heading cell'>Avg. Humidity:</p>
+                <p className='cell'>{roundData.avghumidity}%</p>
+                <p className='cell'>-</p>
+                <p className='cell'>{guessData.avghumidity}%</p>
+                <p className='cell'>=</p>
+                <p className='cell'>{(roundData.avghumidity - guessData.avghumidity).toFixed(2)}²</p>
               </div>
               <div className='scoring total-precipitation'>
-                <p>Total Precip:</p>
-                <p>{roundData.totalprecip} in</p>
-                <p>-</p>
-                <p>{guessData.totalprecip_in} in</p>
-                <p>=</p>
-                <p>{(roundData.totalprecip - guessData.totalprecip_in).toFixed(2)}²</p>
+                <p className='heading cell'>Total Precip:</p>
+                <p className='cell'>{roundData.totalprecip} in</p>
+                <p className='cell'>-</p>
+                <p className='cell'>{guessData.totalprecip_in} in</p>
+                <p className='cell'>=</p>
+                <p className='cell'>{(roundData.totalprecip - guessData.totalprecip_in).toFixed(2)}²</p>
               </div>
             </div>
+            <hr></hr>
             <div className='filler'></div>
             <div className='info-section'>
               <div className='location-info'>

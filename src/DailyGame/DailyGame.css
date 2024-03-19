@@ -75,7 +75,7 @@ html, body {
 
 .close-dialog {
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
 }
 
 .dialog-button {
@@ -86,14 +86,8 @@ html, body {
   color: white; 
 }
 
-.filler {
-  height: 8%;
-}
-
 .score-logic {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
 }
 
@@ -105,19 +99,18 @@ html, body {
 }
 
 .location-img {
-  max-height: 200px;
-  max-width: 300px;
+  text-align: center;
+ max-height: 18vh;
+ max-width: 15vw;
 }
 .scoring {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  width: 90%;
-  justify-content: space-around;
+  width: 100%;
 }
 
 .modal-dashboard {
-  padding-top: 20px;
+  padding-top: 1.5vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,12 +129,31 @@ html, body {
   transform: scale(1.05); /* Slightly enlarges the button on hover */
 }
 
-
 /* Leaflet Map */
 .leaflet-container {
     height: 100%;
 }
 
+.heading {
+  font-weight: bold;
+}
+
+.column-headings {
+  display: flex;
+}
+
+.avg-humidity {
+  margin-right: 10px;
+}
+
+.cell {
+  flex: 1;
+  text-align: center;
+}
+
+.header {
+   margin-left: 8vw;
+}
 
 
   @media (max-width: 500px) {
