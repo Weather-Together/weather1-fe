@@ -31,7 +31,6 @@ const DashboardCustom = () => {
     <div className="custom-games-list">
     
       <div className="custom-games-container">
-        <h2 className="custom-heading"></h2>
         {customGames.map((game, index) => (
           <div key={index} className="custom-game-container">
             <p>Game: {game.attributes.game_name}</p>

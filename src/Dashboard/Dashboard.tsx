@@ -36,13 +36,13 @@ interface competitiveStats {
   lastThreeCompetitiveGamesRank: GameRank[];
 }
 
-interface custom {
-  names: string[] | null;
-}
+// interface custom {
+//   names: string[] | null;
+// }
 
 const Dashboard: React.FC = () => {
   // const [user, setUser] = useState<User | null>(null)
-  const [customGames, setCustomGames] = useState<custom | null>(null);
+  // const [customGames, setCustomGames] = useState<custom | null>(null);
   const [dailyStatsData, setDailyStatsData] = useState<dailyStats | null>(null);
   const [competitiveData, setCompetitiveData] =
     useState<competitiveStats | null>(null);
@@ -89,32 +89,32 @@ const Dashboard: React.FC = () => {
       }
       setDailyStatsData(JSON.parse(localStorage.getItem("DailyStats")));
     };
-    const fetchCustomData = async () => {
-      if (!localStorage.getItem("CustomGames")) {
-        console.log("Fetching custom data...");
-        try {
-          const response = await fetch(
-            `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${storedUser.id}/games`
-          );
-          if (!response.ok) {
-            throw new Error("Failed to fetch daily round data");
-          }
-          const responseData = await response.json();
+    // const fetchCustomData = async () => {
+    //   if (!localStorage.getItem("CustomGames")) {
+    //     console.log("Fetching custom data...");
+    //     try {
+    //       const response = await fetch(
+    //         `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${storedUser.id}/games`
+    //       );
+    //       if (!response.ok) {
+    //         throw new Error("Failed to fetch daily round data");
+    //       }
+    //       const responseData = await response.json();
 
-          // Extract game names from each game object
-          const gameNames = {
-            names: responseData.data.map(
-              (game: any) => game.attributes.game_name
-            ),
-          };
-          localStorage.setItem("CustomGames", JSON.stringify(gameNames));
-          console.log("fetched custom data", responseData.data);
-        } catch (error) {
-          setError(error.message);
-        }
-      }
-      setCustomGames(JSON.parse(localStorage.getItem("CustomGames")));
-    };
+    //       // Extract game names from each game object
+    //       const gameNames = {
+    //         names: responseData.data.map(
+    //           (game: any) => game.attributes.game_name
+    //         ),
+    //       };
+    //       localStorage.setItem("CustomGames", JSON.stringify(gameNames));
+    //       console.log("fetched custom data", responseData.data);
+    //     } catch (error) {
+    //       setError(error.message);
+    //     }
+    //   }
+    //   setCustomGames(JSON.parse(localStorage.getItem("CustomGames")));
+    // };
 
     const fetchCompetitiveData = async () => {
       if (!localStorage.getItem("CompetitiveData")) {
@@ -165,7 +165,7 @@ const Dashboard: React.FC = () => {
       setCompetitiveData(JSON.parse(localStorage.getItem("CompetitiveData")));
     };
     fetchRoundData();
-    fetchCustomData();
+    // fetchCustomData();
     fetchCompetitiveData();
   }, [navigate]);
   const barGraphData = dailyStatsData
