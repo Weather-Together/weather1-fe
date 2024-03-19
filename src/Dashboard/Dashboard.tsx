@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import "./Dashboard.css";
 import Footer from "../Footer/Footer";
 import BarGraph from "../BarGraph/BarGraph";
+import DashboardCustom from "../DashboardCustom/DashboardCustom";
 
 interface dailyStats {
   gameCount: number;
@@ -35,13 +36,13 @@ interface competitiveStats {
   lastThreeCompetitiveGamesRank: GameRank[];
 }
 
-interface custom {
-  names: string[] | null;
-}
+// interface custom {
+//   names: string[] | null;
+// }
 
 const Dashboard: React.FC = () => {
   // const [user, setUser] = useState<User | null>(null)
-  const [customGames, setCustomGames] = useState<custom | null>(null);
+  // const [customGames, setCustomGames] = useState<custom | null>(null);
   const [dailyStatsData, setDailyStatsData] = useState<dailyStats | null>(null);
   const [competitiveData, setCompetitiveData] =
     useState<competitiveStats | null>(null);
@@ -88,32 +89,32 @@ const Dashboard: React.FC = () => {
       }
       setDailyStatsData(JSON.parse(localStorage.getItem("DailyStats")));
     };
-    const fetchCustomData = async () => {
-      if (!localStorage.getItem("CustomGames")) {
-        console.log("Fetching custom data...");
-        try {
-          const response = await fetch(
-            `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${storedUser.id}/games`
-          );
-          if (!response.ok) {
-            throw new Error("Failed to fetch daily round data");
-          }
-          const responseData = await response.json();
+    // const fetchCustomData = async () => {
+    //   if (!localStorage.getItem("CustomGames")) {
+    //     console.log("Fetching custom data...");
+    //     try {
+    //       const response = await fetch(
+    //         `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${storedUser.id}/games`
+    //       );
+    //       if (!response.ok) {
+    //         throw new Error("Failed to fetch daily round data");
+    //       }
+    //       const responseData = await response.json();
 
-          // Extract game names from each game object
-          const gameNames = {
-            names: responseData.data.map(
-              (game: any) => game.attributes.game_name
-            ),
-          };
-          localStorage.setItem("CustomGames", JSON.stringify(gameNames));
-          console.log("fetched custom data", responseData.data);
-        } catch (error) {
-          setError(error.message);
-        }
-      }
-      setCustomGames(JSON.parse(localStorage.getItem("CustomGames")));
-    };
+    //       // Extract game names from each game object
+    //       const gameNames = {
+    //         names: responseData.data.map(
+    //           (game: any) => game.attributes.game_name
+    //         ),
+    //       };
+    //       localStorage.setItem("CustomGames", JSON.stringify(gameNames));
+    //       console.log("fetched custom data", responseData.data);
+    //     } catch (error) {
+    //       setError(error.message);
+    //     }
+    //   }
+    //   setCustomGames(JSON.parse(localStorage.getItem("CustomGames")));
+    // };
 
     const fetchCompetitiveData = async () => {
       if (!localStorage.getItem("CompetitiveData")) {
@@ -164,7 +165,7 @@ const Dashboard: React.FC = () => {
       setCompetitiveData(JSON.parse(localStorage.getItem("CompetitiveData")));
     };
     fetchRoundData();
-    fetchCustomData();
+    // fetchCustomData();
     fetchCompetitiveData();
   }, [navigate]);
   const barGraphData = dailyStatsData
@@ -191,13 +192,11 @@ const Dashboard: React.FC = () => {
             <h5>Games Played: {dailyStatsData && dailyStatsData.gameCount}</h5>
             {dailyStatsData && <BarGraph data={barGraphData} />}
             <div className="avg-best">
-              <h5>
-                Average Score: {dailyStatsData && dailyStatsData.avgScore}
-              </h5>
+              <h5>Average Score: {dailyStatsData && dailyStatsData.avgScore}</h5>
               <h5>Best Score: {dailyStatsData && dailyStatsData.bestScore}</h5>
             </div>
           </div>
-
+  
           <div className="competitive-stats">
             <div className="competitive-stats-header">
               <h3>Competitive Stats</h3>
@@ -223,15 +222,13 @@ const Dashboard: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {competitiveData.top5username
-                    .split(", ")
-                    .map((username, index) => (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>{username}</td>
-                        <td>{competitiveData.top5score.split(", ")[index]}</td>
-                      </tr>
-                    ))}
+                  {competitiveData.top5username.split(", ").map((username, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{username}</td>
+                      <td>{competitiveData.top5score.split(", ")[index]}</td>
+                    </tr>
+                  ))}
                   <tr key={storedUser.id}>
                     <td>{competitiveData.userRank || "No rank"}</td>
                     <td>
@@ -239,9 +236,7 @@ const Dashboard: React.FC = () => {
                         ? storedUser.attributes.username
                         : "No username"}
                     </td>
-                    <td>
-                      {competitiveData.avgCompScore || "No scores"}
-                    </td>
+                    <td>{competitiveData.avgCompScore || "No scores"}</td>
                   </tr>
                 </tbody>
               </table>
@@ -275,33 +270,24 @@ const Dashboard: React.FC = () => {
                 )}
             </div>
           </div>
+  
           <div className="custom-games">
             <div className="custom-heading-container">
-            <h3 className="custom-heading">Custom Games</h3>
-            <div className="links">
+              <h3 className="custom-heading">Custom Games</h3>
+              <div className="links">
                 <div className="link-box">
                   <Link to="/new-private-game">Create New Game</Link>
                 </div>
               </div>
             </div>
-            {customGames &&
-            customGames.names &&
-            customGames.names.length > 0 ? (
-              <ul className="game-list">
-                {customGames.names.map((name, index) => (
-                  <li className="custom-list-item" key={index}>{name}</li>
-                ))}
-              </ul>
-            ) : (
-              <p>No Games</p>
-            )}
+            <DashboardCustom />
           </div>
         </div>
       )}
       {error && <h2>Something happened with getting all of the data.</h2>}
       <Footer />
     </div>
-  );
-};
+  );               
+     }  
 
 export default Dashboard;
