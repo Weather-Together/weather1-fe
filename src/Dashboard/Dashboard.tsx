@@ -187,13 +187,55 @@ const Dashboard: React.FC = () => {
         <p>Loading...</p>
       ) : (
         <div className="dashboard-content">
-          <div className="daily-game-stats">
-            <h3>Daily Game Stats</h3>
-            <h5>Games Played: {dailyStatsData && dailyStatsData.gameCount}</h5>
-            {dailyStatsData && <BarGraph data={barGraphData} />}
-            <div className="avg-best">
-              <h5>Average Score: {dailyStatsData && dailyStatsData.avgScore}</h5>
-              <h5>Best Score: {dailyStatsData && dailyStatsData.bestScore}</h5>
+          <div>
+            <div className="daily-game-stats">
+              <h3>Daily Game Stats</h3>
+              <hr
+                  style={{
+                      color: 'gray',
+                      backgroundColor: 'gray',
+                      width: '100%'
+                  }}
+              />
+              <h5>Games Played: {dailyStatsData && dailyStatsData.gameCount}</h5>
+              {dailyStatsData && <BarGraph data={barGraphData} />}
+              <div className="avg-best">
+                <h5>
+                  Average Score: {dailyStatsData && Math.round(dailyStatsData.avgScore)}
+                </h5>
+                <h5>Best Score: {dailyStatsData && dailyStatsData.bestScore}</h5>
+              </div>
+            </div>
+            <div className="custom-games">
+            <div className="custom-heading-container">
+              <h3 className="custom-heading">Custom Games</h3>
+              <div className="links">
+                <div className="link-box">
+                  <Link to="/new-private-game">Create New Game</Link>
+                </div>
+              </div>
+            </div>
+            <DashboardCustom />
+              {/* <div className="custom-heading-container">
+                <h3 className="custom-heading">Custom Games</h3>
+                <div className="links">
+                    <div className="link-box">
+                      <Link to="/new-private-game">Create New Game</Link>
+                    </div>
+                  </div>
+              </div> */}
+              {/* Custom Games go here */}
+              {/* {customGames &&
+              customGames.names &&
+              customGames.names.length > 0 ? (
+                <ul className="game-list">
+                  {customGames.names.map((name, index) => (
+                    <li className="custom-list-item" key={index}>{name}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p>No Games</p>
+              )} */}
             </div>
           </div>
   
@@ -271,17 +313,7 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
   
-          <div className="custom-games">
-            <div className="custom-heading-container">
-              <h3 className="custom-heading">Custom Games</h3>
-              <div className="links">
-                <div className="link-box">
-                  <Link to="/new-private-game">Create New Game</Link>
-                </div>
-              </div>
-            </div>
-            <DashboardCustom />
-          </div>
+
         </div>
       )}
       {error && <h2>Something happened with getting all of the data.</h2>}
