@@ -29,14 +29,26 @@ const CreatePrivateGame: React.FC = () => {
     invitees: [],
   });
 
+  const [currentInvitee, setCurrentInvitee] = useState<string>('');
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setGameDetails((prevDetails) => ({ ...prevDetails, [name]: value }));
   };
 
   const handleInviteeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const invitees = e.target.value.split(',').map((email) => email.trim());
-    setGameDetails((prevDetails) => ({ ...prevDetails, invitees }));
+    setCurrentInvitee(e.target.value);
+  };
+
+  const handleAddInvitee = () => {
+    if (currentInvitee.trim() !== '') {
+      const newInvitee = currentInvitee.trim();
+      setGameDetails((prevDetails) => ({
+        ...prevDetails,
+        invitees: [...prevDetails.invitees, newInvitee],
+      }));
+      setCurrentInvitee('');
+    }
   };
 
   const handleSubmit = async () => {
@@ -46,7 +58,7 @@ const CreatePrivateGame: React.FC = () => {
       length_in_days: parseInt(gameDetails.lengthInDays.toString()),
       guess_lead_time: parseInt(gameDetails.guessLeadTime.toString()),
       player_cap: gameDetails.playerCap,
-      invitees: gameDetails.invitees,
+      invitees: [gameDetails.invitees.join(', ')]
     };
 
     try {
@@ -75,12 +87,12 @@ const CreatePrivateGame: React.FC = () => {
     <div className="create-private-game-container">
       <Header2 />
 
-        <Player
-          src='https://lottie.host/f35fa82a-0091-4ee8-ad6d-77e329ed464a/KqOVOsmCeH.json'
-          className="player"
-          loop={true}
-            autoplay={true}
-        />
+      <Player
+        src='https://lottie.host/f35fa82a-0091-4ee8-ad6d-77e329ed464a/KqOVOsmCeH.json'
+        className="player"
+        loop={true}
+        autoplay={true}
+      />
 
       <div className="create-private-game">
         <h2>Create a Private Game</h2>
@@ -100,19 +112,28 @@ const CreatePrivateGame: React.FC = () => {
         </label>
         <br />
         <label>
-          Invitees (comma-separated emails):
-          <input type="text" name="invitees" onChange={handleInviteeChange} />
+          Invitees:
+          <input type="text" value={currentInvitee} onChange={handleInviteeChange} />
+          <button onClick={handleAddInvitee}>Add</button>
         </label>
         <br />
+        <div>
+          <h3>Invitees:</h3>
+          <ul>
+            {gameDetails.invitees.map((invitee, index) => (
+              <li key={index}>{invitee}</li>
+            ))}
+          </ul>
+        </div>
         <button onClick={handleSubmit}>Create Game</button>
       </div>
 
-        <Player
-          src='https://lottie.host/22de9b27-ab62-4b4f-b76f-0d0bfa2af678/wV6oqOj6AX.json'
-          className="player"
-          loop={true}
-            autoplay={true}
-        />
+      <Player
+        src='https://lottie.host/22de9b27-ab62-4b4f-b76f-0d0bfa2af678/wV6oqOj6AX.json'
+        className="player"
+        loop={true}
+        autoplay={true}
+      />
     </div>
   );
 };
