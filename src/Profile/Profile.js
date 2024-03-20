@@ -39,7 +39,7 @@ const Profile = () => {
       fetchUserDetails();
     }
   }, [user, userDetails]);
-  console.log(user)
+
   return (
     <div className="profile-container">
       <Header2 />
