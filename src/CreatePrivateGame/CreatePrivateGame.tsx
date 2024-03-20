@@ -127,8 +127,10 @@ const CreatePrivateGame: React.FC = () => {
       <ul>
         {gameDetails.invitees.map((invitee, index) => (
           <li key={index}>
-            {invitee}
-            <button className="remove-button" onClick={() => handleRemoveInvitee(index)}>Remove</button>
+            <div className="invitee-item">
+              <span>{invitee}</span>
+              <button className="remove-button" onClick={() => handleRemoveInvitee(index)}>Remove</button>
+            </div>
           </li>
         ))}
       </ul>
