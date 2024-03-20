@@ -1,3 +1,5 @@
+// PrivateGameView.js
+
 import React, { useState, useEffect } from 'react';
 import './PrivateGameView.css';
 import Header2 from '../Header2/Header2';
@@ -51,23 +53,36 @@ const PrivateGameView = () => {
             console.error('Error sending invite:', error);
         }
     };
-
     return (
         <div className="private-game-view-container">
             <Header2 />
             <div className="private-game-view-content">
                 <div className="details-container private-content">
                     <div className="participants-section">
-                        <h2>Participants</h2>
+                        <h2>Standings</h2>
                         <ul>
-                            {gameData ? gameData.attributes.users.map((participant, index) => (
-                                <li key={index}>{participant.attributes.username}</li>
-                            )) : null}
+                            {gameData ? gameData.attributes.users
+                                .sort((a, b) => {
+                                    const statsA = gameData.attributes.user_game_stats.find(stat => stat.user_id === a.id);
+                                    const statsB = gameData.attributes.user_game_stats.find(stat => stat.user_id === b.id);
+                                    const rankA = statsA ? statsA.rank : 0; // Default to 0 if stats not found
+                                    const rankB = statsB ? statsB.rank : 0; // Default to 0 if stats not found
+                                    return rankA - rankB;
+                                })
+                                .map((participant, index) => {
+                                    const stats = gameData.attributes.user_game_stats.find(stat => stat.user_id === participant.id);
+                                    return (
+                                        <li key={index}>
+                                            <span>{stats ? stats.rank : '-'}. </span> {/* Displaying rank */}
+                                            <span>{participant.attributes.username}</span> {/* Displaying username */}
+                                            <span>Total Score: {stats ? stats.total_overall_score_private_games : '-'}</span> {/* Displaying total score */}
+                                        </li>
+                                    );
+                                }) : null}
+
                         </ul>
                     </div>
-                    <div className="standings-section">
-                        <h2>Standings</h2>
-                    </div>
+
                     <div className="game-length-section">
                         <p>Game Length: {gameData ? gameData.attributes.length_in_days : null} days</p>
                     </div>
