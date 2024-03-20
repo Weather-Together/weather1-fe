@@ -15,6 +15,7 @@ const Profile = () => {
     }
   }, [navigate, user]);
 
+  // eslint-disable-next-line
   const userDetails = {
     email: user ? user.email : "",
     username: user ? user.username : ""
