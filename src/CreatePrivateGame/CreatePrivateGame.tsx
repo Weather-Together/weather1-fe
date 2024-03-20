@@ -74,6 +74,14 @@ const CreatePrivateGame: React.FC = () => {
   return (
     <div className="create-private-game-container">
       <Header2 />
+
+        <Player
+          src='https://lottie.host/f35fa82a-0091-4ee8-ad6d-77e329ed464a/KqOVOsmCeH.json'
+          className="player"
+          loop={true}
+            autoplay={true}
+        />
+
       <div className="create-private-game">
         <h2>Create a Private Game</h2>
         <label>
@@ -98,6 +106,13 @@ const CreatePrivateGame: React.FC = () => {
         <br />
         <button onClick={handleSubmit}>Create Game</button>
       </div>
+
+        <Player
+          src='https://lottie.host/22de9b27-ab62-4b4f-b76f-0d0bfa2af678/wV6oqOj6AX.json'
+          className="player"
+          loop={true}
+            autoplay={true}
+        />
     </div>
   );
 };

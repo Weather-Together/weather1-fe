@@ -3,27 +3,32 @@
   justify-content: center;
   align-items: center;
   height: calc(100vh - 60px);
-  /* Adjusted for header height; change 60px to your header's actual height */
   width: 100vw;
-  padding-top: 40px;
-  /* This pushes the content down, adjust this value based on your header's height */
+  padding-top: 60px;
   box-sizing: border-box;
-  
 }
 
 .create-private-game {
   padding: 20px;
-  background-color: rgb(212, 33, 182);
+  background-color: var(--background-color);
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  color: black;
+  color: var(--text-color);
   font-weight: bold;
-  text-align: center;
-  
-  /* Centers the text inside the .login-content */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
 }
 
+.create-private-game label {
+  display: block;
+  margin-bottom: 10px;
+}
 
+.create-private-game button {
+  align-self: center; /* Center the button horizontally */
+  margin-top: 10px; /* Add margin to separate button from other inputs */
+}
 @media (max-width: 500px) {
   /* Keep the header fixed at the top */
   header {
