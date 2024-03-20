@@ -185,28 +185,37 @@ const Dashboard: React.FC = () => {
       <Header2 />
       {isLoading ? (
         <p>Loading...</p>
-      ) : (
-        <div className="dashboard-content">
+        ) : (
+          <div className="dashboard-content">
           <div>
-            <div className="daily-game-stats">
-              <h3>Daily Game Stats</h3>
+            <div className="daily-game-stats" id="daily-game-stats">
+              <div className="half-grid">
+              <h3 style={{ marginLeft: '25px'}}>Daily Game Stats</h3>
+              <h5 style={{ marginRight: '10px', textAlign: 'right' }}> &nbsp; Rounds Played: {dailyStatsData && dailyStatsData.gameCount}</h5>
+              </div>
               <hr
                   style={{
-                      color: 'gray',
-                      backgroundColor: 'gray',
-                      width: '100%'
+                    color: 'gray',
+                    backgroundColor: 'gray',
+                    width: '100%'
                   }}
               />
-              <h5>Games Played: {dailyStatsData && dailyStatsData.gameCount}</h5>
               {dailyStatsData && <BarGraph data={barGraphData} />}
-              <div className="avg-best">
-                <h5>
-                  Average Score: {dailyStatsData && Math.round(dailyStatsData.avgScore)}
-                </h5>
-                <h5>Best Score: {dailyStatsData && dailyStatsData.bestScore}</h5>
-              </div>
+              <hr
+                  style={{
+                    color: 'gray',
+                    backgroundColor: 'gray',
+                    width: '100%'
+                  }}
+                  />
+                  <div style={{ textAlign: 'center'}}>
+                <div className="custom-h5">
+                  Average Score: &nbsp; <span className="custom-h4">{dailyStatsData && Math.round(dailyStatsData.avgScore)}</span>
+                </div>
+                </div>
+                {/* <h5>Best Score: {dailyStatsData && dailyStatsData.bestScore}</h5> */}
             </div>
-            <div className="custom-games">
+            <div className="custom-games" id="custom-games">
             <div className="custom-heading-container">
               <h3 className="custom-heading">Custom Games</h3>
               <div className="links">
@@ -215,6 +224,13 @@ const Dashboard: React.FC = () => {
                 </div>
               </div>
             </div>
+            <hr
+              style={{
+                color: 'gray',
+                backgroundColor: 'gray',
+                width: '100%',
+                margin: '5px 0px 10px 0px'
+              }}></hr>
             <DashboardCustom />
               {/* <div className="custom-heading-container">
                 <h3 className="custom-heading">Custom Games</h3>
@@ -238,8 +254,11 @@ const Dashboard: React.FC = () => {
               )} */}
             </div>
           </div>
-  
-          <div className="competitive-stats">
+          <div className="competitive-stats" 
+          // style={{
+          //   height: document.getElementById('daily-game-stats').clientHeight+document.getElementById('custom-games').clientHeight,
+          // }}
+          >
             <div className="competitive-stats-header">
               <h3>Competitive Stats</h3>
               <div className="links">

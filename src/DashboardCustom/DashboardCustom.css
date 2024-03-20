@@ -12,17 +12,27 @@
 .custom-game-container {
   display: inline-block; /* Ensure each game is displayed in a box */
   border: 1px solid #ccc; /* Add border for each game container */
-  border-radius: 5px; /* Add border radius */
+  background: ghostwhite;
+  margin: 0px 5px 3px 5px;
+  box-shadow: 1px 3px 3px 1px rgba(44, 44, 44, 0.5); /* Adds a shadow for depth */
+  border-radius: 5px 10px 10px 10px; /* Add border radius */
   padding: 10px; /* Add padding */
 }
 
 .button {
-  margin-top: 10px; /* Adjust as needed */
+  margin: 10px; /* Adjust as needed */
+  background-color: #007bff; /* Background color for link boxes */
+  color: ghostwhite;
+  border-radius: 10px; /* Add border radius */
+  transition: background-color 0.3s ease;
   /* Add more button styling here */
+}
+
+.button:hover {
+  background-color: #dddddd; /* Add a hover effect to link boxes */
 }
 
 /* Adjust the main container */
 .dashboard-content {
-  width: 1200px; /* Take up the full width of the screen */
   overflow-x: hidden; /* Hide horizontal overflow */
 }
