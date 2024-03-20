@@ -23,11 +23,18 @@
   overflow: auto;
 }
 
+.half-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
 .daily-game-stats,
 .competitive-stats,
 .custom-games {
-  background-color: rgb(204, 228, 241);
+  background-color: #f3efe5;
     padding: 10px;
+  border-radius: 20px;
+
   margin: 10px; /* Adds external spacing */
   box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.5); /* Adds a shadow for depth */
   
@@ -55,7 +62,7 @@
 
 
 .custom-heading {
-  margin: 2.0vw;
+  margin: 1.8vw 2.0vw 1.0vw 2.0vw ;
 }
 
 .dashboard-content nav {
@@ -87,7 +94,7 @@
 
 .link-box {
   background-color: #007bff; /* Background color for link boxes */
-  border-radius: 20px;
+  border-radius: 20px 20px 20px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   margin-right: 20px; /* Space between link boxes */
   padding: 10px; /* Adjust padding for link boxes */
@@ -195,6 +202,19 @@ li {
   align-items: center;
 }
 
+.custom-h5 {
+  font-size: 1.0rem; /* Adjust the font size as needed */
+  font-weight: bold; /* Set the font weight to bold */
+  margin: 10px 0; /* Add margin (top and bottom) to create space around the heading */
+  padding: 5px; /* Add padding inside the heading */
+}
+
+.custom-h4 {
+  font-size: 1.2rem; /* Set the font size to 24 pixels */
+  font-weight: bold; /* Make the text bold */
+  margin-bottom: 10px; /* Add some bottom margin for spacing */
+}
+
 .leaderboard-container {
   display: flex;
   flex-direction: row;
@@ -215,7 +235,7 @@ li {
 
 .link-box {
   width: 15vw;
-  margin: 1.8vw;
+  margin: 1.3vw 1.8vw 1.0vw 1.8vw;
 }
 
 .competitive-stats table {

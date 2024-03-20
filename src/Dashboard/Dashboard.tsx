@@ -189,7 +189,18 @@ const Dashboard: React.FC = () => {
           <div className="dashboard-content">
           <div>
             <div className="daily-game-stats" id="daily-game-stats">
-              <h3>Daily Game Stats</h3>
+              <div className="half-grid">
+              <h3 style={{ marginLeft: '25px'}}>Daily Game Stats</h3>
+              <h5 style={{ marginRight: '10px', textAlign: 'right' }}> &nbsp; Rounds Played: {dailyStatsData && dailyStatsData.gameCount}</h5>
+              </div>
+              <hr
+                  style={{
+                    color: 'gray',
+                    backgroundColor: 'gray',
+                    width: '100%'
+                  }}
+              />
+              {dailyStatsData && <BarGraph data={barGraphData} />}
               <hr
                   style={{
                     color: 'gray',
@@ -197,17 +208,12 @@ const Dashboard: React.FC = () => {
                     width: '100%'
                   }}
                   />
-              <h5> &nbsp; Games Played: {dailyStatsData && dailyStatsData.gameCount}</h5>
-              {dailyStatsData && <BarGraph data={barGraphData} />}
-              <div className="avg-best">
-                <h5>
-                  &nbsp; Average Score: &nbsp;
-                </h5>
-                <h4>
-                    {dailyStatsData && Math.round(dailyStatsData.avgScore)}
-                </h4>
+                  <div style={{ textAlign: 'center'}}>
+                <div className="custom-h5">
+                  Average Score: &nbsp; <span className="custom-h4">{dailyStatsData && Math.round(dailyStatsData.avgScore)}</span>
+                </div>
+                </div>
                 {/* <h5>Best Score: {dailyStatsData && dailyStatsData.bestScore}</h5> */}
-              </div>
             </div>
             <div className="custom-games" id="custom-games">
             <div className="custom-heading-container">
@@ -218,6 +224,13 @@ const Dashboard: React.FC = () => {
                 </div>
               </div>
             </div>
+            <hr
+              style={{
+                color: 'gray',
+                backgroundColor: 'gray',
+                width: '100%',
+                margin: '5px 0px 10px 0px'
+              }}></hr>
             <DashboardCustom />
               {/* <div className="custom-heading-container">
                 <h3 className="custom-heading">Custom Games</h3>
