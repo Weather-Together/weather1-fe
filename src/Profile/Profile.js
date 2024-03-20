@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './Profile.css';
+import { Player } from '@lottiefiles/react-lottie-player'; 
 import Header2 from '../Header2/Header2';
 import Footer from '../Footer/Footer';
 
@@ -44,10 +45,17 @@ const Profile = () => {
     <div className="profile-container">
       <Header2 />
       <div className="profile-content">
-        <h3>Profile Details</h3>
+        <h2>Profile Details</h2>
         <p>Email: {user.attributes.email}</p>
         <p>Username: {user.attributes.username}</p>
       </div>
+
+      <Player
+        src='https://lottie.host/22de9b27-ab62-4b4f-b76f-0d0bfa2af678/wV6oqOj6AX.json'
+        className="player"
+        loop={true}
+        autoplay={true}
+    />
       <Footer />
     </div>
   );

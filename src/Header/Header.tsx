@@ -21,7 +21,7 @@ const Header: React.FC = () => {
         </div>
       </Link>
       <nav>
-        <Link to="/new-user" className="nav-item">New User</Link>
+      <Link to="/new-user" className="nav-item">New User</Link>
         <Link to="/login" className="nav-item">Login</Link>
         <button onClick={toggleTheme} className="nav-item">Toggle Theme</button>
       </nav>
