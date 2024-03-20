@@ -10,9 +10,9 @@
 
 .dashboard-content {
   display: grid;
-    grid-template-columns: 60% 40%;
-    align-items: center;
-    width: 80vw;
+  grid-template-columns: 60% 40%;
+  align-items: center;
+  width: 80vw;
   background-color: rgb(204, 228, 241);
   flex-direction: row; /* Align children horizontally */
   flex-wrap: wrap; /* Allow wrapping to the next line */
@@ -26,10 +26,10 @@
 .daily-game-stats,
 .competitive-stats,
 .custom-games {
-  background-color: ghostwhite;
+  background-color: rgb(204, 228, 241);
     padding: 10px;
   margin: 10px; /* Adds external spacing */
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5); /* Adds a shadow for depth */
+  box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.5); /* Adds a shadow for depth */
   
 }
 
@@ -42,16 +42,16 @@
 .competitive-stats {
   flex: 1; /* Allows the box to grow */
   min-width: 300px; /* Minimum width before wrapping */
-    height: 85.5vh; /* Minimum width before wrapping */
+  height: 85.5vh; /* Minimum width before wrapping */
 }
 
-  .custom-games {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    width: 47vw;
-    order: 3;
-  }
+.custom-games {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 47vw;
+  order: 3;
+}
 
 
 .custom-heading {
@@ -86,8 +86,8 @@
 }
 
 .link-box {
-  background-color: #f0f0f0; /* Background color for link boxes */
-  border-radius: 5px;
+  background-color: #007bff; /* Background color for link boxes */
+  border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   margin-right: 20px; /* Space between link boxes */
   padding: 10px; /* Adjust padding for link boxes */
@@ -97,7 +97,7 @@
 
 .link-box a {
   text-decoration: none;
-  color: black;
+  color: ghostwhite;
   padding: 0.5rem 0.75rem;
   border-radius: 5px;
   transition: background-color 0.3s ease;
@@ -177,6 +177,7 @@ li {
 
   .dashboard-content {
     order: 2;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     margin-top: 20px;
   }
 }
@@ -187,7 +188,13 @@ li {
   width: 47vw;
 }
 
-.avg-best,
+.avg-best {
+  display: flex;
+  flex-direction: row;
+  width: 20vw;
+  align-items: center;
+}
+
 .leaderboard-container {
   display: flex;
   flex-direction: row;

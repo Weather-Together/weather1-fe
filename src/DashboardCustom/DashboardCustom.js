@@ -33,7 +33,7 @@ const DashboardCustom = () => {
       <div className="custom-games-container">
         {customGames.map((game, index) => (
           <div key={index} className="custom-game-container">
-            <p>Game: {game.attributes.game_name}</p>
+            <h3>{game.attributes.game_name}</h3>
             <p>Players: {game.attributes.player_count}</p>
             <p>Rounds: {game.attributes.rounds}</p>
             {game.attributes.invitation === 'accepted' ? (

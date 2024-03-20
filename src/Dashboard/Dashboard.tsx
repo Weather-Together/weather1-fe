@@ -185,28 +185,31 @@ const Dashboard: React.FC = () => {
       <Header2 />
       {isLoading ? (
         <p>Loading...</p>
-      ) : (
-        <div className="dashboard-content">
+        ) : (
+          <div className="dashboard-content">
           <div>
-            <div className="daily-game-stats">
+            <div className="daily-game-stats" id="daily-game-stats">
               <h3>Daily Game Stats</h3>
               <hr
                   style={{
-                      color: 'gray',
-                      backgroundColor: 'gray',
-                      width: '100%'
+                    color: 'gray',
+                    backgroundColor: 'gray',
+                    width: '100%'
                   }}
-              />
-              <h5>Games Played: {dailyStatsData && dailyStatsData.gameCount}</h5>
+                  />
+              <h5> &nbsp; Games Played: {dailyStatsData && dailyStatsData.gameCount}</h5>
               {dailyStatsData && <BarGraph data={barGraphData} />}
               <div className="avg-best">
                 <h5>
-                  Average Score: {dailyStatsData && Math.round(dailyStatsData.avgScore)}
+                  &nbsp; Average Score: &nbsp;
                 </h5>
-                <h5>Best Score: {dailyStatsData && dailyStatsData.bestScore}</h5>
+                <h4>
+                    {dailyStatsData && Math.round(dailyStatsData.avgScore)}
+                </h4>
+                {/* <h5>Best Score: {dailyStatsData && dailyStatsData.bestScore}</h5> */}
               </div>
             </div>
-            <div className="custom-games">
+            <div className="custom-games" id="custom-games">
             <div className="custom-heading-container">
               <h3 className="custom-heading">Custom Games</h3>
               <div className="links">
@@ -238,8 +241,11 @@ const Dashboard: React.FC = () => {
               )} */}
             </div>
           </div>
-  
-          <div className="competitive-stats">
+          <div className="competitive-stats" 
+          // style={{
+          //   height: document.getElementById('daily-game-stats').clientHeight+document.getElementById('custom-games').clientHeight,
+          // }}
+          >
             <div className="competitive-stats-header">
               <h3>Competitive Stats</h3>
               <div className="links">
