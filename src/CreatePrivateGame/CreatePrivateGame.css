@@ -21,16 +21,31 @@
 }
 
 .create-private-game label {
-  display: block;
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 10px;
+  align-items: center;
 }
 
-.create-private-game button {
-  align-self: center; /* Center the button horizontally */
-  margin-top: 10px; /* Add margin to separate button from other inputs */
+.create-private-game input {
+  flex: 1;
+  margin-left: 10px;
 }
+
+.create-private-game hr {
+  border: none;
+  border-top: 2px solid #ccc;
+  margin: 20px 0;
+}
+
+.create-private-game .remove-button {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
 @media (max-width: 500px) {
-  /* Keep the header fixed at the top */
   header {
     position: fixed;
     top: 0;
@@ -38,7 +53,6 @@
     right: 0;
   }
   
-  /* Keep the footer fixed at the bottom */
   footer {
     position: fixed;
     bottom: 0;

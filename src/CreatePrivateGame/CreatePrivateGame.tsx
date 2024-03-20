@@ -51,6 +51,13 @@ const CreatePrivateGame: React.FC = () => {
     }
   };
 
+  const handleRemoveInvitee = (index: number) => {
+    setGameDetails(prevDetails => ({
+      ...prevDetails,
+      invitees: prevDetails.invitees.filter((_, i) => i !== index)
+    }));
+  };
+
   const handleSubmit = async () => {
     const user = JSON.parse(localStorage.getItem('User') || '{}');
     const newGame = {
@@ -78,7 +85,6 @@ const CreatePrivateGame: React.FC = () => {
       console.log('fetched data', data.data);
     }
     catch (error) {
-      // Handle errors
       console.error('Error creating game:', error);
     }
   };
@@ -94,39 +100,44 @@ const CreatePrivateGame: React.FC = () => {
         autoplay={true}
       />
 
-      <div className="create-private-game">
-        <h2>Create a Private Game</h2>
-        <label>
-          Game Name:
-          <input type="text" name="name" onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Length in Days:
-          <input type="number" name="lengthInDays" onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Guess Lead Time (Days):
-          <input type="number" name="guessLeadTime" onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Invitees:
-          <input type="text" value={currentInvitee} onChange={handleInviteeChange} />
-          <button onClick={handleAddInvitee}>Add</button>
-        </label>
-        <br />
-        <div>
-          <h3>Invitees:</h3>
-          <ul>
-            {gameDetails.invitees.map((invitee, index) => (
-              <li key={index}>{invitee}</li>
-            ))}
-          </ul>
-        </div>
-        <button onClick={handleSubmit}>Create Game</button>
-      </div>
+<div className="create-private-game">
+  <h2>Create a Private Game</h2>
+  <hr />
+  <div className="form-fields">
+    <label>
+      <input type="text" name="name" onChange={handleChange} />
+      <span>Game Name:</span>
+    </label>
+    <label>
+      <input type="number" name="lengthInDays" onChange={handleChange} />
+      <span>Length in Days:</span>
+    </label>
+    <label>
+      <input type="number" name="guessLeadTime" onChange={handleChange} />
+      <span>Guess Lead Time (Days):</span>
+    </label>
+    <hr />
+    <label>
+      Add user by email:
+      <input type="text" value={currentInvitee} onChange={handleInviteeChange} />
+      <button onClick={handleAddInvitee}>Add</button>
+    </label>
+    <div>
+      <h3>Invitees:</h3>
+      <ul>
+        {gameDetails.invitees.map((invitee, index) => (
+          <li key={index}>
+            {invitee}
+            <button className="remove-button" onClick={() => handleRemoveInvitee(index)}>Remove</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+  <hr />
+  <button onClick={handleSubmit} style={{ width: 'fit-content', margin: '10px auto' }}>Create Game</button>
+</div>
+
 
       <Player
         src='https://lottie.host/22de9b27-ab62-4b4f-b76f-0d0bfa2af678/wV6oqOj6AX.json'
