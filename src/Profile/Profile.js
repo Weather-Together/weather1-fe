@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './Profile.css';
 import Header2 from '../Header2/Header2';
@@ -14,18 +14,13 @@ const Profile = () => {
       navigate('../profile');
     }
   }, [navigate, user]);
-  
-  // const userDetails = {
-  //   email: user ? user.email : "",
-  //   username: user ? user.username : ""
-  // }
+
+  const userDetails = {
+    email: user ? user.email : "",
+    username: user ? user.username : ""
+  }
 
   useEffect(() => {
-    const userDetails = {
-      email: user ? user.email : "",
-      username: user ? user.username : ""
-    };
-    
     const fetchUserDetails = async () => {
       try {
         const response = await fetch(`https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${user.id}`);
@@ -42,8 +37,8 @@ const Profile = () => {
     if (user) {
       fetchUserDetails();
     }
-  }, [user]);
-
+  }, [user, userDetails]);
+  console.log(user)
   return (
     <div className="profile-container">
       <Header2 />
