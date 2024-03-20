@@ -1,3 +1,5 @@
+/* PrivateGameView.css */
+
 .private-game-view-container {
     display: flex;
     flex-direction: column;
@@ -16,12 +18,45 @@
     justify-content: space-around;
     /* Distribute items evenly along the row */
     padding: 20px;
-    background-color: white;
-    border-radius: 5px;
+    background-color: #f3efe5;
+    border-radius: 20px;
+    /* Add rounded corners */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     color: black;
     font-weight: bold;
     text-align: center;
     gap: 20px;
     /* Space between items */
+}
+
+
+.participants-section li {
+    display: flex;
+    /* Use flexbox for positioning */
+    align-items: center;
+    /* Center items vertically */
+}
+
+.participants-section li span {
+    margin-right: 10px;
+    /* Add spacing between rank number and username */
+}
+
+.participants-section li span.rank {
+    width: 20px;
+    /* Adjust width for rank number */
+    text-align: center;
+    /* Center rank number horizontally */
+}
+
+.participants-section {
+    border-radius: 10px;
+    /* Add rounded corners */
+    overflow: hidden;
+    /* Ensure rounded corners are applied */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: #f3efe5;
+    padding: 20px;
+    margin-bottom: 20px;
+    /* Add some space between the standings and other sections */
 }
