@@ -11,7 +11,7 @@
 .create-private-game {
   padding: 20px;
   background-color: #f3efe5;
-  border-radius: 5px;
+  border-radius: 20px 20px 20px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   color: var(--text-color);
   font-weight: bold;
