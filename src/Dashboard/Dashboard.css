@@ -32,7 +32,7 @@
 .competitive-stats,
 .custom-games {
   background-color: #f3efe5;
-    padding: 10px;
+  padding: 10px;
   border-radius: 20px;
 
   margin: 10px; /* Adds external spacing */
@@ -45,6 +45,11 @@
   grid-template-columns: 10% 5% 53% 32%;
 }
 
+.recents-grid {
+  display: grid;
+  grid-template-columns: 10% 3% 55% 12% 20%;
+}
+
 .daily-game-stats {
   flex: 1; /* Allows the box to grow */
   min-width: 300px; /* Minimum width before wrapping */
@@ -53,7 +58,6 @@
 .competitive-stats {
   flex: 1; /* Allows the box to grow */
   min-width: 300px; /* Minimum width before wrapping */
-  height: 85.5vh; /* Minimum width before wrapping */
 }
 
 .custom-games {
@@ -160,12 +164,22 @@ li {
 }
 
 .custom-heading-container {
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+
 }
 
 @media (max-width: 500px) {
+  
+  .dashboard-content {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Allow vertical scrolling */
+    overflow-x: auto; /* Allow vertical scrolling */
+  }
   /* Keep the header fixed at the top */
   header {
     position: fixed;
@@ -173,6 +187,10 @@ li {
     left: 0;
     right: 0;
     z-index: 1000;
+  }
+
+  .custom-games {
+    width: 70vw;
   }
 
   /* Keep the footer fixed at the bottom */
@@ -190,17 +208,15 @@ li {
     align-items: center;
     justify-content: center;
     padding: 27px;
-    padding-top: 700px; /* Adjust based on the height of the header */
+    padding-top: 100px; /* Adjust based on the height of the header */
     padding-bottom: 80px;
     max-width: 100%;
-    height: calc(100vh - 10px); /* Adjust based on the height of the header */
-    overflow-y: auto;
+    overflow-y: auto; /* Allow vertical scrolling */
   }
 
   .link-box {
     order: 1;
     margin-bottom: 20px;
-    background-color: #f0f0f0;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     padding: 10px;
@@ -252,7 +268,8 @@ li {
 }
 
 .competitive-stats-header {
-  display: flex;
+  display: grid;
+  grid-template-columns: 50% 50%;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
@@ -263,24 +280,6 @@ li {
   margin: 1.3vw 1.8vw 1.0vw 1.8vw;
 }
 
-.competitive-stats table {
-  width: 100%; /* Full-width table */
-  border-collapse: collapse; /* Collapses the border */
-}
 
-.competitive-stats th,
-.competitive-stats td {
-  border: 1px solid #ddd; /* Add a border to table header and table data cells */
-  padding: .5px; /* Add some padding for content */
-  margin-right: 30px;
-  text-align: left; /* Align the text to the left */
-}
 
-.competitive-stats th {
-  background-color: #f4f4f4; /* Background color for header cells */
-  color: #333; /* Text color for header cells */
-}
 
-.competitive-stats tr:nth-child(even) {
-  background-color: #f9f9f9; /* Zebra stripes effect for even rows */
-}
