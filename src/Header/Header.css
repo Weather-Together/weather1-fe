@@ -4,7 +4,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: #f3efe5; /* Use theme color */
+    background-color: var(--background-color-header); /* Use theme color */
     color: var(--text-color); /* Use theme color */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     width: 100%;

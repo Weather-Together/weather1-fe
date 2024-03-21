@@ -140,9 +140,17 @@ const DailyGame: React.FC = () => {
           <Map onLocationSelect={handleLocationSelect} />
         </div>
         <div className="details-container">
+          <div className='prompt'>
         {roundData ? ( 
             <div className="weather-data-container">
               <h2>Today's Weather Challenge</h2>
+              <hr
+              style={{
+                color: 'gray',
+                backgroundColor: 'gray',
+                width: '100%',
+                margin: '5px 0px 10px 0px'
+              }}></hr>
               <p>Max Temp: {roundData.maxtemp} °F</p>
               <p>Min Temp: {roundData.mintemp} °F</p>
               <p>Max Wind: {roundData.maxwind} MPH</p>
@@ -152,11 +160,26 @@ const DailyGame: React.FC = () => {
           ) : (
             <p>Loading weather data...</p> 
           )}
+          <hr
+              style={{
+                color: 'gray',
+                backgroundColor: 'gray',
+                width: '100%',
+                margin: '5px 0px 10px 0px'
+              }}></hr>
           {location && (
             <div className="location-display">
               <p>Latitude: {location.lat.toFixed(2)}</p>
               <p>Longitude: {location.lng.toFixed(2)}</p>
+              <br /><hr
+            style={{
+              color: 'gray',
+              backgroundColor: 'gray',
+              width: '100%',
+              margin: '5px 0px 10px 0px'
+            }}></hr>
             </div>
+
           )}
           <button onClick={handleSubmit} className="submit-button">Submit Guess</button>
           {score !== null && (
@@ -164,6 +187,7 @@ const DailyGame: React.FC = () => {
               <p>Your score: {score.toFixed(2)}</p>
               {guessLocation && ( 
             <>
+            
             <h3>Your Guess</h3>
             <p>City: {guessLocation.location_name}</p>
             <p>Country: {guessLocation.country}</p>
@@ -179,56 +203,63 @@ const DailyGame: React.FC = () => {
             </div>
           )}
         </div>
+        </div>
         {guessLocation ? <div className='modal-container'>
           <dialog className='score-modal' open={showModal} onClose={handleCloseModal}>
-            <form className='close-dialog' method='dialog'>
+            
+            <div className='scoring'>
+              <div><form className='close-dialog' method='dialog'>
               <button className='dialog-button'>X</button>
-            </form>
-            <div className='column-headings'>
-              <h4 className='cell header'>Target Values</h4>
-              <h4 className='cell header'>Actual Values</h4>
-              <h4 className='cell header'>Margin</h4>
+            </form></div>
+              <div className='scoring-header'>Target Values</div>
+              <div></div>
+              <div className='scoring-header'>Actual Values</div>
+              <div></div>
+              <div className='scoring-header'>Margin</div>
+              
             </div>
+            <hr></hr>
+
             <div className='score-logic'>
-              <div className='scoring max-temp'>
-                <p className="heading cell">Max Temp:</p>
-                <p className='cell'>{roundData.maxtemp} °F</p>
-                <p className='cell'>-</p>
-                <p className='cell'>{guessData.maxtemp_f} °F</p>
-                <p className='cell'>=</p>
-                <p className='cell'>{(roundData.maxtemp - guessData.maxtemp_f).toFixed(2)}²</p>
+              <div className='scoring'>
+                <div className="heading-cell">Max Temp:</div>
+                <div className='cell'>{roundData.maxtemp} °F</div>
+                <div className='cell'>-</div>
+                <div className='cell'>{guessData.maxtemp_f} °F</div>
+                <div className='cell'>=</div>
+                <div className='cell'>{(roundData.maxtemp - guessData.maxtemp_f).toFixed(2)}²</div>
               </div>
-              <div className='scoring min-temp'>
-                <p className='heading cell'>Min Temp:</p>
-                <p className='cell'>{roundData.mintemp} °F</p>
-                <p className='cell'>-</p>
-                <p className='cell'>{guessData.mintemp_f} °F</p>
-                <p className='cell'>=</p>
-                <p className='cell'>{(roundData.mintemp - guessData.mintemp_f).toFixed(2)}²</p>
+              <div className='scoring'>
+                <div className='heading-cell'>Min Temp:</div>
+                <div className='cell'>{roundData.mintemp} °F</div>
+                <div className='cell'>-</div>
+                <div className='cell'>{guessData.mintemp_f} °F</div>
+                <div className='cell'>=</div>
+                <div className='cell'>{(roundData.mintemp - guessData.mintemp_f).toFixed(2)}²</div>
               </div>
-              <div className='scoring max-wind'>
-                <p className='heading cell'>Max Wind:</p>
-                <p className='cell'>{roundData.maxwind} MPH</p>
-                <p className='cell'>-</p>
-                <p className='cell'>{guessData.maxwind_mph} MPH</p>
-                <p className='cell'>=</p>
-                <p className='cell'>{(roundData.maxwind - guessData.maxwind_mph).toFixed(2)}²</p>
+              <div className='scoring'>
+                <div className='heading-cell'>Max Wind:</div>
+                <div className='cell'>{roundData.maxwind} MPH</div>
+                <div className='cell'>-</div>
+                <div className='cell'>{guessData.maxwind_mph} MPH</div>
+                <div className='cell'>=</div>
+                <div className='cell'>{(roundData.maxwind - guessData.maxwind_mph).toFixed(2)}²</div>
               </div>
-              <div className='scoring avg-humidity'>
-                <p className='heading cell'>Avg. Humidity:</p>
-                <p className='cell'>{roundData.avghumidity}%</p>
-                <p className='cell'>-</p>
-                <p className='cell'>{guessData.avghumidity}%</p>
-                <p className='cell'>=</p>
-                <p className='cell'>{(roundData.avghumidity - guessData.avghumidity).toFixed(2)}²</p>
+              <div className='scoring'>
+                <div className='heading-cell'>Avg. Humidity:</div>
+                <div className='cell'>{roundData.avghumidity}%</div>
+                <div className='cell'>-</div>
+                <div className='cell'>{guessData.avghumidity}%</div>
+                <div className='cell'>=</div>
+                <div className='cell'>{(roundData.avghumidity - guessData.avghumidity).toFixed(2)}²</div>
               </div>
-              <div className='scoring total-precipitation'>
-                <p className='heading cell'>Total Precip:</p>
-                <p className='cell'>{roundData.totalprecip} in</p>
-                <p className='cell'>-</p>
-                <p className='cell'>{guessData.totalprecip_in} in</p>
-                <p className='cell'>=</p>
-                <p className='cell'>{(roundData.totalprecip - guessData.totalprecip_in).toFixed(2)}²</p>
+              <div className='scoring'>
+                <div className='heading-cell'>Total Precip:</div>
+                <div className='cell'>{roundData.totalprecip} in</div>
+                <div className='cell'>-</div>
+                <div className='cell'>{guessData.totalprecip_in} in</div>
+                <div className='cell'>=</div>
+                <div className='cell'>{(roundData.totalprecip - guessData.totalprecip_in).toFixed(2)}²</div>
               </div>
             </div>
             <hr></hr>
@@ -243,10 +274,11 @@ const DailyGame: React.FC = () => {
               <div className='score-total'>
                 <h3>Total Score: </h3>
                 <p>{score.toFixed(2)}</p>
+                <button onClick={toDashboard} className='dashboard-button'>Dashboard</button>
+
               </div>
             </div>
             <div className='modal-dashboard'>
-            <button onClick={toDashboard} className='dashboard-button'>Dashboard</button>
             </div>
           </dialog>
           </div> :
