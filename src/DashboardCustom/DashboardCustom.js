@@ -107,7 +107,7 @@ const toGame = (game) => {
             <p>Players: {game.attributes.player_count}</p>
             <p>Rounds: {game.attributes.rounds}</p>
             {(game.attributes.invitation === 'accepted' || game.attributes.invitation === 'admin') ? (
-              <button onClick={() =>(toGame(game.attributes.id))} className="button">Go to Game</button>
+              <button onClick={() =>(toGame(game.attributes.game_id))} className="button">Go to Game</button>
             ) : (
               <>
                 <button onClick={() =>(acceptInvite(game.attributes.game_id))} className="button">Accept</button>
