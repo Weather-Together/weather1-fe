@@ -30,15 +30,34 @@ interface GameRank {
 interface competitiveStats {
   top5username: string;
   top5score: string;
+  top5: { username: string; score: number }[];
   userRank: number;
   gameCount: number;
   avgCompScore: number;
   lastThreeCompetitiveGamesRank: GameRank[];
 }
 
-// interface custom {
-//   names: string[] | null;
-// }
+function formatDate(dateString: string): string {
+  const dateParts = dateString.split('-');
+  const year = parseInt(dateParts[0], 10);
+  const month = parseInt(dateParts[1], 10) - 1; // Subtract 1 to adjust for 0-based months
+  const day = parseInt(dateParts[2], 10);
+
+  // Create a Date object using the extracted date components
+  const dateObject = new Date(year, month, day);
+
+  // Options for formatting the date
+  const options: Intl.DateTimeFormatOptions = {
+    month: 'short', // Short month name (e.g., Mar)
+    day: 'numeric', // Day of the month (e.g., 18)
+    year: '2-digit', // Two-digit representation of the year (e.g., 24 for 2024)
+  };
+
+  // Format the date using Intl.DateTimeFormat
+  const formattedDate = new Intl.DateTimeFormat('en-US', options).format(dateObject);
+
+  return formattedDate;
+}
 
 const Dashboard: React.FC = () => {
   // const [user, setUser] = useState<User | null>(null)
@@ -89,33 +108,7 @@ const Dashboard: React.FC = () => {
       }
       setDailyStatsData(JSON.parse(localStorage.getItem("DailyStats")));
     };
-    // const fetchCustomData = async () => {
-    //   if (!localStorage.getItem("CustomGames")) {
-    //     console.log("Fetching custom data...");
-    //     try {
-    //       const response = await fetch(
-    //         `https://powerful-sierra-25067-22c20bb81d9c.herokuapp.com/api/v0/users/${storedUser.id}/games`
-    //       );
-    //       if (!response.ok) {
-    //         throw new Error("Failed to fetch daily round data");
-    //       }
-    //       const responseData = await response.json();
-
-    //       // Extract game names from each game object
-    //       const gameNames = {
-    //         names: responseData.data.map(
-    //           (game: any) => game.attributes.game_name
-    //         ),
-    //       };
-    //       localStorage.setItem("CustomGames", JSON.stringify(gameNames));
-    //       console.log("fetched custom data", responseData.data);
-    //     } catch (error) {
-    //       setError(error.message);
-    //     }
-    //   }
-    //   setCustomGames(JSON.parse(localStorage.getItem("CustomGames")));
-    // };
-
+    
     const fetchCompetitiveData = async () => {
       if (!localStorage.getItem("CompetitiveData")) {
         try {
@@ -137,9 +130,12 @@ const Dashboard: React.FC = () => {
             .map((user) => user.username)
             .join(", ");
 
+          const top5 = data.competitive_stats.top_5_competitive_users;
+
           const competitiveData = {
             top5username: top5usernames,
             top5score: top5scores,
+            top5: top5,
             userRank: data.competitive_stats.user_competitive_rank,
             gameCount: data.competitive_stats.competitive_game_count,
             avgCompScore:
@@ -185,28 +181,37 @@ const Dashboard: React.FC = () => {
       <Header2 />
       {isLoading ? (
         <p>Loading...</p>
-      ) : (
-        <div className="dashboard-content">
+        ) : (
+          <div className="dashboard-content">
           <div>
-            <div className="daily-game-stats">
-              <h3>Daily Game Stats</h3>
+            <div className="daily-game-stats" id="daily-game-stats">
+              <div className="half-grid">
+              <h3 style={{ marginLeft: '25px'}}>Daily Game Stats</h3>
+              <h5 style={{ marginRight: '10px', textAlign: 'right' }}> &nbsp; Rounds Played: {dailyStatsData && dailyStatsData.gameCount}</h5>
+              </div>
               <hr
                   style={{
-                      color: 'gray',
-                      backgroundColor: 'gray',
-                      width: '100%'
+                    color: 'gray',
+                    backgroundColor: 'gray',
+                    width: '100%'
                   }}
               />
-              <h5>Games Played: {dailyStatsData && dailyStatsData.gameCount}</h5>
               {dailyStatsData && <BarGraph data={barGraphData} />}
-              <div className="avg-best">
-                <h5>
-                  Average Score: {dailyStatsData && Math.round(dailyStatsData.avgScore)}
-                </h5>
-                <h5>Best Score: {dailyStatsData && dailyStatsData.bestScore}</h5>
-              </div>
+              <hr
+                  style={{
+                    color: 'gray',
+                    backgroundColor: 'gray',
+                    width: '100%'
+                  }}
+                  />
+                <div style={{ textAlign: 'center'}}>
+                <div className="custom-h5">
+                  Average Score: &nbsp; <span className="custom-h4">{dailyStatsData && Math.round(dailyStatsData.avgScore)}</span>
+                </div>
+                </div>
+                {/* <h5>Best Score: {dailyStatsData && dailyStatsData.bestScore}</h5> */}
             </div>
-            <div className="custom-games">
+            <div className="custom-games" id="custom-games">
             <div className="custom-heading-container">
               <h3 className="custom-heading">Custom Games</h3>
               <div className="links">
@@ -215,101 +220,126 @@ const Dashboard: React.FC = () => {
                 </div>
               </div>
             </div>
+            <hr
+              style={{
+                color: 'gray',
+                backgroundColor: 'gray',
+                width: '100%',
+                margin: '5px 0px 10px 0px'
+              }}></hr>
             <DashboardCustom />
-              {/* <div className="custom-heading-container">
-                <h3 className="custom-heading">Custom Games</h3>
-                <div className="links">
-                    <div className="link-box">
-                      <Link to="/new-private-game">Create New Game</Link>
-                    </div>
-                  </div>
-              </div> */}
-              {/* Custom Games go here */}
-              {/* {customGames &&
-              customGames.names &&
-              customGames.names.length > 0 ? (
-                <ul className="game-list">
-                  {customGames.names.map((name, index) => (
-                    <li className="custom-list-item" key={index}>{name}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p>No Games</p>
-              )} */}
             </div>
           </div>
-  
-          <div className="competitive-stats">
+          <div className="competitive-stats" 
+          // style={{
+          //   height: document.getElementById('daily-game-stats').clientHeight+document.getElementById('custom-games').clientHeight,
+          // }}
+          >
             <div className="competitive-stats-header">
-              <h3>Competitive Stats</h3>
+              <h3 style={{ marginLeft: '25px'}}>Competitive Stats</h3>
               <div className="links">
-                <div className="link-box">
+                <div className="comp-link-box">
                   <Link to="/competitive">Go Play!</Link>
                 </div>
               </div>
             </div>
+            <hr
+            style={{
+              color: 'gray',
+              backgroundColor: 'gray',
+              width: '100%'
+            }}></hr>
             <div className="leaderboard-container">
               <h4 className="leaderboard-text">Leaderboard</h4>
-              <h5 className="games-played">
-                Games Played: {competitiveData && competitiveData.gameCount}
-              </h5>
+
             </div>
-            {competitiveData && (
-              <table>
-                <thead>
-                  <tr>
-                    <th>Rank</th>
-                    <th>Username</th>
-                    <th>Avg. Score</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {competitiveData.top5username.split(", ").map((username, index) => (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>{username}</td>
-                      <td>{competitiveData.top5score.split(", ")[index]}</td>
-                    </tr>
-                  ))}
-                  <tr key={storedUser.id}>
-                    <td>{competitiveData.userRank || "No rank"}</td>
-                    <td>
-                      {storedUser.attributes
+            <div className="leaderboard-grid">
+              <div style={{borderRight: '1px solid black'}}>Rank</div>
+              <div></div>
+              <div>Player</div>
+              <div style={{textAlign: 'center', borderLeft: '1px solid black'}}>Average Score</div>
+            </div>
+            <hr
+            style={{
+              color: 'gray',
+              backgroundColor: 'gray',
+              width: '100%'
+            }}></hr>
+            {competitiveData.top5 && competitiveData.top5.length > 0 ? (
+            <div>
+              {competitiveData.top5.map((user, index) => (
+                <div key={index}>
+                  <div className="leaderboard-grid">
+                    <div style={{textAlign: 'center', borderRight: '1px solid black', paddingBottom: '15px'}}>{index+1}</div>
+                    <div></div>
+                    <div>{user.username}</div>
+                    <div style={{textAlign: 'center', borderLeft: '1px solid black'}}>{Math.round(user.score).toLocaleString()}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+          ) : (
+            <p>No top 5 users data available</p>
+          )}
+          <hr
+            style={{
+              color: 'gray',
+              backgroundColor: 'gray',
+              width: '100%'
+            }}></hr>
+          { competitiveData.userRank > 5 ? (<div key={storedUser.id} className="leaderboard-grid">
+            <div style={{textAlign: 'center', borderRight: '1px solid black'}}>{competitiveData.userRank || "No rank"}</div>
+            <div></div>
+            <div>{storedUser.attributes
                         ? storedUser.attributes.username
                         : "No username"}
-                    </td>
-                    <td>{competitiveData.avgCompScore || "No scores"}</td>
-                  </tr>
-                </tbody>
-              </table>
-            )}
+            </div>
+            <div style={{textAlign: 'center', borderLeft: '1px solid black'}}>{competitiveData.avgCompScore || "No scores"}</div>
+          </div>) : (
+            <div></div>
+          ) }
+          <br />
             <div className="last-three-games">
-              <h3>Last Three Competitive Games</h3>
-              {competitiveData &&
-                competitiveData.lastThreeCompetitiveGamesRank && (
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Date</th>
-                        <th>Target Location</th>
-                        <th>Score</th>
-                        <th>Rank</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {competitiveData.lastThreeCompetitiveGamesRank.map(
-                        (game, index) => (
-                          <tr key={index}>
-                            <td>{game.date}</td>
-                            <td>{game.location.replace(/^,|,$/g, '')}</td>
-                            <td>{game.score || "No Score"}</td>
-                            <td>{game.user_rank || "No rank"}</td>
-                          </tr>
-                        )
-                      )}
-                    </tbody>
-                  </table>
-                )}
+              <h4>Last Three Games</h4>
+
+            <div className="recents-grid">
+            <div style={{borderRight: '1px solid black'}}>Rank</div>
+            <div></div>
+            <div>Target Location</div>
+            <div style={{textAlign: 'center', borderLeft: '1px solid black'}}>Score</div>
+            <div style={{textAlign: 'center', borderLeft: '1px solid black'}}>Date</div>
+            </div>
+            <hr
+            style={{
+              color: 'gray',
+              backgroundColor: 'gray',
+              width: '100%'
+            }}></hr>
+            {competitiveData && competitiveData.lastThreeCompetitiveGamesRank && (
+              <div>
+              {competitiveData.lastThreeCompetitiveGamesRank.slice().reverse().map(
+                (game, index) => (
+                  <div key={index} className="recents-grid">
+                    <div style={{textAlign: 'center', borderRight: '1px solid black', paddingBottom: '15px'}}>{game.user_rank || "N/A"}</div>
+                    <div></div>
+                    <div>{game.location.replace(/^,|,$/g, '')}</div>
+                    <div style={{textAlign: 'center', borderLeft: '1px solid black'}}>{Math.round(game.score).toLocaleString() || "N/A"}</div>
+                    <div style={{textAlign: 'center', borderLeft: '1px solid black'}}>{formatDate(game.date)}</div>
+                  </div>
+                )
+              )}
+              </div>
+              )}
+            </div>
+            <hr
+            style={{
+              color: 'gray',
+              backgroundColor: 'gray',
+              width: '100%'
+            }}></hr>
+            <div className="custom-h5" style={{ textAlign: 'center'}}>
+            Rounds Played: &nbsp; <span className="custom-h4">{competitiveData && competitiveData.gameCount}</span>
             </div>
           </div>
   
