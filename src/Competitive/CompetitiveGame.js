@@ -9,8 +9,8 @@ const CompetitiveGame = () => {
   const [roundData, setRoundData] = useState(null); // this is what gets displayed first
   const [round, setRound] = useState(null); // to determine the round
   const [score, setScore] = useState(null); // your score after submit
-  const [roundLocation, setRoundLocation] = useState(null); // from the get the location of the round
-  const [guessLocation, setGuessLocation] = useState(null); // the location of your guess
+  const [setRoundLocation] = useState(null); // from the get the location of the round
+  const [setGuessLocation] = useState(null); // the location of your guess
 
   // Define the function to handle location selection
   const handleLocationSelect = (selectedLocation) => {
@@ -125,27 +125,8 @@ const CompetitiveGame = () => {
           <button onClick={handleSubmit} className="submit-button">
             Submit Guess
           </button>
-          {score !== null && (
-            <div className="score-display">
-              <p>Your score: {score.toFixed(2)}</p>
-              {guessLocation && (
-                <>
-                  <h3>Your Guess</h3>
-                  <p>City: {guessLocation.location_name}</p>
-                  <p>Country: {guessLocation.country}</p>
-                </>
-              )}
-              {roundLocation && (
-                <>
-                  <h3>Actual Location</h3>
-                  <p>City: {roundLocation.location_name}</p>
-                  <p>Country: {roundLocation.country}</p>
-                </>
-              )}
-            </div>
-          )}
           {/* Conditional rendering for ongoing competition */}
-          {score === null && (
+          {score === !null && (
             <div className="ongoing-competition-message">
               <p>
                 Guess submitted!! However, the competition is still ongoing.

@@ -40,6 +40,10 @@
   
 }
 
+.leaderboard-grid {
+  display: grid;
+  grid-template-columns: 10% 5% 53% 32%;
+}
 
 .daily-game-stats {
   flex: 1; /* Allows the box to grow */
@@ -111,6 +115,27 @@
 }
 
 .link-box a:hover {
+  background-color: #dddddd; /* Add a hover effect to link boxes */
+}
+
+.comp-link-box {
+  background-color: #007bff; /* Background color for link boxes */
+  border-radius: 20px 20px 20px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-right: 20px; /* Space between link boxes */
+  padding: 10px; /* Adjust padding for link boxes */
+  text-align: center;
+}
+
+.comp-link-box a {
+  text-decoration: none;
+  color: ghostwhite;
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.comp-link-box a:hover {
   background-color: #dddddd; /* Add a hover effect to link boxes */
 }
 
@@ -222,8 +247,8 @@ li {
 }
 
 .games-played {
-  padding-left: 5vw;
   margin-bottom: 5vh;
+  text-align: center;
 }
 
 .competitive-stats-header {
