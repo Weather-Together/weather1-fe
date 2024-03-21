@@ -10,6 +10,7 @@ const CompetitiveGame = () => {
   const [round, setRound] = useState(null); // to determine the round
   const [score, setScore] = useState(null); // your score after submit
   const [roundLocation, setRoundLocation] = useState(null); // from the get the location of the round
+  const [guessLocation, setGuessLocation] = useState(null); // the location of your guess
 
   // Define the function to handle location selection
   const handleLocationSelect = (selectedLocation) => {
@@ -45,7 +46,6 @@ const CompetitiveGame = () => {
           });
           localStorage.setItem("CompetitiveRoundData", JSON.stringify(competitiveRoundData))
           console.log("Fetched round data:", data);
-          console.log("Fetched round data:", roundLocation);
         } catch (error) {
           console.error("Error fetching round data:", error);
         }
@@ -84,6 +84,10 @@ const CompetitiveGame = () => {
         const result = await response.json();
         setScore(result.data.attributes.score); // Assuming the score is in this path
         console.log("My score:", score);
+        setGuessLocation({
+          location_name: result.data.attributes.location_name,
+          country: result.data.attributes.country,
+        }); // Assuming the score is in this path
       } catch (error) {
         console.error("Error submitting guess:", error);
       }
@@ -121,8 +125,27 @@ const CompetitiveGame = () => {
           <button onClick={handleSubmit} className="submit-button">
             Submit Guess
           </button>
+          {score !== null && (
+            <div className="score-display">
+              <p>Your score: {score.toFixed(2)}</p>
+              {guessLocation && (
+                <>
+                  <h3>Your Guess</h3>
+                  <p>City: {guessLocation.location_name}</p>
+                  <p>Country: {guessLocation.country}</p>
+                </>
+              )}
+              {roundLocation && (
+                <>
+                  <h3>Actual Location</h3>
+                  <p>City: {roundLocation.location_name}</p>
+                  <p>Country: {roundLocation.country}</p>
+                </>
+              )}
+            </div>
+          )}
           {/* Conditional rendering for ongoing competition */}
-          {score === !null && (
+          {score === null && (
             <div className="ongoing-competition-message">
               <p>
                 Guess submitted!! However, the competition is still ongoing.
