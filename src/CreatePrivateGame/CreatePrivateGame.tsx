@@ -122,11 +122,11 @@ const CreatePrivateGame: React.FC = () => {
     <label>
       Add user by email:
       <div className="invitee-item">
-
-      <input type="text" value={currentInvitee} onChange={handleInviteeChange} />
-      <button className="form-button" onClick={handleAddInvitee}>Add</button>
+        <input type="text" value={currentInvitee} onChange={handleInviteeChange} />
+        <button className="form-button" onClick={handleAddInvitee}>Add</button>
       </div>
     </label>
+    {gameDetails.invitees.length > 0 && (
     <div>
       <h3>Invitees:</h3>
       <ul>
@@ -140,6 +140,7 @@ const CreatePrivateGame: React.FC = () => {
         ))}
       </ul>
     </div>
+  )}
   </div>
   <hr />
   <div className="invitee-item">
