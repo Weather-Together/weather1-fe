@@ -21,6 +21,15 @@ html, body {
     position: relative;
 }
 
+.prompt {
+  margin-top: 3vh;
+  background-color: #f3efe5;
+  padding: 5px 10px 10px 10px;
+  border-radius: 20px;
+  align-items: center;
+
+}
+
 .details-container {
     flex: 1;
     display: flex;
@@ -30,15 +39,22 @@ html, body {
     background-color: #f9f9f91e;
 }
 
-.weather-data-container, .location-display, .score-display {
+.location-display, .score-display {
     width: 100%;
     margin: 10px 0;
     padding: 10px;
     text-align: center;
 }
 
+.weather-data-container {
+    width: 100%;
+    margin: 0px 0 10px 0;
+    padding: 0px 10px 10px 10px;
+    text-align: center;
+}
+
 .submit-button {
-    width: auto;
+    width: 100%;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -67,15 +83,14 @@ html, body {
   max-height: 600px;
   max-width: 850px;
   width: 100vh;
-  height: 70vh;
+  /* height: 70vh; */
   border-radius: 25px;
   background-color: #BFDFFB;
 
 }
 
 .close-dialog {
-  display: flex;
-  justify-content: flex-end;
+  align-items: center;
 }
 
 .dialog-button {
@@ -96,7 +111,7 @@ html, body {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  height: 20%;
+  height: 40%;
 }
 
 .location-img {
@@ -105,9 +120,26 @@ html, body {
  max-width: 28vw;
 }
 .scoring {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
+  display: grid;
+  grid-template-columns: 30% 20% 5% 20% 5% 20%;
+}
+
+.scoring-header {
+  text-align: center;
+  font-weight: bold;
+}
+
+.cell {
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 0.8em;
+}
+
+.heading-cell {
+  text-align: left;
+  font-weight: bold;
+  padding-bottom: 10px;
+
 }
 
 .modal-dashboard {
@@ -124,6 +156,10 @@ html, body {
   border-radius: 5px;
   color: white; 
   margin-top: 1.5vh;
+}
+
+.scoring {
+
 }
 
 .dashboard-button:hover {
@@ -146,11 +182,6 @@ html, body {
 
 .avg-humidity {
   margin-right: 10px;
-}
-
-.cell {
-  flex: 1;
-  text-align: center;
 }
 
 .header {

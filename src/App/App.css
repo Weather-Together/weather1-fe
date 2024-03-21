@@ -11,24 +11,34 @@ body {
 /* Theme Specific Styles */
 :root {
   --background-color-light: rgb(204, 228, 241);
-  --background-color-dark: black;
+  --background-color-light-header: #f3efe5;
+  --background-color-dark: #121111;
+  --background-color-dark-header: #000;
   --text-color-light: #000;
-  --text-color-dark: #fff;
+  --text-color-dark: #000;
 }
 
 .light-theme {
   --background-color: var(--background-color-light);
+  --background-color-header: var(--background-color-light-header);
   --text-color: var(--text-color-light);
 }
 
 .dark-theme {
   --background-color: var(--background-color-dark);
+  --background-color-header: var(--background-color-dark-header);
   --text-color: var(--text-color-dark);
 }
 
 /* Applying theme to the body or a high-level container */
 body, .App {
   background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header, .App {
+  background-color: var(--background-color-header);
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
