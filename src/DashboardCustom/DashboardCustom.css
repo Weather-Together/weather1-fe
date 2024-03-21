@@ -13,6 +13,8 @@
   display: inline-block; /* Ensure each game is displayed in a box */
   border: 1px solid #ccc; /* Add border for each game container */
   background: ghostwhite;
+  background-image: url('/src/Images/cloud.jpg');
+  background-size: cover;
   margin: 0px 5px 3px 5px;
   box-shadow: 1px 3px 3px 1px rgba(44, 44, 44, 0.5); /* Adds a shadow for depth */
   border-radius: 10px 10px 10px 10px; /* Add border radius */
