@@ -11,8 +11,8 @@
 
 .newuser-content {
     padding: 20px;
-    background-color: var(--background-color);
-    border-radius: 5px;
+    background-color: #f3efe5;
+    border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     color: var(--text-color);
     font-weight: bold; 

@@ -6,6 +6,7 @@ import "./Dashboard.css";
 import Footer from "../Footer/Footer";
 import BarGraph from "../BarGraph/BarGraph";
 import DashboardCustom from "../DashboardCustom/DashboardCustom";
+import { divIcon } from "leaflet";
 
 interface dailyStats {
   gameCount: number;
@@ -30,6 +31,7 @@ interface GameRank {
 interface competitiveStats {
   top5username: string;
   top5score: string;
+  top5: { username: string; score: number }[];
   userRank: number;
   gameCount: number;
   avgCompScore: number;
@@ -137,9 +139,12 @@ const Dashboard: React.FC = () => {
             .map((user) => user.username)
             .join(", ");
 
+          const top5 = data.competitive_stats.top_5_competitive_users;
+
           const competitiveData = {
             top5username: top5usernames,
             top5score: top5scores,
+            top5: top5,
             userRank: data.competitive_stats.user_competitive_rank,
             gameCount: data.competitive_stats.competitive_game_count,
             avgCompScore:
@@ -260,48 +265,69 @@ const Dashboard: React.FC = () => {
           // }}
           >
             <div className="competitive-stats-header">
-              <h3>Competitive Stats</h3>
+              <h3 style={{ marginLeft: '25px'}}>Competitive Stats</h3>
               <div className="links">
-                <div className="link-box">
+                <div className="comp-link-box">
                   <Link to="/competitive">Go Play!</Link>
                 </div>
               </div>
             </div>
+            <hr
+            style={{
+              color: 'gray',
+              backgroundColor: 'gray',
+              width: '100%'
+            }}></hr>
             <div className="leaderboard-container">
               <h4 className="leaderboard-text">Leaderboard</h4>
-              <h5 className="games-played">
-                Games Played: {competitiveData && competitiveData.gameCount}
-              </h5>
+
             </div>
-            {competitiveData && (
-              <table>
-                <thead>
-                  <tr>
-                    <th>Rank</th>
-                    <th>Username</th>
-                    <th>Avg. Score</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {competitiveData.top5username.split(", ").map((username, index) => (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>{username}</td>
-                      <td>{competitiveData.top5score.split(", ")[index]}</td>
-                    </tr>
-                  ))}
-                  <tr key={storedUser.id}>
-                    <td>{competitiveData.userRank || "No rank"}</td>
-                    <td>
-                      {storedUser.attributes
+            <div className="leaderboard-grid">
+              <div style={{borderRight: '1px solid black'}}>Rank</div>
+              <div></div>
+              <div>Player</div>
+              <div style={{textAlign: 'center', borderLeft: '1px solid black'}}>Average Score</div>
+            </div>
+            <hr
+            style={{
+              color: 'gray',
+              backgroundColor: 'gray',
+              width: '100%'
+            }}></hr>
+            {competitiveData.top5 && competitiveData.top5.length > 0 ? (
+            <div>
+              {competitiveData.top5.map((user, index) => (
+                <div key={index}>
+                  <div className="leaderboard-grid">
+                    <div style={{textAlign: 'center', borderRight: '1px solid black'}}>{index+1}</div>
+                    <div></div>
+                    <div>{user.username}</div>
+                    <div style={{textAlign: 'center', borderLeft: '1px solid black'}}>{Math.round(user.score)}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+          ) : (
+            <p>No top 5 users data available</p>
+          )}
+          <hr
+            style={{
+              color: 'gray',
+              backgroundColor: 'gray',
+              width: '100%'
+            }}></hr>
+          { competitiveData.userRank > 5 ? (<div key={storedUser.id} className="leaderboard-grid">
+            <div style={{textAlign: 'center', borderRight: '1px solid black'}}>{competitiveData.userRank || "No rank"}</div>
+            <div></div>
+            <div>{storedUser.attributes
                         ? storedUser.attributes.username
                         : "No username"}
-                    </td>
-                    <td>{competitiveData.avgCompScore || "No scores"}</td>
-                  </tr>
-                </tbody>
-              </table>
-            )}
+            </div>
+            <div style={{textAlign: 'center', borderLeft: '1px solid black'}}>{competitiveData.avgCompScore || "No scores"}</div>
+          </div>) : (
+            <div></div>
+          ) }
             <div className="last-three-games">
               <h3>Last Three Competitive Games</h3>
               {competitiveData &&
@@ -330,6 +356,9 @@ const Dashboard: React.FC = () => {
                   </table>
                 )}
             </div>
+            <h5 className="games-played">
+                Rounds Played: {competitiveData && competitiveData.gameCount}
+            </h5>
           </div>
   
 
