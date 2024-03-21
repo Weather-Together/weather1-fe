@@ -9,8 +9,7 @@ const CompetitiveGame = () => {
   const [roundData, setRoundData] = useState(null); // this is what gets displayed first
   const [round, setRound] = useState(null); // to determine the round
   const [score, setScore] = useState(null); // your score after submit
-  const [setRoundLocation] = useState(null); // from the get the location of the round
-  const [setGuessLocation] = useState(null); // the location of your guess
+  const [roundLocation, setRoundLocation] = useState(null); // from the get the location of the round
 
   // Define the function to handle location selection
   const handleLocationSelect = (selectedLocation) => {
@@ -46,6 +45,7 @@ const CompetitiveGame = () => {
           });
           localStorage.setItem("CompetitiveRoundData", JSON.stringify(competitiveRoundData))
           console.log("Fetched round data:", data);
+          console.log("Fetched round data:", roundLocation);
         } catch (error) {
           console.error("Error fetching round data:", error);
         }
@@ -84,10 +84,6 @@ const CompetitiveGame = () => {
         const result = await response.json();
         setScore(result.data.attributes.score); // Assuming the score is in this path
         console.log("My score:", score);
-        setGuessLocation({
-          location_name: result.data.attributes.location_name,
-          country: result.data.attributes.country,
-        }); // Assuming the score is in this path
       } catch (error) {
         console.error("Error submitting guess:", error);
       }
