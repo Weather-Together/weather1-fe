@@ -103,24 +103,29 @@ const CreatePrivateGame: React.FC = () => {
 <div className="create-private-game">
   <h2>Create a Private Game</h2>
   <hr />
-  <div className="form-fields">
+    <div className="form-fields">
     <label>
       <input type="text" name="name" onChange={handleChange} />
-      <span>Game Name:</span>
+      <span className="label-text">Game Name</span>
     </label>
-    <label>
-      <input type="number" name="lengthInDays" onChange={handleChange} />
-      <span>Length in Days:</span>
+      <div className="form-label-spacing"></div>
+      <label>
+        <input type="number" name="lengthInDays" onChange={handleChange} />
+        <span className="label-text">Length (Days)</span>
     </label>
-    <label>
-      <input type="number" name="guessLeadTime" onChange={handleChange} />
-      <span>Guess Lead Time (Days):</span>
-    </label>
+      <div className="form-label-spacing"></div>
+      <label>
+        <input type="number" name="guessLeadTime" onChange={handleChange} />
+        <span className="label-text">Guess Lead Time (Days)</span>
+      </label>
     <hr />
     <label>
       Add user by email:
+      <div className="invitee-item">
+
       <input type="text" value={currentInvitee} onChange={handleInviteeChange} />
-      <button onClick={handleAddInvitee}>Add</button>
+      <button className="form-button" onClick={handleAddInvitee}>Add</button>
+      </div>
     </label>
     <div>
       <h3>Invitees:</h3>
@@ -129,7 +134,7 @@ const CreatePrivateGame: React.FC = () => {
           <li key={index}>
             <div className="invitee-item">
               <span>{invitee}</span>
-              <button className="remove-button" onClick={() => handleRemoveInvitee(index)}>Remove</button>
+              <button className="form-button" onClick={() => handleRemoveInvitee(index)}>Remove</button>
             </div>
           </li>
         ))}
@@ -137,7 +142,9 @@ const CreatePrivateGame: React.FC = () => {
     </div>
   </div>
   <hr />
-  <button onClick={handleSubmit} style={{ width: 'fit-content', margin: '10px auto' }}>Create Game</button>
+  <div className="invitee-item">
+    <button className="form-button" style={{ margin: '0 auto' }} onClick={handleSubmit}>Create Game</button>
+  </div>
 </div>
 
 

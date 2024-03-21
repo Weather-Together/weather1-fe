@@ -10,7 +10,7 @@
 
 .create-private-game {
   padding: 20px;
-  background-color: var(--background-color);
+  background-color: #f3efe5;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   color: var(--text-color);
@@ -43,7 +43,7 @@
   padding: 0;
 }
 
-.create-private-game .remove-button {
+.create-private-game .form-button {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
@@ -60,13 +60,27 @@
   margin-right: 10px; 
 }
 
-.invitee-item .remove-button {
-  background-color: #f44336; 
+.invitee-item input {
+  flex: 1;
+  margin-right: 10px; /* Add space between input and button */
+}
+
+.invitee-item .form-button {
+  background-color: #007bff; 
   color: white; 
   border: none; 
-  padding: 8px 12px; 
-  border-radius: 5px; 
+  padding: 5px 7px; 
+  border-radius: 20px 20px 20px 20px; 
   cursor: pointer; 
+}
+
+.label-text {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.form-label-spacing {
+  margin-bottom: 10px;
 }
 
 @media (max-width: 500px) {
