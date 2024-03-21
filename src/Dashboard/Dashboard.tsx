@@ -6,7 +6,6 @@ import "./Dashboard.css";
 import Footer from "../Footer/Footer";
 import BarGraph from "../BarGraph/BarGraph";
 import DashboardCustom from "../DashboardCustom/DashboardCustom";
-import { divIcon } from "leaflet";
 
 interface dailyStats {
   gameCount: number;
