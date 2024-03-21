@@ -10,6 +10,7 @@ const CompetitiveGame = () => {
   const [round, setRound] = useState(null); // to determine the round
   const [score, setScore] = useState(null); // your score after submit
   const [setRoundLocation] = useState(null); // from the get the location of the round
+  const [setGuessLocation] = useState(null); // the location of your guess
 
   // Define the function to handle location selection
   const handleLocationSelect = (selectedLocation) => {
